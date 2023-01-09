@@ -1,5 +1,8 @@
 {
+    "name": "druser/school-ticket",
     "require": {
-        "microsoft/microsoft-graph": "^1.85.0"
+        "microsoft/microsoft-graph": "^1.85",
+        "vlucas/phpdotenv": "^5.5",
+        "adnanhussainturki/microsoft-api-php": "^0.03.0"
     }
 }
