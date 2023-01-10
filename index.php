@@ -60,7 +60,7 @@
     </nav>
     <nav class="navbar">
     <a hred="login.php"><b><?php 		
-         echo " <a href='login.php'><b>" .$_SESSION['domain']. "</b> <i class='fas fa-power-off'></i></a>";
+         echo " <a href='login.php'><b>" .$_SESSION['username']. "</b> <i class='fas fa-power-off'></i></a>";
      ?> </b>
     
     </nav>
