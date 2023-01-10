@@ -7,17 +7,17 @@
   session_start();  
   //TODO:Get access token to get users info
   $microsoft = new Auth(Session::get("tenant_id"),Session::get("client_id"),  Session::get("client_secret"), Session::get("redirect_uri"), Session::get("scopes"));
-  $tokens = $microsoft->getToken($_GET['code'], Session::get("state"));
+  $tokens = $microsoft->getToken($_REQUEST['code'], Session::get("state"));
 
   $microsoft->setAccessToken($tokens->access_token);
 
-  $user = (new User); // User get pulled only if access token was generated for scope User.Read
-  echo $user->data->getGivenName(); 
-  echo $user->data->getOnPremisesImmutableId(); 
+  $user = (new User); // User get pulled only if access token was generated for scope User.Read 
+  $_SESSION['username'] = $user->data->getGivenName(); 
+  
 
 ?>
 
-<!--
+
 <!DOCTYPE html>
 <html lang="lv">
 <head>
@@ -38,8 +38,8 @@
         <a href="#sakums"class="active"><i class="fas fa-home"></i> Sākumlapa</a>
         <a href="info.php"><i class="fas fa-circle-info"></i> Informacijas</a>
         <a href="newinfo.php"><i class="fas fa-wifi"></i> Pievienot Rūteri</a>
-        ?php
-        
+        <?php
+          
             $IsAdmin = 1;
             if ($IsAdmin)   
                 if (true)
@@ -49,8 +49,8 @@
         ?>
     </nav>
     <nav class="navbar">
-    <a hred="login.php"><b>?php 		
-         echo " <a href='login.php'><b> [UserName] </b> <i class='fas fa-power-off'></i></a>";
+    <a hred="login.php"><b><?php 		
+         echo " <a href='login.php'><b>" .$_SESSION['username']. "</b> <i class='fas fa-power-off'></i></a>";
      ?> </b>
     
     </nav>
@@ -60,7 +60,7 @@
 <section id="adminSakums">
     <div class="kopsavilkums">
         <div class="informacija">
-            ?php
+            <?php
            
 
             echo "<span>23</span>"
@@ -68,7 +68,7 @@
             <h3>Lietotaji</h3>
         </div>
         <div class="informacija">
-        ?php
+        <?php
            
            
             echo "<span>25</span>"
@@ -76,13 +76,13 @@
             <h3>Darbinieki</h3>
         </div>
         <div class="informacija">
-            ?php
+           <?php
             echo "<span>26</span>"
             ?>
             <h3>Klienti</h3>
         </div>
         <div class="informacija">
-        ?php
+        <?php
             echo "<span>27</span>"
             ?>
             <h3>Pieejamie Ruteri</h3>
@@ -99,7 +99,7 @@
                     <th>Rutera Max internets mb/s</th>
                     <th>Rutera Modelis</th>
                 </tr>
-                ?php
+                <?php
                
 
                   if(true){
@@ -130,7 +130,7 @@
                     <th>Liguma Nr.</th>
                     <th>Abonaments </th>
                 </tr>
-                ?php
+                <?php
                  
                  
                   if(true){
