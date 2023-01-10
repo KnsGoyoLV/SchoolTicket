@@ -1,6 +1,6 @@
 # School Ticket Support
 
-Github projekts satur:
+Github project content:
 - php login with microsoft graph
 
 ## TODO:
