@@ -5,28 +5,32 @@
   require "vendor/autoload.php";
   $env = parse_ini_file('ID.env');
   session_start();  
-  //TODO:Get access token to get users info
-  $microsoft = new Auth(Session::get("tenant_id"),Session::get("client_id"),  Session::get("client_secret"), Session::get("redirect_uri"), Session::get("scopes"));
-  $tokens = $microsoft->getToken($_REQUEST['code'], Session::get("state"));
 
+  $microsoft = new Auth(Session::get("tenant_id"),
+                        Session::get("client_id"),  
+                        Session::get("client_secret"), 
+                        Session::get("redirect_uri"), 
+                        Session::get("scopes"));
+  
+  $tokens = $microsoft->getToken($_REQUEST['code'], Session::get("state"));
   $microsoft->setAccessToken($tokens->access_token);
 
-  $user = (new User); // User get pulled only if access token was generated for scope User.Read 
+  //Store user info 
+  $user = (new User);
   $_SESSION['username'] = $user->data->getGivenName();
-  $_SESSION['IDe'] = $user->data->getIdentities();
+  $_SESSION['surname'] = $user->data->getSurname();
   $_SESSION['email'] = $user->data->getMail();
 
+
+  //Block subdomain 
   $parts = explode('@',  $_SESSION['email']);
   $domain = array_pop($parts);
-  $blocked_domains = array('sk');
-  if (in_array(explode('.', $domain)[0], $blocked_domains)) {
+  $blocked_domains = array('sk');// to block sub domain add sk in here
+  if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $blocked_domains)) {
     header("Location:blocked.php");
     exit();
-  } else {
-      // Send the email or take other appropriate action
   }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="lv">
@@ -60,7 +64,7 @@
     </nav>
     <nav class="navbar">
     <a hred="login.php"><b><?php 		
-         echo " <a href='login.php'><b>" .$_SESSION['username']. "</b> <i class='fas fa-power-off'></i></a>";
+         echo " <a href='startpage'><b>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
      ?> </b>
     
     </nav>
