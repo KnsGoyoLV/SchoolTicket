@@ -12,9 +12,19 @@
   $microsoft->setAccessToken($tokens->access_token);
 
   $user = (new User); // User get pulled only if access token was generated for scope User.Read 
-  $_SESSION['username'] = $user->data->getGivenName(); 
-  
+  $_SESSION['username'] = $user->data->getGivenName();
+  $_SESSION['IDe'] = $user->data->getIdentities();
+  $_SESSION['email'] = $user->data->getMail();
 
+  $parts = explode('@',  $_SESSION['email']);
+  $domain = array_pop($parts);
+  $blocked_domains = array('sk');
+  if (in_array(explode('.', $domain)[0], $blocked_domains)) {
+    header("Location:blocked.php");
+    exit();
+  } else {
+      // Send the email or take other appropriate action
+  }
 ?>
 
 
@@ -50,7 +60,7 @@
     </nav>
     <nav class="navbar">
     <a hred="login.php"><b><?php 		
-         echo " <a href='login.php'><b>" .$_SESSION['username']. "</b> <i class='fas fa-power-off'></i></a>";
+         echo " <a href='login.php'><b>" .$_SESSION['domain']. "</b> <i class='fas fa-power-off'></i></a>";
      ?> </b>
     
     </nav>
@@ -61,11 +71,10 @@
     <div class="kopsavilkums">
         <div class="informacija">
             <?php
-           
-
-            echo "<span>23</span>"
+            echo "<span>23</span>";
+            echo "<h3>".$_SESSION['IDe']."</h3>";
             ?>
-            <h3>Lietotaji</h3>
+            
         </div>
         <div class="informacija">
         <?php
