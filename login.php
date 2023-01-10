@@ -14,8 +14,6 @@ $scopes = ["https://graph.microsoft.com/.default"];
 if (!isset($_SESSION['access_token'])) {
     $microsoft = new Auth($tenant, $client_id, $client_secret,$callback, $scopes);
     header("location: " . $microsoft->getAuthUrl());
-    $_SESSION['token_id12'] = $_GET['code'];
-    //TODO: Find how the token is stored in microsoft graph
     exit;
 }
 ?>
