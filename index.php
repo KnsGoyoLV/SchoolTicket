@@ -1,6 +1,5 @@
 <?php
-    // loti labs tests
-
+    require_once("connectDB.php");
     require "vendor/autoload.php";
     use myPHPnotes\Microsoft\Auth;
     use myPHPnotes\Microsoft\Handlers\Session;
@@ -98,8 +97,7 @@
 <section id="adminSakums">
     <div class="kopsavilkums">
         <div class="informacija">
-            <?php
-                require("connectDB.php");
+            <?php            
                 $sql = "SELECT COUNT(*) FROM ticket";
                 $result = $db->query($sql);
                 if($result->num_rows>0)
@@ -136,63 +134,42 @@
             <div class="head-info">Ruteri Noliktava:</div>
             <table>
                 <tr>
-                    <th>ID Rutera</th>
-                    <th>Rutera Nosaukums</th>
-                    <th>Rutera Max internets mb/s</th>
-                    <th>Rutera Modelis</th>
+                
+                    <th>Datums</th>
+                    <th>Vards Uzvards</th>
+                  
+                    <th>Klase</th>
+                    <th>Problema</th>
+                    <th>Piezime</th>
+                    
+                    <th>Status</th>
                 </tr>
                 <?php
                
 
-                  if(true){
-                   
-                    /*
-                    while($row = mysqli_fetch_assoc($result)){
-                        echo "<tr>";
-                        echo"<td>" . $row['idRuteraModel'] . "</td>" ;
-                        echo"<td>" . $row['RutereVards'] . "</td>" ;
-                        echo"<td>" . $row['RuteraInternetsMax'] . "</td>" ;
-                        echo"<td>" . $row['RuteraModels'] . "</td>" ;
-                        echo "</tr>";
-                    }
-                    */
-                  }
+               $result = mysqli_query($db, "SELECT * from ticket");
+               if($result){
+                
+
+                 while($row = mysqli_fetch_assoc($result)){
+                     echo "<tr>";
+                   //  echo"<td>" . $row['ticket_id'] . "</td>" ;
+                     echo"<td>" . $row['laiks'] . "</td>" ;
+                     echo"<td>" . $row['vards'] ." ".$row['uzvards'] . "</td>" ;
+                    // echo"<td>" . $row['iela'] . "</td>" ;
+                     echo"<td>" . $row['klase'] . "</td>" ;
+                     echo"<td>" . $row['problema'] . "</td>" ;
+                     echo"<td>" . $row['piezime'] . "</td>" ;
+                   //  echo"<td>" . $row['apstiprinats'] . "</td>" ;
+                     echo"<td>" . $row['status'] . "</td>" ;
+                     echo "</tr>";
+                 }
+               }
                 ?>
                
             </table>
         </div>
-        <div class="info2">
-            <div class="head-info">Klienti:</div>
-            <table>
-                <tr>
-                    <th>KlientID</th>
-                    <th>Klienta Uzvards</th>
-                    <th>Klienta Iela</th>
-                    <th>Klienta Telefons</th>
-                    <th>Liguma Nr.</th>
-                    <th>Abonaments </th>
-                </tr>
-                <?php
-                 
-                 
-                  if(true){
-                   
-                    /*
-                    while($row = mysqli_fetch_assoc($result)){
-                        echo "<tr>";
-                        echo"<td>" . $row['idKlients'] . "</td>" ;
-                        echo"<td>" . $row['KlientaUzvards'] . "</td>" ;
-                        echo"<td>" . $row['KlientaIela'] . "</td>" ;
-                        echo"<td>" . $row['KlientaTel'] . "</td>" ;
-                        echo"<td>" . $row['LigumaNr'] . "</td>" ;
-                        echo"<td>" . $row['Abonaments_idAbonaments'] . "</td>" ;
-                        echo "</tr>";
-                    }
-                    */
-                  }
-                ?>
-            </table>
-        </div>
+        
     </div>
 </section>
 
