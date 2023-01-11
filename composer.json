@@ -3,6 +3,7 @@
     "require": {
         "microsoft/microsoft-graph": "^1.85",
         "vlucas/phpdotenv": "^5.5",
-        "adnanhussainturki/microsoft-api-php": "^0.03.0"
+        "adnanhussainturki/microsoft-api-php": "^0.03.0",
+        "league/oauth2-client": "^2.6"
     }
 }

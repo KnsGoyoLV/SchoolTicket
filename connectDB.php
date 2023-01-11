@@ -1,5 +1,5 @@
 <?php
-	$db =mysqli_connect('localhost','Daniels','Parole1','internetveikals');
+	$db =mysqli_connect('localhost','root','','problema');
 	if(!$db){
 		die("Pieslegties neizdevas: ".mysqli_connect_error());
 	}

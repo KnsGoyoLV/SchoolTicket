@@ -1,31 +1,55 @@
 <?php
-  use myPHPnotes\Microsoft\Auth;
-  use myPHPnotes\Microsoft\Handlers\Session;
-  use myPHPnotes\Microsoft\Models\User;
-  require "vendor/autoload.php";
-  $env = parse_ini_file('ID.env');
-  session_start();  
+    require "vendor/autoload.php";
+    use myPHPnotes\Microsoft\Auth;
+    use myPHPnotes\Microsoft\Handlers\Session;
+    use myPHPnotes\Microsoft\Models\User;
+    use Microsoft\Graph\Graph;
+    use League\OAuth2\Client\Provider\GenericProvider;
+    $env = parse_ini_file('ID.env');
+    session_start();  
+    $tenant =$env['tenant'];
+    $client_id = $env['client_id'];
+    $client_secret = $env['client_secret'];
+    $callback = $env['callback'];
+    $scopes = ["https://graph.microsoft.com/.default","offline_access"];
+    $tent = Session::get("tenant_id");
+    if (isset($_SESSION['used_codes']) && in_array($_GET['code'], $_SESSION['used_codes']) || !isset($_GET['code'])) {
+        // If we dont have an authorization code then get one
+        $microsoft = new Auth($tenant, $client_id, $client_secret,$callback, $scopes);
+        header("location: " . $microsoft->getAuthUrl());
+        exit;
+    } else {
+    // if the auth code hasnt been used get acces token
+    $microsoft = new Auth(Session::get("tenant_id"),
+    Session::get("client_id"),  
+    Session::get("client_secret"), 
+    Session::get("redirect_uri"), 
+    Session::get("scopes"));
 
-  $microsoft = new Auth(Session::get("tenant_id"),
-                        Session::get("client_id"),  
-                        Session::get("client_secret"), 
-                        Session::get("redirect_uri"), 
-                        Session::get("scopes"));
-  
-  $tokens = $microsoft->getToken($_REQUEST['code'], Session::get("state"));
-  $microsoft->setAccessToken($tokens->access_token);
+    $tokens = $microsoft->getToken($_GET['code'], Session::get("state"));
+    $microsoft->setAccessToken($tokens->access_token);
+    // add auth code to the used_codes after setting acces token and using the auth code
+    if(!isset($_SESSION['used_codes'])){
+        $_SESSION['used_codes']=[];
+    }
+
+    $_SESSION['used_codes'][] = $_GET['code'];
+    }
+
+
 
   //Store user info 
-  $user = (new User);
-  $_SESSION['username'] = $user->data->getGivenName();
-  $_SESSION['surname'] = $user->data->getSurname();
-  $_SESSION['email'] = $user->data->getMail();
+    $user = (new User);
+    $_SESSION['username'] = $user->data->getGivenName();
+    $_SESSION['surname'] = $user->data->getSurname();
+    $_SESSION['email'] = $user->data->getMail();
+    $_SESSION['phone'] = $user->data->getMobilePhone();
 
 
   //Block subdomain 
   $parts = explode('@',  $_SESSION['email']);
   $domain = array_pop($parts);
-  $blocked_domains = array('sk');// to block sub domain add sk in here
+  $blocked_domains = array('');// to block sub domain add sk in here
   if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $blocked_domains)) {
     header("Location:blocked.php");
     exit();
@@ -38,7 +62,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inernet Veikals DV</title>
+    <title>LVT TicketSupport</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="style_main.css">
 
@@ -47,7 +71,7 @@
 <body>
 
 <header>
-    <a href="#" class="animate-charcter">Sixsense</a>
+    <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
     <nav class="navbar">
         <a href="#sakums"class="active"><i class="fas fa-home"></i> Sākumlapa</a>
         <a href="info.php"><i class="fas fa-circle-info"></i> Informacijas</a>
@@ -75,8 +99,8 @@
     <div class="kopsavilkums">
         <div class="informacija">
             <?php
-            echo "<span>23</span>";
-            echo "<h3>".$_SESSION['IDe']."</h3>";
+            echo "<span>1</span>";
+            echo "<h3>Support Ticket</h3>";
             ?>
             
         </div>
@@ -84,21 +108,21 @@
         <?php
            
            
-            echo "<span>25</span>"
+            echo "<span>1</span>"
             ?>
-            <h3>Darbinieki</h3>
+            <h3>New</h3>
         </div>
         <div class="informacija">
            <?php
             echo "<span>26</span>"
             ?>
-            <h3>Klienti</h3>
+            <h3>Need to be verified</h3>
         </div>
         <div class="informacija">
         <?php
             echo "<span>27</span>"
             ?>
-            <h3>Pieejamie Ruteri</h3>
+            <h3>Done</h3>
         </div>
     </div>
 
