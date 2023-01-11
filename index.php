@@ -109,9 +109,12 @@
         </div>
         <div class="informacija">
         <?php
-           
-           
-            echo "<span>1</span>"
+                $sql = "SELECT COUNT(*) FROM ticket where 'status'='Iesākts'";
+                $result = $db->query($sql);
+                if($result->num_rows>0)
+                    while($row = $result->fetch_assoc())
+                         $nunRows = $row["COUNT(*)"];
+                echo "<span>$nunRows</span>"
             ?>
             <h3>New</h3>
         </div>
