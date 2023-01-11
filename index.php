@@ -1,10 +1,10 @@
 <?php
+    // loti labs tests
+
     require "vendor/autoload.php";
     use myPHPnotes\Microsoft\Auth;
     use myPHPnotes\Microsoft\Handlers\Session;
     use myPHPnotes\Microsoft\Models\User;
-    use Microsoft\Graph\Graph;
-    use League\OAuth2\Client\Provider\GenericProvider;
     $env = parse_ini_file('ID.env');
     session_start();  
     $tenant =$env['tenant'];

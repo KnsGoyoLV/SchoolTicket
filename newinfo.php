@@ -55,8 +55,8 @@
          $RIA = mysqli_real_escape_string($db, $_POST['RIA']);
          $RuteraMod = mysqli_real_escape_string($db, $_POST['RuteraMod']);
 
-         $sql = "INSERT INTO `ruteramodel` (`idRuteraModel`, `RutereVards`, `RuteraInternetsMax`, `RuteraModels`) 
-                VALUES ('$RuteraID', '$RuteraVards', '$RIA', '$RuteraMod')";
+         $sql = "INSERT INTO `ticket` (`ticket_id`, `laiks`, `vards`, `uzvards`, `iela`, `klase`, `problema`, `piezime`, `apstiprinats`, `status`) VALUES
+                                     ('$RuteraID', '$RuteraVards', '$RIA', '$RuteraMod')";
          mysqli_query($db, $sql);
         }
      ?>
