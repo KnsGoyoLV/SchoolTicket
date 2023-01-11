@@ -99,10 +99,14 @@
     <div class="kopsavilkums">
         <div class="informacija">
             <?php
-            echo "<span>1</span>";
-            echo "<h3>Support Ticket</h3>";
+                require("connectDB.php");
+                $result = $db->query($sql);
+                if($result->num_rows>0)
+                    while($row = $result->fetch_assoc())
+                         $nunRows = $row["COUNT(*)"];
+                echo "<span>$nunRows</span>"
             ?>
-            
+            <h3>Support Ticket</h3>
         </div>
         <div class="informacija">
         <?php
