@@ -71,6 +71,12 @@ CREATE TABLE `vieta` (
   `kabinets` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+CREATE TABLE `apstiprinajums` (
+  `apstiprinajums_id` int(1) NOT NULL,
+  `apstiprinats` boolean
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -92,6 +98,9 @@ ALTER TABLE `piezime`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`status_id`);
+
+  ALTER TABLE `apstiprinajums`
+  ADD PRIMARY KEY (`apstiprinajums_id`);
 
 --
 -- Indexes for table `vieta`
