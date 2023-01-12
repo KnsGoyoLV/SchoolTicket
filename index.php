@@ -156,7 +156,7 @@
                        $nunRows = $row["COUNT(*)"];
               echo "<span>$nunRows</span>"
             ?>
-            <h3>?Pabeigts</h3>
+            <h3>Pabeigts</h3>
         </div>
     </div>
 
