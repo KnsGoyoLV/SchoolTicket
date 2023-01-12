@@ -13,7 +13,7 @@
     $scopes = ["https://graph.microsoft.com/.default","offline_access"];
     $tent = Session::get("tenant_id");
     if (isset($_SESSION['used_codes']) && in_array($_GET['code'], $_SESSION['used_codes']) || !isset($_GET['code'])) {
-        // If we dont have an authorization code then get one
+        // If we dont have an  code then get one
         $microsoft = new Auth($tenant, $client_id, $client_secret,$callback, $scopes);
         header("location: " . $microsoft->getAuthUrl());
         exit;
