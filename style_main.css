@@ -13,6 +13,9 @@ body{
  background-image: url("lvt.png");
 }
 
+body{
+    background-color: #293241;
+}
 *{
     font-family: 'Nunito', sans-serif;
     margin:0;
@@ -116,8 +119,7 @@ header .navbar a:hover{
 
 header .navbar .active{
     color: rgb(255, 255, 255);
-    transform: scale(2);
-
+   
 }
 
 #menu-btn{
