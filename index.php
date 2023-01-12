@@ -105,9 +105,19 @@
                          $nunRows = $row["COUNT(*)"];
                 echo "<span>$nunRows</span>"
             ?>
-            <h3>Support Ticket</h3>
+            <h3>Cik ir</h3>
         </div>
         <div class="informacija">
+        <?php
+                $sql = "SELECT COUNT(*) FROM ticket where 'status'='Nav iesākts'";
+                $result = $db->query($sql);
+                if($result->num_rows>0)
+                    while($row = $result->fetch_assoc())
+                         $nunRows = $row["COUNT(*)"];
+                echo "<span>$nunRows</span>"
+            ?>
+            <h3>Nav iesākts</h3>
+        </div>
         <?php
                 $sql = "SELECT COUNT(*) FROM ticket where 'status'='Iesākts'";
                 $result = $db->query($sql);
@@ -116,19 +126,17 @@
                          $nunRows = $row["COUNT(*)"];
                 echo "<span>$nunRows</span>"
             ?>
-            <h3>New</h3>
+            <h3>Iesākts</h3>
         </div>
-        <div class="informacija">
-           <?php
-            echo "<span>26</span>"
-            ?>
-            <h3>Need to be verified</h3>
-        </div>
-        <div class="informacija">
         <?php
-            echo "<span>27</span>"
+                $sql = "SELECT COUNT(*) FROM ticket where 'status'='Pabeigts'";
+                $result = $db->query($sql);
+                if($result->num_rows>0)
+                    while($row = $result->fetch_assoc())
+                         $nunRows = $row["COUNT(*)"];
+                echo "<span>$nunRows</span>"
             ?>
-            <h3>Done</h3>
+            <h3>?Pabeigts</h3>
         </div>
     </div>
 
