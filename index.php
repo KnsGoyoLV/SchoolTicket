@@ -205,7 +205,7 @@
 </section>
 
 <footer>
-    Sixsesne, Work fast with ease &copy; 2022
+        Liepajas Valsts Tehnikums &copy; 2023
 </footer>
 
 <script src="files/script.js"></script>
