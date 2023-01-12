@@ -48,7 +48,7 @@
   //Block subdomain 
   $parts = explode('@',  $_SESSION['email']);
   $domain = array_pop($parts);
-  $blocked_domains = array('');// to block sub domain add sk in here
+  $blocked_domains = array('sk');// to block sub domain add sk in here
   if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $blocked_domains)) {
     header("Location:blocked.php");
     exit();
@@ -109,7 +109,7 @@
         </div>
         <div class="informacija">
         <?php
-                $sql = "SELECT COUNT(*) FROM ticket where 'status'='Iesākts'";
+                $sql = "SELECT COUNT(*) FROM ticket where status = 'Nav iesākts'";
                 $result = $db->query($sql);
                 if($result->num_rows>0)
                     while($row = $result->fetch_assoc())
@@ -120,13 +120,23 @@
         </div>
         <div class="informacija">
            <?php
-            echo "<span>26</span>"
+               $sql = "SELECT COUNT(*) FROM ticket where status = 'Iesākts'";
+               $result = $db->query($sql);
+               if($result->num_rows>0)
+                   while($row = $result->fetch_assoc())
+                        $nunRows = $row["COUNT(*)"];
+               echo "<span>$nunRows</span>"
             ?>
             <h3>Need to be verified</h3>
         </div>
         <div class="informacija">
         <?php
-            echo "<span>27</span>"
+              $sql = "SELECT COUNT(*) FROM ticket where status = 'Pabeigts'";
+              $result = $db->query($sql);
+              if($result->num_rows>0)
+                  while($row = $result->fetch_assoc())
+                       $nunRows = $row["COUNT(*)"];
+              echo "<span>$nunRows</span>"
             ?>
             <h3>Done</h3>
         </div>
