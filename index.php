@@ -105,7 +105,7 @@
                          $nunRows = $row["COUNT(*)"];
                 echo "<span>$nunRows</span>"
             ?>
-            <h3>Support Ticket</h3>
+            <h3>Cik ir</h3>
         </div>
         <div class="informacija">
         <?php
@@ -116,7 +116,7 @@
                          $nunRows = $row["COUNT(*)"];
                 echo "<span>$nunRows</span>"
             ?>
-            <h3>New</h3>
+            <h3>Iesākts</h3>
         </div>
         <div class="informacija">
            <?php
@@ -138,7 +138,7 @@
                        $nunRows = $row["COUNT(*)"];
               echo "<span>$nunRows</span>"
             ?>
-            <h3>Done</h3>
+            <h3>?Pabeigts</h3>
         </div>
     </div>
 
