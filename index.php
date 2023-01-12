@@ -53,12 +53,12 @@
     header("Location:blocked.php");
     exit();
   }
-    $result = mysqli_query($db, "SELECT * from ticket");
-    if($result){
+    $result = mysqli_query($db, "SELECT * FROM `lietotajs`");
+    if($result->num_rows > 0){
         while($row = mysqli_fetch_assoc($result)){
             if($_SESSION['email'] == $row['epasts']){
                 // if microsoft email is found in our Database get his user type
-                $_SESSION['type'] = "SELECT ";//Selects user type and sets it to session
+                $_SESSION['type'] = $row['loma'];//Selects user type and sets it to session
 
             }
             else{
@@ -186,7 +186,7 @@
                      echo "<tr>";
                    //  echo"<td>" . $row['ticket_id'] . "</td>" ;
                      echo"<td>" . $row['laiks'] . "</td>" ;
-                     echo"<td>" . $row['vards'] ." ".$row['uzvards'] . "</td>" ;
+                    // echo"<td>" . $row['vards'] ." ".$row['uzvards'] . "</td>" ;
                     // echo"<td>" . $row['iela'] . "</td>" ;
                      echo"<td>" . $row['klase'] . "</td>" ;
                      echo"<td>" . $row['problema'] . "</td>" ;
