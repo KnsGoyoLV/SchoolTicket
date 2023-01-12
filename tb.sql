@@ -37,8 +37,8 @@ CREATE TABLE `ticket` (
   `problema` text NOT NULL,
   `piezime` text DEFAULT NULL,
   `apstiprinats` tinyint(1) NOT NULL,
-  
-  `status` enum('Nav iesākts','Iesākts','Pabeigts') DEFAULT 'Nav iesākts'
+
+  `status` enum('Nav iesākts','Iesākts','Pabeigts','Pabeigts(parbaudīts)') DEFAULT 'Nav iesākts'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
