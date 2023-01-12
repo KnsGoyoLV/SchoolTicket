@@ -53,6 +53,24 @@
     header("Location:blocked.php");
     exit();
   }
+    $result = mysqli_query($db, "SELECT * from ticket");
+    if($result){
+        while($row = mysqli_fetch_assoc($result)){
+            if($_SESSION['email'] == $row['epasts']){
+                // if microsoft email is found in our Database get his user type
+                $_SESSION['type'] = "SELECT ";//Selects user type and sets it to session
+
+            }
+            else{
+                // if not found in our Database then ask what his user type is 
+                header("Location:privlages.php");
+                exit();
+            }
+        }
+    }
+
+  
+
 ?>
 
 <!DOCTYPE html>
