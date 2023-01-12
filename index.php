@@ -45,30 +45,30 @@
     $_SESSION['phone'] = $user->data->getMobilePhone();
 
 
-  //Block subdomain 
-  $parts = explode('@',  $_SESSION['email']);
-  $domain = array_pop($parts);
-  $blocked_domains = array('sk');// to block sub domain add sk in here
-  if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $blocked_domains)) {
-    header("Location:blocked.php");
-    exit();
-  }
-    $result = mysqli_query($db, "SELECT * FROM `lietotajs`");
+    //Block subdomain 
+    $parts = explode('@',  $_SESSION['email']);
+    $domain = array_pop($parts);
+    $blocked_domains = array('sk');// to block sub domain add sk in here
+    if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $blocked_domains)) {
+        header("Location:blocked.php");
+        exit();
+    }
+    $result = mysqli_query($db, "SELECT epasts,loma FROM lietotajs WHERE epasts = '".$_SESSION['email']."'");
     if($result->num_rows > 0){
-        while($row = mysqli_fetch_assoc($result)){
-            if($_SESSION['email'] == $row['epasts']){
-                // if microsoft email is found in our Database get his user type
-                $_SESSION['type'] = $row['loma'];//Selects user type and sets it to session
-
-            }
-            else{
-                // if not found in our Database then ask what his user type is 
-                header("Location:privlages.php");
-                exit();
-            }
-        }
+    // if microsoft email is found in our Database get his user type
+    //Selects user type and sets it to session
+    while ($row = $result->fetch_assoc()) {
+        $_SESSION['type'] = $row['loma'];
     }
 
+    }
+    else{
+        // if not found in our Database then ask what his user type is 
+        header("Location:privlages.php");
+        exit();
+    }
+        
+    
   
 
 ?>
@@ -80,6 +80,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LVT TicketSupport</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="style_main.css">
 
