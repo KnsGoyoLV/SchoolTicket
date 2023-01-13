@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2023 at 12:14 PM
+-- Generation Time: Jan 13, 2023 at 10:17 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -93,6 +93,16 @@ ALTER TABLE `lietotajs`
 --
 ALTER TABLE `ticket`
   MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `lietotajs`
+--
+ALTER TABLE `lietotajs`
+  ADD CONSTRAINT `lietotajs_ibfk_1` FOREIGN KEY (`lietotajs_id`) REFERENCES `ticket` (`ticket_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
