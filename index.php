@@ -92,8 +92,8 @@
     <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
     <nav class="navbar">
         <a href="#sakums"class="active"><i class="fas fa-home"></i> Sākumlapa</a>
-        <a href="info.php"><i class="fas fa-circle-info"></i> Informacijas</a>
-        <a href="newinfo.php"><i class="fas fa-wifi"></i> Pievienot Rūteri</a>
+        <a href="info.php"><i class="fas fa-circle-info"></i> Pievienot atbalsta biļeti</a>
+        <a href="newinfo.php"><i class="fas fa-wifi"></i> Jaunumi</a>
         <?php
           
             $IsAdmin = 1;
@@ -105,76 +105,28 @@
         ?>
     </nav>
     <nav class="navbar">
-    <a hred="login.php"><b><?php 		
-         echo " <a href='startpage'><b>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
-     ?> </b>
-    
+    <a hred="login.php"><?php 		
+         echo " <a href='startpage'><b style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
+     ?> 
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
 
 <section id="adminSakums">
-    <div class="kopsavilkums">
-        <div class="informacija">
-            <?php            
-                $sql = "SELECT COUNT(*) FROM ticket";
-                $result = $db->query($sql);
-                if($result->num_rows>0)
-                    while($row = $result->fetch_assoc())
-                         $nunRows = $row["COUNT(*)"];
-                echo "<span>$nunRows</span>"
-            ?>
-            <h3>Cik ir</h3>
-        </div>
-        <div class="informacija">
-        <?php
-                $sql = "SELECT COUNT(*) FROM ticket where status = 'Nav iesākts'";
-                $result = $db->query($sql);
-                if($result->num_rows>0)
-                    while($row = $result->fetch_assoc())
-                         $nunRows = $row["COUNT(*)"];
-                echo "<span>$nunRows</span>"
-            ?>
-            <h3>Iesākts</h3>
-        </div>
-        <div class="informacija">
-           <?php
-               $sql = "SELECT COUNT(*) FROM ticket where status = 'Iesākts'";
-               $result = $db->query($sql);
-               if($result->num_rows>0)
-                   while($row = $result->fetch_assoc())
-                        $nunRows = $row["COUNT(*)"];
-               echo "<span>$nunRows</span>"
-            ?>
-            <h3>Need to be verified</h3>
-        </div>
-        <div class="informacija">
-        <?php
-              $sql = "SELECT COUNT(*) FROM ticket where status = 'Pabeigts'";
-              $result = $db->query($sql);
-              if($result->num_rows>0)
-                  while($row = $result->fetch_assoc())
-                       $nunRows = $row["COUNT(*)"];
-              echo "<span>$nunRows</span>"
-            ?>
-            <h3>Pabeigts</h3>
-        </div>
-    </div>
 
     <div class="row">
         <div class="info">
-            <div class="head-info">Ruteri Noliktava:</div>
-            <table>
+            <div class="head-info"><b>Jūsu atbalsta biļetes:</b>s</div>
+            <table >
                 <tr>
                 
                     <th>Datums</th>
-                    <th>Vards Uzvards</th>
-                  
+                    <th>Vārds Uzvārds</th>
+                    <th>Iela</th>
                     <th>Klase</th>
-                    <th>Problema</th>
-                    <th>Piezime</th>
-                    
-                    <th>Status</th>
+                    <th>Problēmas</th>
+                    <th>Piezīmes</th>                  
+                    <th>Statuss</th>
                 </tr>
                 <?php
                
@@ -187,8 +139,9 @@
                      echo "<tr>";
                    //  echo"<td>" . $row['ticket_id'] . "</td>" ;
                      echo"<td>" . $row['laiks'] . "</td>" ;
-                    // echo"<td>" . $row['vards'] ." ".$row['uzvards'] . "</td>" ;
-                    // echo"<td>" . $row['iela'] . "</td>" ;
+
+                     echo"<td>Vards Uzvards</td>" ;
+                     echo"<td>" . $row['iela'] . "</td>" ;
                      echo"<td>" . $row['klase'] . "</td>" ;
                      echo"<td>" . $row['problema'] . "</td>" ;
                      echo"<td>" . $row['piezime'] . "</td>" ;

@@ -160,3 +160,69 @@
 <script src="files/script.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="kopsavilkums">
+        <div class="informacija">
+            <?php            
+                $sql = "SELECT COUNT(*) FROM ticket";
+                $result = $db->query($sql);
+                if($result->num_rows>0)
+                    while($row = $result->fetch_assoc())
+                         $nunRows = $row["COUNT(*)"];
+                echo "<span>$nunRows</span>"
+            ?>
+            <h3>Kopējais skaits</h3>
+        </div>
+        <div class="informacija">
+        <?php
+                $sql = "SELECT COUNT(*) FROM ticket where status = 'Nav iesākts'";
+                $result = $db->query($sql);
+                if($result->num_rows>0)
+                    while($row = $result->fetch_assoc())
+                         $nunRows = $row["COUNT(*)"];
+                echo "<span>$nunRows</span>"
+            ?>
+            <h3>Jaunās</h3>
+        </div>
+        <div class="informacija">
+           <?php
+               $sql = "SELECT COUNT(*) FROM ticket where status = 'Iesākts'";
+               $result = $db->query($sql);
+               if($result->num_rows>0)
+                   while($row = $result->fetch_assoc())
+                        $nunRows = $row["COUNT(*)"];
+               echo "<span>$nunRows</span>"
+            ?>
+            <h3>Iesākts</h3>
+        </div>
+        <div class="informacija">
+        <?php
+              $sql = "SELECT COUNT(*) FROM ticket where status = 'Pabeigts'";
+              $result = $db->query($sql);
+              if($result->num_rows>0)
+                  while($row = $result->fetch_assoc())
+                       $nunRows = $row["COUNT(*)"];
+              echo "<span>$nunRows</span>"
+            ?>
+            <h3>Pabeigts</h3>
+        </div>
+    </div>
