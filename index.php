@@ -137,20 +137,21 @@
                      echo"<td>" . $row['problema'] . "</td>" ;
                      echo"<td>" . $row['piezime'] . "</td>" ;
                    //  echo"<td>" . $row['apstiprinats'] . "</td>" ;
-                        $selected_option = 0;
-
-                    if($_SERVER["REQUEST_METHOD"] == "POST") {
+                    if(isset($_GET['stat'])) {
                      $selected_option = $_GET['stat'];
-                    }
+                    } else
+                    $selected_option = 0;
+
+
                     if($row['status'] != 'Pabeigts')
                      echo"<td>" . $row['status'] . "</td>" ;
                     elseif($selected_option == 1){
-                        echo"<td> six nine nice</td>" ;   
+                        echo"<td> six nine nice</td>" ;
                     }
                     else{
                         echo "<td>";
                         echo '<form method="get">';
-                        echo "<select name='stat'>";
+                        echo "<select name='stat' id='stat'>";
                         echo "<option value='0'>Lūdzu verificējiet</option>";
                         echo "<option value='0'>Nav pabeigts</option>";
                         echo "<option value='1'>Pabeigts</option>";
