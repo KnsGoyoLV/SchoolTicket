@@ -137,18 +137,22 @@
                      echo"<td>" . $row['problema'] . "</td>" ;
                      echo"<td>" . $row['piezime'] . "</td>" ;
                    //  echo"<td>" . $row['apstiprinats'] . "</td>" ;
-                    if(isset($_GET['stat'])) {
-                     $selected_option = $_GET['stat'];
+
+
+                    if(isset($_POST['stat'])) {
+                     $selected_option = $_POST['stat'];
                     } else
                     $selected_option = 0;
 
-
+                    // if database status is not done then print out status
                     if($row['status'] != 'Pabeigts')
                      echo"<td>" . $row['status'] . "</td>" ;
-                    elseif($selected_option == 1){
-                        echo"<td> six nine nice</td>" ;
+                    elseif($selected_option == 1)
+                    { // if the user has pressed that it been verified then print this out
+                        echo"<td>VERIFIED</td>" ;
                     }
                     else{
+                        // else if  is done but not verified then print out asking to verified the status
                         echo "<td>";
                         echo '<form method="get">';
                         echo "<select name='stat' id='stat'>";
