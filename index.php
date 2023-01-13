@@ -91,18 +91,9 @@
 <header>
     <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
     <nav class="navbar">
-        <a href="#sakums"class="active"><i class="fas fa-home"></i> Sākumlapa</a>
-        <a href="info.php"><i class="fas fa-circle-info"></i> Pievienot atbalsta biļeti</a>
-        <a href="newinfo.php"><i class="fas fa-wifi"></i> Jaunumi</a>
-        <?php
-          
-            $IsAdmin = 1;
-            if ($IsAdmin)   
-                if (true)
-                    echo "<a href='http://localhost/phpmyadmin/index.php'><i class='fas fa-cog'></i> Iestatījumi</a>";
-                
-              
-        ?>
+        <a href="#sakums"class="active"><i class="fas fa-home"></i>Sākumlapa</a>
+        <a href="newinfo.php"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
+        <a href="info.php"><i class="fas fa-circle-info"></i>Jaunumi</a>
     </nav>
     <nav class="navbar">
     <a hred="login.php"><?php 		
@@ -116,12 +107,12 @@
 
     <div class="row">
         <div class="info">
-            <div class="head-info"><b>Jūsu atbalsta biļetes:</b>s</div>
+            <div class="head-info"><b>Jūsu atbalsta biļetes:</b></div>
             <table >
                 <tr>
                 
                     <th>Datums</th>
-                    <th>Vārds Uzvārds</th>
+                    
                     <th>Iela</th>
                     <th>Klase</th>
                     <th>Problēmas</th>
@@ -140,25 +131,50 @@
                    //  echo"<td>" . $row['ticket_id'] . "</td>" ;
                      echo"<td>" . $row['laiks'] . "</td>" ;
 
-                     echo"<td>Vards Uzvards</td>" ;
+                    //  echo"<td>Vards Uzvards</td>" ;
                      echo"<td>" . $row['iela'] . "</td>" ;
                      echo"<td>" . $row['klase'] . "</td>" ;
                      echo"<td>" . $row['problema'] . "</td>" ;
                      echo"<td>" . $row['piezime'] . "</td>" ;
                    //  echo"<td>" . $row['apstiprinats'] . "</td>" ;
+                        $selected_option = 0;
+
+                    if($_SERVER["REQUEST_METHOD"] == "POST") {
+                     $selected_option = $_GET['stat'];
+                    }
+                    if($row['status'] != 'Pabeigts')
                      echo"<td>" . $row['status'] . "</td>" ;
+                    elseif($selected_option == 1){
+                        echo"<td> six nine nice</td>" ;   
+                    }
+                    else{
+                        echo "<td>";
+                        echo '<form method="get">';
+                        echo "<select name='stat'>";
+                        echo "<option value='0'>Lūdzu verificējiet</option>";
+                        echo "<option value='0'>Nav pabeigts</option>";
+                        echo "<option value='1'>Pabeigts</option>";
+                        echo "</select>";
+                        echo "<button type='submit' class='btn btn-primary btn-sm'>Apstiprināt</button>";
+                        echo "</form>";
+                        echo "</td>";
+                     }
                      echo "</tr>";
+                     
                  }
                }
+
+              
+
                 ?>
                
             </table>
         </div>
-        
     </div>
 </section>
 
 <footer>
+    
         Liepajas Valsts Tehnikums &copy; 2023
 </footer>
 
