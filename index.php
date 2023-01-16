@@ -64,8 +64,8 @@
     }
     else{
         // if not found in our Database then ask what his user type is 
-        header("Location:privlages.php");
-        exit();
+       // header("Location:privlages.php");
+       // exit();
     }
         
 
@@ -118,6 +118,7 @@
                     <th>Piezīmes</th>                  
                     <th>Statuss</th>
                 </tr>
+               
                 <?php
                
 
@@ -140,40 +141,33 @@
               
                     // if database status is not done then print out status
                     
-                    if($row['status'] != 'Pabeigts')
+                    if($row['status'] != 'Pabeigts' )
                      echo"<td>" . $row['status'] . "</td>" ;  
+                    elseif(isset($_COOKIE['buttonPressed']) && $_COOKIE['buttonPressed'] == "true"){
+                            //echo 'weeee it works';
+                            setcookie("buttonPressed", "", time()-3600);
+                            $sql = "UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id'];
+                         mysqli_query($db, $sql);
+                         header("Refresh:0");  
+
+                    }
                     else{  // else if  is done but not ver ified then print out asking to verified the
-                       ?>
-                        <tr>
-                         <td>
-                        <form method="post">
-                        <select name="stat">
-                        <option value="0"> </option>
-                        <option value="0">nulle</option>
-                        <option value="1">viens</option>
-                        </select>
-                        <input type="submit" class='btn btn-primary btn-sm' value="Submit">
-                        <?php  print_r( $_POST); ?>
-                        </form>
-                        </td>
-                        </tr>
+                        ?>
+                        <td><button class="btn btn-success btn-sm" id="accept-button">Izdarīts</button></td>
+                        <td><button class="btn btn-danger btn-sm" id="decline-button">Neizdarīts</button></td>
+                        <script src="handler.js"></script>
                         <?php
-                         
                      }
-                     
-                   //  echo "</tr>";
-                     
+                      
+                    
                  }
                }
-
               
-
                 ?>
             </table>
         </div>
     </div>
 </section>
-
 <footer>
     
         Liepajas Valsts Tehnikums &copy; 2023
