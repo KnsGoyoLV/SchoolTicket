@@ -43,12 +43,6 @@
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
-
-<section id="adminSakums">
-    <div class="kopsavilkums">
-        <h1><i class="fas fa-circle-info"></i> Pievienot </h1>
-    </div>
-  
    
 
 
@@ -66,6 +60,16 @@
         // mysqli_query($db, $sql);
         }
      ?>
+
+<div class="row">
+        <div class="info">
+            <div class="head-info"><b>Jūsu atbalsta biļetes:</b></div>
+            <table >
+
+            </table>
+        </div>
+    </div>
+
         <input type="int" placeholder="RuteraID" name="RuteraID" />
         <input type="text" placeholder="Rutera Vards" name="RuteraVards" />
         <input type="int" placeholder="Rutera Internet ātrums" name="RIA" />
