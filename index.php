@@ -88,7 +88,7 @@
 <body>
 
 <header>
-    <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
+    <a class="animate-charcter">Liepajas Valsts Tehnikums</a>
     <nav class="navbar">
         <a href="#sakums"class="active"><i class="fas fa-home"></i>Sākumlapa</a>
         <a href="newinfo.php"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
@@ -143,9 +143,9 @@
                     
                     if($row['status'] != 'Pabeigts' )
                      echo"<td>" . $row['status'] . "</td>" ;  
-                    elseif(isset($_COOKIE['buttonPressed']) && $_COOKIE['buttonPressed'] == "true"){
+                    elseif(isset($_COOKIE['AcceptPressed']) && $_COOKIE['AcceptPressed'] == "true"){
                             //echo 'weeee it works';
-                            setcookie("buttonPressed", "", time()-3600);
+                            setcookie("AcceptPressed", "", time()-3600);
                             $sql = "UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id'];
                          mysqli_query($db, $sql);
                          header("Refresh:0");  
