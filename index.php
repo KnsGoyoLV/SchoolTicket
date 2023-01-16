@@ -68,8 +68,7 @@
         exit();
     }
         
-    
-  
+
 
 ?>
 
@@ -138,33 +137,31 @@
                      echo"<td>" . $row['piezime'] . "</td>" ;
                    //  echo"<td>" . $row['apstiprinats'] . "</td>" ;
 
-
-                    if(isset($_POST['stat'])) {
-                     $selected_option = $_POST['stat'];
-                    } else
-                    $selected_option = 0;
-
+              
                     // if database status is not done then print out status
+                    
                     if($row['status'] != 'Pabeigts')
-                     echo"<td>" . $row['status'] . "</td>" ;
-                    elseif($selected_option == 1)
-                    { // if the user has pressed that it been verified then print this out
-                        echo"<td>VERIFIED</td>" ;
-                    }
-                    else{
-                        // else if  is done but not verified then print out asking to verified the status
-                        echo "<td>";
-                        echo '<form method="get">';
-                        echo "<select name='stat' id='stat'>";
-                        echo "<option value='0'>Lūdzu verificējiet</option>";
-                        echo "<option value='0'>Nav pabeigts</option>";
-                        echo "<option value='1'>Pabeigts</option>";
-                        echo "</select>";
-                        echo "<button type='submit' class='btn btn-primary btn-sm'>Apstiprināt</button>";
-                        echo "</form>";
-                        echo "</td>";
+                     echo"<td>" . $row['status'] . "</td>" ;  
+                    else{  // else if  is done but not ver ified then print out asking to verified the
+                       ?>
+                        <tr>
+                         <td>
+                        <form method="post">
+                        <select name="stat">
+                        <option value="0"> </option>
+                        <option value="0">nulle</option>
+                        <option value="1">viens</option>
+                        </select>
+                        <input type="submit" class='btn btn-primary btn-sm' value="Submit">
+                        <?php  print_r( $_POST); ?>
+                        </form>
+                        </td>
+                        </tr>
+                        <?php
+                         
                      }
-                     echo "</tr>";
+                     
+                   //  echo "</tr>";
                      
                  }
                }
@@ -172,7 +169,6 @@
               
 
                 ?>
-               
             </table>
         </div>
     </div>
@@ -183,6 +179,5 @@
         Liepajas Valsts Tehnikums &copy; 2023
 </footer>
 
-<script src="files/script.js"></script>
 </body>
 </html>
