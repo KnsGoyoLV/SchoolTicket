@@ -68,8 +68,7 @@
         exit();
     }
         
-    
-  
+
 
 ?>
 
@@ -91,18 +90,9 @@
 <header>
     <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
     <nav class="navbar">
-        <a href="#sakums"class="active"><i class="fas fa-home"></i> Sākumlapa</a>
-        <a href="info.php"><i class="fas fa-circle-info"></i> Pievienot atbalsta biļeti</a>
-        <a href="newinfo.php"><i class="fas fa-wifi"></i> Jaunumi</a>
-        <?php
-          
-            $IsAdmin = 1;
-            if ($IsAdmin)   
-                if (true)
-                    echo "<a href='http://localhost/phpmyadmin/index.php'><i class='fas fa-cog'></i> Iestatījumi</a>";
-                
-              
-        ?>
+        <a href="#sakums"class="active"><i class="fas fa-home"></i>Sākumlapa</a>
+        <a href="newinfo.php"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
+        <a href="info.php"><i class="fas fa-circle-info"></i>Jaunumi</a>
     </nav>
     <nav class="navbar">
     <a hred="login.php"><?php 		
@@ -116,12 +106,12 @@
 
     <div class="row">
         <div class="info">
-            <div class="head-info"><b>Jūsu atbalsta biļetes:</b>s</div>
+            <div class="head-info"><b>Jūsu atbalsta biļetes:</b></div>
             <table >
                 <tr>
                 
                     <th>Datums</th>
-                    <th>Vārds Uzvārds</th>
+                    
                     <th>Iela</th>
                     <th>Klase</th>
                     <th>Problēmas</th>
@@ -140,28 +130,54 @@
                    //  echo"<td>" . $row['ticket_id'] . "</td>" ;
                      echo"<td>" . $row['laiks'] . "</td>" ;
 
-                     echo"<td>Vards Uzvards</td>" ;
+                    //  echo"<td>Vards Uzvards</td>" ;
                      echo"<td>" . $row['iela'] . "</td>" ;
                      echo"<td>" . $row['klase'] . "</td>" ;
                      echo"<td>" . $row['problema'] . "</td>" ;
                      echo"<td>" . $row['piezime'] . "</td>" ;
                    //  echo"<td>" . $row['apstiprinats'] . "</td>" ;
-                     echo"<td>" . $row['status'] . "</td>" ;
-                     echo "</tr>";
+
+              
+                    // if database status is not done then print out status
+                    
+                    if($row['status'] != 'Pabeigts')
+                     echo"<td>" . $row['status'] . "</td>" ;  
+                    else{  // else if  is done but not ver ified then print out asking to verified the
+                       ?>
+                        <tr>
+                         <td>
+                        <form method="post">
+                        <select name="stat">
+                        <option value="0"> </option>
+                        <option value="0">nulle</option>
+                        <option value="1">viens</option>
+                        </select>
+                        <input type="submit" class='btn btn-primary btn-sm' value="Submit">
+                        <?php  print_r( $_POST); ?>
+                        </form>
+                        </td>
+                        </tr>
+                        <?php
+                         
+                     }
+                     
+                   //  echo "</tr>";
+                     
                  }
                }
+
+              
+
                 ?>
-               
             </table>
         </div>
-        
     </div>
 </section>
 
 <footer>
+    
         Liepajas Valsts Tehnikums &copy; 2023
 </footer>
 
-<script src="files/script.js"></script>
 </body>
 </html>
