@@ -62,18 +62,11 @@
      ?>
 
 <div class="row">
-        <div class="info">
-            <div class="head-info"><b>Jūsu atbalsta biļetes:</b></div>
-            <table >
-
-            </table>
-        </div>
     </div>
-
-        <input type="int" placeholder="RuteraID" name="RuteraID" />
-        <input type="text" placeholder="Rutera Vards" name="RuteraVards" />
-        <input type="int" placeholder="Rutera Internet ātrums" name="RIA" />
-	    <input type="text" placeholder="Rutera Modelis" name="RuteraMod"/>
+        <input type="int" placeholder="Iela" name="RuteraID" />
+        <input type="text" placeholder="Klase" name="RuteraVards" />
+        <input type="int" placeholder="Problēma" name="RIA" />
+	    <input type="text" placeholder="Piezīme" name="RuteraMod"/>
 	    <input type= "submit" name="submit1" value="Pievienot"/>
 	</form>
 
@@ -83,7 +76,7 @@
 
 
 <footer>
-    Sixsesne, Work fast with ease &copy; 2022
+        Liepajas Valsts Tehnikums &copy; 2023
 </footer>
 
 <script src="files/script.js"></script>
