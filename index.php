@@ -86,7 +86,7 @@
 <body>
 
 <header>
-    <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
+    <a class="animate-charcter">Liepajas Valsts Tehnikums</a>
     <nav class="navbar">
         <a href="#sakums"class="active"><i class="fas fa-home"></i>Sākumlapa</a>
         <a href="newinfo.php"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
