@@ -698,9 +698,30 @@ input{
 }
 @media only screen and (max-width: 900px) {
     table {
-      font-size: 12px;
+    font-size: 12px;
+    display: grid;
+    margin-left: inherit;
     }
-  }
+    th, td{
+        height: 0px;
+        word-break: normal;
+
+    }
+    section {
+        padding: 0rem 0%;
+    }
+}
+.btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 0.4rem 4rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #fff;
+    background: var(--main-color);
+    border-radius: 0.5rem;
+    box-shadow: var(--box-shadow);
+}
 
 
 .btn-primary{

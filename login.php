@@ -3,7 +3,7 @@ use myPHPnotes\Microsoft\Auth;
 require "vendor/autoload.php";
 
 session_start();
-$env = parse_ini_file('ID.env');
+$env = parse_ini_file('.env');
 
 $tenant =$env['tenant'];
 $client_id = $env['client_id'];

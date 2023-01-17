@@ -4,7 +4,7 @@
     use myPHPnotes\Microsoft\Auth;
     use myPHPnotes\Microsoft\Handlers\Session;
     use myPHPnotes\Microsoft\Models\User;
-    $env = parse_ini_file('ID.env');
+    $env = parse_ini_file('.env');
     session_start();  
     $tenant =$env['tenant'];
     $client_id = $env['client_id'];
@@ -43,7 +43,7 @@
     $_SESSION['surname'] = $user->data->getSurname();
     $_SESSION['email'] = $user->data->getMail();
     $_SESSION['phone'] = $user->data->getMobilePhone();
-
+ 
 
     //Block subdomain 
     $parts = explode('@',  $_SESSION['email']);
@@ -53,22 +53,20 @@
         header("Location:blocked.php");
         exit();
     }
-    $result = mysqli_query($db, "SELECT epasts,loma FROM lietotajs WHERE epasts = '".$_SESSION['email']."'");
-    if($result->num_rows > 0){
+    $result = $pdo->query("SELECT epasts,loma FROM lietotajs WHERE epasts = '".$_SESSION['email']."'");
+    if($result->rowCount() > 0){
     // if microsoft email is found in our Database get his user type
     //Selects user type and sets it to session
-    while ($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch()) {
         $_SESSION['type'] = $row['loma'];
     }
 
     }
     else{
         // if not found in our Database then ask what his user type is 
-       // header("Location:privlages.php");
-       // exit();
+        header("Location:privlages.php");
+        exit();
     }
-        
-
 
 ?>
 
@@ -109,9 +107,7 @@
             <div class="head-info"><b>Jūsu atbalsta biļetes:</b></div>
             <table >
                 <tr>
-                
                     <th>Datums</th>
-                    
                     <th>Iela</th>
                     <th>Klase</th>
                     <th>Problēmas</th>
@@ -122,16 +118,12 @@
                 <?php
                
 
-               $result = mysqli_query($db, "SELECT * from ticket");
-               if($result){
-                
+                $result = $pdo->query("SELECT * from ticket");
+                $rows = $result->fetchAll();
 
-                 while($row = mysqli_fetch_assoc($result)){
+                foreach ($rows as $row) {
                      echo "<tr>";
-                   //  echo"<td>" . $row['ticket_id'] . "</td>" ;
                      echo"<td>" . $row['laiks'] . "</td>" ;
-
-                    //  echo"<td>Vards Uzvards</td>" ;
                      echo"<td>" . $row['iela'] . "</td>" ;
                      echo"<td>" . $row['klase'] . "</td>" ;
                      echo"<td>" . $row['problema'] . "</td>" ;
@@ -140,28 +132,22 @@
 
               
                     // if database status is not done then print out status
-                    
                     if($row['status'] != 'Pabeigts' )
-                     echo"<td>" . $row['status'] . "</td>" ;  
-                    elseif(isset($_COOKIE['buttonPressed']) && $_COOKIE['buttonPressed'] == "true"){
-                            //echo 'weeee it works';
-                            setcookie("buttonPressed", "", time()-3600);
-                            $sql = "UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id'];
-                         mysqli_query($db, $sql);
-                         header("Refresh:0");  
-
+                        echo"<td>" . $row['status'] . "</td>" ;  
+                    elseif(isset($_COOKIE['acceptPressed']) && $_COOKIE['acceptPressed'] == "true"){
+                        setcookie("acceptPressed", "", time()-3600);
+                        $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
+                       // header("Refresh:0");
                     }
-                    else{  // else if  is done but not ver ified then print out asking to verified the
+                    else{  // else if  is done but not verified then print out asking to verified the ticket
                         ?>
-                        <td><button class="btn btn-success btn-sm" id="accept-button">Izdarīts</button></td>
-                        <td><button class="btn btn-danger btn-sm" id="decline-button">Neizdarīts</button></td>
+                        <td><button class="btn btn-success btn-sm" id="accept-button">Izdarīts</button>
+                        <button class="btn btn-danger btn-sm" id="decline-button">Neizdarīts</button></td>
                         <script src="handler.js"></script>
                         <?php
-                     }
-                      
-                    
-                 }
-               }
+                     }      
+                }
+               
               
                 ?>
             </table>
@@ -169,7 +155,6 @@
     </div>
 </section>
 <footer>
-    
         Liepajas Valsts Tehnikums &copy; 2023
 </footer>
 
