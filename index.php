@@ -10,40 +10,32 @@
     $client_id = $env['client_id'];
     $client_secret = $env['client_secret'];
     $callback = $env['callback'];
-    $scopes = ["https://graph.microsoft.com/.default","offline_access"];
-    $tent = Session::get("tenant_id");
-    if (isset($_SESSION['used_codes']) && in_array($_GET['code'], $_SESSION['used_codes']) || !isset($_GET['code'])) {
-        // If we dont have an  code then get one
-        $microsoft = new Auth($tenant, $client_id, $client_secret,$callback, $scopes);
-        header("location: " . $microsoft->getAuthUrl());
-        exit;
-    } else {
-    // if the auth code hasnt been used get acces token
-    $microsoft = new Auth(Session::get("tenant_id"),
-    Session::get("client_id"),  
-    Session::get("client_secret"), 
-    Session::get("redirect_uri"), 
-    Session::get("scopes"));
-
-    $tokens = $microsoft->getToken($_GET['code'], Session::get("state"));
-    $microsoft->setAccessToken($tokens->access_token);
-    // add auth code to the used_codes after setting acces token and using the auth code
-    if(!isset($_SESSION['used_codes'])){
-        $_SESSION['used_codes']=[];
-    }
-
-    $_SESSION['used_codes'][] = $_GET['code'];
-    }
-
-
-
-  //Store user info 
-    $user = (new User);
-    $_SESSION['username'] = $user->data->getGivenName();
-    $_SESSION['surname'] = $user->data->getSurname();
-    $_SESSION['email'] = $user->data->getMail();
-    $_SESSION['phone'] = $user->data->getMobilePhone();
- 
+    if (array_key_exists ('access_token', $_POST)){
+        //save access_token to SESSION t variable
+        $_SESSION['t'] = $_POST['access_token'];
+        $t = $_SESSION['t'];
+        $ch = curl_init ();
+        //get users json data from /me/ endpoint
+        curl_setopt ($ch, CURLOPT_HTTPHEADER, array ('Authorization: Bearer '.$t,
+                                               'Conent-type: application/json'));
+        curl_setopt ($ch, CURLOPT_URL, "https://graph.microsoft.com/v1.0/me/");
+        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+        $rez = json_decode (curl_exec ($ch), 1);
+        if (array_key_exists ('error', $rez)){
+            //if we have a error dump everything that error gives us  
+            var_dump ($rez['error']);       
+            die();
+        }
+        else{// get users data from json with $rez variable name
+            $_SESSION['msatg'] = 1;  
+            $_SESSION['username'] = $rez["givenName"];
+            $_SESSION['surname'] = $rez["surname"];
+            $_SESSION['email'] = $rez['mail'];
+            $_SESSION['id'] = $rez["id"];
+        }
+        curl_close ($ch);
+        header ('Location: ' . $callback);
+   }
 
     //Block subdomain 
     $parts = explode('@',  $_SESSION['email']);
@@ -55,12 +47,11 @@
     }
     $result = $pdo->query("SELECT epasts,loma FROM lietotajs WHERE epasts = '".$_SESSION['email']."'");
     if($result->rowCount() > 0){
-    // if microsoft email is found in our Database get his user type
-    //Selects user type and sets it to session
-    while ($row = $result->fetch()) {
-        $_SESSION['type'] = $row['loma'];
-    }
-
+        // if microsoft email is found in our Database get his user type
+        //Selects user type and sets it to session
+        while ($row = $result->fetch()) {
+            $_SESSION['type'] = $row['loma'];
+        }
     }
     else{
         // if not found in our Database then ask what his user type is 
@@ -134,20 +125,27 @@
                     // if database status is not done then print out status
                     if($row['status'] != 'Pabeigts' )
                         echo"<td>" . $row['status'] . "</td>" ;  
-                    elseif(isset($_COOKIE['acceptPressed']) && $_COOKIE['acceptPressed'] == "true"){
-                        setcookie("acceptPressed", "", time()-3600);
+                    elseif(isset($_GET['acceptbutton']) && $_GET['acceptbutton'] == "true"){
+                       // setcookie("acceptPressed", "", time()-3600);
                         $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
                        // header("Refresh:0");
                     }
                     else{  // else if  is done but not verified then print out asking to verified the ticket
                         ?>
-                        <td><button class="btn btn-success btn-sm" id="accept-button">Izdarīts</button>
-                        <button class="btn btn-danger btn-sm" id="decline-button">Neizdarīts</button></td>
-                        <script src="handler.js"></script>
+                        <td>
+                        <form method="post">
+                        <button type="submit" class="btn btn-success btn-sm" name="accept-button">Izdarīts</button>
+                        <button class="btn btn-danger btn-sm" id="decline-button">Neizdarīts</button>
+                        </form>
+                        </td>
                         <?php
                      }      
                 }
-               
+                if(isset($_POST['accept-button'])) {
+                    echo "Button pressed";
+                    $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
+                    header("Refresh:0");
+                }
               
                 ?>
             </table>

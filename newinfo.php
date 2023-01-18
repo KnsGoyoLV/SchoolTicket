@@ -4,7 +4,7 @@
  use myPHPnotes\Microsoft\Auth;
  use myPHPnotes\Microsoft\Handlers\Session;
  use myPHPnotes\Microsoft\Models\User;
- $env = parse_ini_file('ID.env');
+ $env = parse_ini_file('.env');
  session_start();  
 ?>
 
