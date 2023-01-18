@@ -119,38 +119,49 @@
                      echo"<td>" . $row['klase'] . "</td>" ;
                      echo"<td>" . $row['problema'] . "</td>" ;
                      echo"<td>" . $row['piezime'] . "</td>" ;
-                   //  echo"<td>" . $row['apstiprinats'] . "</td>" ;
 
               
                     // if database status is not done then print out status
                     if($row['status'] != 'Pabeigts' )
                         echo"<td>" . $row['status'] . "</td>" ;  
-                    elseif(isset($_GET['acceptbutton']) && $_GET['acceptbutton'] == "true"){
-                       // setcookie("acceptPressed", "", time()-3600);
+                    elseif(isset($_POST['button'.$row['ticket_id']])&& $_POST['button'.$row['ticket_id']] == $row['ticket_id']){
+                       // check if button+ticket id has any value and if it is the same with ticket_id,
+                       // then we set the tickets status verified 
                         $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
-                       // header("Refresh:0");
+                        header("Refresh:0");
                     }
                     else{  // else if  is done but not verified then print out asking to verified the ticket
-                        ?>
+                        echo '
                         <td>
                         <form method="post">
-                        <button type="submit" class="btn btn-success btn-sm" name="accept-button">Izdarīts</button>
+                        <button type="submit" class="btn btn-success btn-sm" name="button'.$row['ticket_id'].'"  value="'.$row['ticket_id'].'">Izdarīts</button>
                         <button class="btn btn-danger btn-sm" id="decline-button">Neizdarīts</button>
                         </form>
                         </td>
-                        <?php
+                        ';
                      }      
                 }
-                if(isset($_POST['accept-button'])) {
-                    echo "Button pressed";
-                    $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
-                    header("Refresh:0");
-                }
+
               
                 ?>
             </table>
         </div>
     </div>
+    <?php
+     echo '
+     <td>
+     <form method="post">
+     <button class="btn btn-danger btn-sm" id="reset">AK DIEVS NESPIED SITO</button>
+     </form>
+     </td>
+     '; 
+
+     if(isset($_POST['reset'])){
+
+        header("Refresh:0");          
+     }
+    ?>
+    
 </section>
 <footer>
         Liepajas Valsts Tehnikums &copy; 2023
