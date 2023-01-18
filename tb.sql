@@ -4,19 +4,7 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
-
--- -----------------------------------------------------
--- Table `mydb`.`risinajums`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `risinajums` (
   `risinajums_id` INT NOT NULL AUTO_INCREMENT,
   `daritajs` VARCHAR(45) NOT NULL,
@@ -38,10 +26,10 @@ CREATE TABLE IF NOT EXISTS `pieteikums` (
   `piezimes` TEXT NULL,
   `risinajums_risinajums_id` INT NOT NULL,
   PRIMARY KEY (`ticket_id`, `risinajums_risinajums_id`),
-  INDEX `fk_pieteikums_risinajums1_idx` (`risinajums_risinajums_id` ASC) VISIBLE,
+  INDEX `fk_pieteikums_risinajums1_idx` (`risinajums_risinajums_id` ASC),
   CONSTRAINT `fk_pieteikums_risinajums1`
     FOREIGN KEY (`risinajums_risinajums_id`)
-    REFERENCES `mydb`.`risinajums` (`risinajums_id`)
+    REFERENCES `risinajums` (`risinajums_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -56,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `problema` (
   `saimniecibas_nodala` VARCHAR(45) NULL,
   `pieteikums_ticket_id` INT NOT NULL,
   PRIMARY KEY (`problema_id`, `pieteikums_ticket_id`),
-  INDEX `fk_problema_pieteikums1_idx` (`pieteikums_ticket_id` ASC) VISIBLE,
+  INDEX `fk_problema_pieteikums1_idx` (`pieteikums_ticket_id` ASC),
   CONSTRAINT `fk_problema_pieteikums1`
     FOREIGN KEY (`pieteikums_ticket_id`)
-    REFERENCES `mydb`.`pieteikums` (`ticket_id`)
+    REFERENCES `pieteikums` (`ticket_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -79,10 +67,10 @@ CREATE TABLE IF NOT EXISTS `skolotaji` (
   `epasts` VARCHAR(45) NULL,
   `problema_problema_id` INT NOT NULL,
   PRIMARY KEY (`lomas_id`, `problema_problema_id`),
-  INDEX `fk_skolotaji_problema1_idx` (`problema_problema_id` ASC) VISIBLE,
+  INDEX `fk_skolotaji_problema1_idx` (`problema_problema_id` ASC),
   CONSTRAINT `fk_skolotaji_problema1`
     FOREIGN KEY (`problema_problema_id`)
-    REFERENCES `mydb`.`problema` (`problema_id`)
+    REFERENCES `problema` (`problema_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -97,10 +85,10 @@ CREATE TABLE IF NOT EXISTS `konsultacijas` (
   `beigas` DATE NOT NULL,
   `id_skolotaji` INT NOT NULL,
   PRIMARY KEY (`konsultacijas_id`, `id_skolotaji`),
-  INDEX `fk_konsultacijas_skolotaji_idx` (`id_skolotaji` ASC) VISIBLE,
+  INDEX `fk_konsultacijas_skolotaji_idx` (`id_skolotaji` ASC),
   CONSTRAINT `fk_konsultacijas_skolotaji`
     FOREIGN KEY (`id_skolotaji`)
-    REFERENCES `mydb`.`skolotaji` (`lomas_id`)
+    REFERENCES `skolotaji` (`lomas_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -127,16 +115,16 @@ CREATE TABLE IF NOT EXISTS `pieteikties` (
   `konsultacijas_id_skolotaji` INT NOT NULL,
   `apstiprinajums_apstiprinajums_id` INT NOT NULL,
   PRIMARY KEY (`pieteikties_id`, `konsultacijas_konsultacijas_id`, `konsultacijas_id_skolotaji`, `apstiprinajums_apstiprinajums_id`),
-  INDEX `fk_pieteikties_konsultacijas1_idx` (`konsultacijas_konsultacijas_id` ASC, `konsultacijas_id_skolotaji` ASC) VISIBLE,
-  INDEX `fk_pieteikties_apstiprinajums1_idx` (`apstiprinajums_apstiprinajums_id` ASC) VISIBLE,
+  INDEX `fk_pieteikties_konsultacijas1_idx` (`konsultacijas_konsultacijas_id` ASC, `konsultacijas_id_skolotaji` ASC),
+  INDEX `fk_pieteikties_apstiprinajums1_idx` (`apstiprinajums_apstiprinajums_id` ASC),
   CONSTRAINT `fk_pieteikties_konsultacijas1`
     FOREIGN KEY (`konsultacijas_konsultacijas_id` , `konsultacijas_id_skolotaji`)
-    REFERENCES `mydb`.`konsultacijas` (`konsultacijas_id` , `id_skolotaji`)
+    REFERENCES `konsultacijas` (`konsultacijas_id` , `id_skolotaji`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_pieteikties_apstiprinajums1`
     FOREIGN KEY (`apstiprinajums_apstiprinajums_id`)
-    REFERENCES `mydb`.`apstiprinajums` (`apstiprinajums_id`)
+    REFERENCES `apstiprinajums` (`apstiprinajums_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -154,10 +142,10 @@ CREATE TABLE IF NOT EXISTS `skolnieki` (
   `kurss` VARCHAR(45) NULL,
   `pieteikties_pieteikties_id` INT NOT NULL,
   PRIMARY KEY (`skolnieki_id`, `pieteikties_pieteikties_id`),
-  INDEX `fk_skolnieki_pieteikties1_idx` (`pieteikties_pieteikties_id` ASC) VISIBLE,
+  INDEX `fk_skolnieki_pieteikties1_idx` (`pieteikties_pieteikties_id` ASC),
   CONSTRAINT `fk_skolnieki_pieteikties1`
     FOREIGN KEY (`pieteikties_pieteikties_id`)
-    REFERENCES `mydb`.`pieteikties` (`pieteikties_id`)
+    REFERENCES `pieteikties` (`pieteikties_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
