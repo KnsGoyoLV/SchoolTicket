@@ -711,6 +711,15 @@ input{
         padding: 0rem 0%;
     }
 }
+form{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 5rem;
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: black;
+}
+/* Bootstrap stuff down bellow*/
 .btn {
     margin-top: 1rem;
     display: inline-block;
@@ -735,4 +744,9 @@ select {
     display: flex;
     margin: auto;
     margin-top: 0.5rem;
+}
+
+.form-select{
+    width: 30%;
+    appearance: none;
 }

@@ -4,8 +4,7 @@
  use myPHPnotes\Microsoft\Auth;
  use myPHPnotes\Microsoft\Handlers\Session;
  use myPHPnotes\Microsoft\Models\User;
- $env = parse_ini_file('.env');
- session_start();  
+session_start();  
 ?>
 
 
@@ -16,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inernet Veikals DV</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="style_main.css">
 
@@ -27,8 +27,8 @@
     <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
     <nav class="navbar">
         <a href="index.php"><i class="fas fa-home"></i>Sākumlapa</a>
-        <a href="#NewInfo" class="active"><i class="fas fa-circle-info"></i>Pievienot atbalsta biļeti</a>
-        <a href="#info.php"><i class="fas fa-wifi"></i>Jaunumi</a>
+        <a href="#NewInfo" class="active"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
+        <a href="#info.php"><i class="fas fa-circle-info"></i>Jaunumi</a>
     </nav>
     <nav class="navbar">
     <a hred="login.php"><b><?php 		
@@ -49,6 +49,9 @@
     <form method="post">
      <?php 
         if(isset($_POST['submit1'])){
+
+
+
         //require("connectDB.php");
         // $RuteraID = mysqli_real_escape_string($db, $_POST['RuteraID']);
         // $RuteraVards = mysqli_real_escape_string($db, $_POST['RuteraVards']);
@@ -63,7 +66,12 @@
 
 <div class="row">
     </div>
-        <input type="int" placeholder="Iela" name="RuteraID" />
+    
+     <select class="form-select" id="Iela">
+        <option selected>Lūdzu izvēlējaties ielu</option>
+        <option value="Vānes iela">Vānes iela</option>
+        <option value="Ventspils iela">Ventspils iela</option>
+     </select>
         <input type="text" placeholder="Klase" name="RuteraVards" />
         <input type="int" placeholder="Problēma" name="RIA" />
 	    <input type="text" placeholder="Piezīme" name="RuteraMod"/>
@@ -71,7 +79,6 @@
 	</form>
 
 
-</section>
 
 
 
