@@ -130,12 +130,15 @@
                         $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
                         header("Refresh:0");
                     }
+                    elseif(isset($_POST['dbutton'.$row['ticket_id']])&& $_POST['dbutton'.$row['ticket_id']] == $row['ticket_id']){
+                        header("Refresh:0");
+                    }
                     else{  // else if  is done but not verified then print out asking to verified the ticket
                         echo '
                         <td>
                         <form method="post">
                         <button type="submit" class="btn btn-success btn-sm" name="button'.$row['ticket_id'].'"  value="'.$row['ticket_id'].'">Izdarīts</button>
-                        <button class="btn btn-danger btn-sm" id="decline-button">Neizdarīts</button>
+                        <button class="btn btn-danger btn-sm" id="dbutton'.$row['ticket_id'].'" value="'.$row['ticket_id'].'" >Neizdarīts</button>
                         </form>
                         </td>
                         ';

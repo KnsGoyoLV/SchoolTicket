@@ -46,7 +46,7 @@ session_start();
    
 
 
-    <form method="post">
+    <form class="add_info" method="post">
      <?php 
         if(isset($_POST['submit1'])){
 

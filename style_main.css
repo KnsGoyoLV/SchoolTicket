@@ -711,7 +711,8 @@ input{
         padding: 0rem 0%;
     }
 }
-form{
+
+form.add_info{
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 5rem;
