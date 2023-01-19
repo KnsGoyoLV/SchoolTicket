@@ -109,40 +109,37 @@
                 <?php
                
 
-                $result = $pdo->query("SELECT * FROM pieteikums");
+                $result = $pdo->query("SELECT * FROM pieteikums WHERE epasts ='".$_SESSION['email']."'");
                 $rows = $result->fetchAll();
 
                 foreach ($rows as $row) {
-                    // echo "<tr>";
-                    // echo"<td>" . $row['laiks'] . "</td>" ;
-                    // echo"<td>" . $row['iela'] . "</td>" ;
-                    // echo"<td>" . $row['klase'] . "</td>" ;
-                    // echo"<td>" . $row['problema'] . "</td>" ;
-                    // echo"<td>" . $row['piezime'] . "</td>" ;
+                    echo "<tr>";
+                    echo"<td>" . $row['laiks'] . "</td>" ;
+                    echo"<td>" . $row['iela'] . "</td>" ;
+                    echo"<td>" . $row['telpa'] . "</td>" ;
+                    echo"<td>" . $row['problema'] . "</td>" ;
+                    echo"<td>" . $row['piezimes'] . "</td>" ;
 
               
-                    // if database status is not done then print out status
-                    // if($row['status'] != 'Pabeigts' )
-                    //     echo"<td>" . $row['status'] . "</td>" ;  
-                    // elseif(isset($_POST['button'.$row['ticket_id']])&& $_POST['button'.$row['ticket_id']] == $row['ticket_id']){
-                    //    // check if button+ticket id has any value and if it is the same with ticket_id,
-                    //    // then we set the tickets status verified 
-                    //     $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
-                    //     header("Refresh:0");
-                    // }
-                    // elseif(isset($_POST['dbutton'.$row['ticket_id']])&& $_POST['dbutton'.$row['ticket_id']] == $row['ticket_id']){
-                    //     header("Refresh:0");
-                    // }
-                    // else{  // else if  is done but not verified then print out asking to verified the ticket
-                    //     echo '
-                    //     <td>
-                    //     <form method="post">
-                    //     <button type="submit" class="btn btn-success btn-sm" name="button'.$row['ticket_id'].'"  value="'.$row['ticket_id'].'">Izdarīts</button>
-                    //     <button class="btn btn-danger btn-sm" id="dbutton'.$row['ticket_id'].'" value="'.$row['ticket_id'].'" >Neizdarīts</button>
-                    //     </form>
-                    //     </td>
-                    //     ';
-                    //  }      
+                   // if database status is not done then print out status
+                    if($row['status'] != 'Atrisināts' )
+                        echo"<td>" . $row['status'] . "</td>" ;  
+                    elseif(isset($_POST['button'.$row['ticket_id']])&& $_POST['button'.$row['ticket_id']] == $row['ticket_id']){
+                       // check if button+ticket id has any value and if it is the same with ticket_id,
+                       // then we set the tickets status verified 
+                        $pdo->query("UPDATE `pieteikums` SET `status` = 'Atrisināts(Parbaudīts)' WHERE `pieteikums`.`ticket_id` = ".$row['ticket_id']);
+                        header("Refresh:0");
+                    }
+                    else{  // else if  is done but not verified then print out asking to verified the ticket
+                        echo '
+                        <td>
+                        <form method="post">
+                        <button type="submit" class="btn btn-success btn-sm" name="button'.$row['ticket_id'].'"  value="'.$row['ticket_id'].'">Izdarīts</button>
+                        <button class="btn btn-danger btn-sm" id="dbutton'.$row['ticket_id'].'" value="'.$row['ticket_id'].'" >Neizdarīts</button>
+                        </form>
+                        </td>
+                        ';
+                     }      
                 }
 
               
