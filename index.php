@@ -1,15 +1,15 @@
 <?php
     require_once("connectDB.php");
     require "vendor/autoload.php";
-    use myPHPnotes\Microsoft\Auth;
-    use myPHPnotes\Microsoft\Handlers\Session;
-    use myPHPnotes\Microsoft\Models\User;
+
     $env = parse_ini_file('.env');
-    session_start();  
+    session_start();
+
     $tenant =$env['tenant'];
     $client_id = $env['client_id'];
     $client_secret = $env['client_secret'];
     $callback = $env['callback']; 
+
     if (array_key_exists ('access_token', $_POST)){
         //save access_token to SESSION t variable
         $_SESSION['t'] = $_POST['access_token'];
@@ -41,7 +41,8 @@
     $parts = explode('@',  $_SESSION['email']);
     $domain = array_pop($parts);
     $blocked_domains = array('sk');// to block sub domain add sk in here
-    if ( !$_SESSION['username'] == 'Mareks' && in_array(explode('.', $domain)[0], $blocked_domains)) {
+    
+    if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $blocked_domains)) {
         header("Location:blocked.php");
         exit();
     }
@@ -92,7 +93,6 @@
 </header>
 
 <section id="adminSakums">
-
     <div class="row">
         <div class="info">
             <div class="head-info"><b>Jūsu atbalsta biļetes:</b></div>
@@ -121,7 +121,7 @@
                     echo"<td>" . $row['piezimes'] . "</td>" ;
 
               
-                   // if database status is not done then print out status
+                    // if database status is not done then print out status
                     if($row['status'] != 'Atrisināts' )
                         echo"<td>" . $row['status'] . "</td>" ;  
                     elseif(isset($_POST['button'.$row['ticket_id']])&& $_POST['button'.$row['ticket_id']] == $row['ticket_id']){
@@ -129,20 +129,18 @@
                        // then we set the tickets status verified 
                         $pdo->query("UPDATE `pieteikums` SET `status` = 'Atrisināts(Parbaudīts)' WHERE `pieteikums`.`ticket_id` = ".$row['ticket_id']);
                         header("Refresh:0");
-                    }
-                    else{  // else if  is done but not verified then print out asking to verified the ticket
-                        echo '
+                    } else { // else if  is done but not verified then print out asking to verified the ticket
+                        echo'
                         <td>
                         <form method="post">
-                        <button type="submit" class="btn btn-success btn-sm" name="button'.$row['ticket_id'].'"  value="'.$row['ticket_id'].'">Izdarīts</button>
-                        <button class="btn btn-danger btn-sm" id="dbutton'.$row['ticket_id'].'" value="'.$row['ticket_id'].'" >Neizdarīts</button>
+                        <button type="submit" class="btn btn-success btn-sm" name="button' . $row['ticket_id'] . '"  value="' . $row['ticket_id'] . '">Izdarīts</button>
+                        <button class="btn btn-danger btn-sm" id="dbutton' . $row['ticket_id'] . '" value="' . $row['ticket_id'] . '" >Neizdarīts</button>
                         </form>
                         </td>
                         ';
-                     }      
+                    }
+                    echo '</tr>';      
                 }
-
-              
                 ?>
             </table>
         </div>

@@ -1,13 +1,8 @@
 <?php
  require_once("connectDB.php");
  require "vendor/autoload.php";
- use myPHPnotes\Microsoft\Auth;
- use myPHPnotes\Microsoft\Handlers\Session;
- use myPHPnotes\Microsoft\Models\User;
 session_start();  
 ?>
-
-
 <!DOCTYPE html>
 <html lang="lv">
 <head>
@@ -49,35 +44,22 @@ session_start();
     <form class="add_info" method="post">
      <?php 
         if(isset($_POST['submit1'])){
-            $result = $pdo->query("SELECT * FROM pieteikums");
-            $id = $result->rowCount() + 1;
-
+         $result = $pdo->query("SELECT * FROM pieteikums");
+         $id = $result->rowCount() + 1;
          $pdo->query("INSERT INTO `pieteikums` (`ticket_id`, `laiks`, `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
                                                 ('".$id."', '".date('y-m-d')."', '".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '1', '".$_SESSION['email']."')");
-
-
-        //require("connectDB.php");
-        // $RuteraID = mysqli_real_escape_string($db, $_POST['RuteraID']);
-        // $RuteraVards = mysqli_real_escape_string($db, $_POST['RuteraVards']);
-        // $RIA = mysqli_real_escape_string($db, $_POST['RIA']);
-        // $RuteraMod = mysqli_real_escape_string($db, $_POST['RuteraMod']);
-
-        // $sql = "INSERT INTO `ticket` (`ticket_id`, `laiks`, `vards`, `uzvards`, `iela`, `klase`, `problema`, `piezime`, `apstiprinats`, `status`) VALUES
-        //                             ('$RuteraID', '$RuteraVards', '$RIA', '$RuteraMod')";
-        // mysqli_query($db, $sql);
+         header('location:index.php');
         }
      ?>
 
-<div class="row">
-    </div>
-    
+
      <select class="form-select" id="Iela"name="Iela">
         <option selected>Lūdzu izvēlējaties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
         <input type="text" placeholder="Telpa" name="Telpa" />
-        <input type="int" placeholder="Problēma" name="Prob" />
+        <input type="text" placeholder="Problēma" name="Prob" />
 	    <input type="text" placeholder="Piezīme" name="Piez"/>
 	    <input type= "submit" name="submit1" value="Pievienot"/>
 	</form>
