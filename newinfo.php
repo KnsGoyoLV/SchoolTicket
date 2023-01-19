@@ -54,7 +54,7 @@ session_start();
 
 
      <select class="form-select" id="Iela"name="Iela">
-        <option selected>Lūdzu izvēlējaties ielu</option>
+        <option selected>Lūdzu izvēlaties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>

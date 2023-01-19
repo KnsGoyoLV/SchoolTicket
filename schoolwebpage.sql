@@ -256,6 +256,10 @@ ALTER TABLE `skolnieki`
 ALTER TABLE `skolotaji`
   MODIFY `lomas_id` int(11) NOT NULL AUTO_INCREMENT;
 
+
+  ALTER TABLE `pieteikums`
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Constraints for dumped tables
 --

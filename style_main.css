@@ -719,6 +719,7 @@ form.add_info{
     margin-left: 25%;
     margin-right: 25%;
     background-color: #5cabd4;
+    border-radius: 1rem;
 }
 /* Bootstrap stuff down bellow*/
 .btn {
