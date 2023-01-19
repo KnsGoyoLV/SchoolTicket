@@ -45,19 +45,19 @@
         header("Location:blocked.php");
         exit();
     }
-    $result = $pdo->query("SELECT epasts,loma FROM lietotajs WHERE epasts = '".$_SESSION['email']."'");
-    if($result->rowCount() > 0){
-        // if microsoft email is found in our Database get his user type
-        //Selects user type and sets it to session
-        while ($row = $result->fetch()) {
-            $_SESSION['type'] = $row['loma'];
-        }
-    }
-    else{
-        // if not found in our Database then ask what his user type is 
-        header("Location:privlages.php");
-        exit();
-    }
+    // $result = $pdo->query("SELECT epasts,loma FROM lietotajs WHERE epasts = '".$_SESSION['email']."'");
+    // if($result->rowCount() > 0){
+    //     // if microsoft email is found in our Database get his user type
+    //     //Selects user type and sets it to session
+    //     while ($row = $result->fetch()) {
+    //         $_SESSION['type'] = $row['loma'];
+    //     }
+    // }
+    // else{
+    //     // if not found in our Database then ask what his user type is 
+    //     header("Location:privlages.php");
+    //     exit();
+    // }
 
 ?>
 
@@ -109,40 +109,40 @@
                 <?php
                
 
-                $result = $pdo->query("SELECT * from ticket");
+                $result = $pdo->query("SELECT * FROM pieteikums");
                 $rows = $result->fetchAll();
 
                 foreach ($rows as $row) {
-                     echo "<tr>";
-                     echo"<td>" . $row['laiks'] . "</td>" ;
-                     echo"<td>" . $row['iela'] . "</td>" ;
-                     echo"<td>" . $row['klase'] . "</td>" ;
-                     echo"<td>" . $row['problema'] . "</td>" ;
-                     echo"<td>" . $row['piezime'] . "</td>" ;
+                    // echo "<tr>";
+                    // echo"<td>" . $row['laiks'] . "</td>" ;
+                    // echo"<td>" . $row['iela'] . "</td>" ;
+                    // echo"<td>" . $row['klase'] . "</td>" ;
+                    // echo"<td>" . $row['problema'] . "</td>" ;
+                    // echo"<td>" . $row['piezime'] . "</td>" ;
 
               
                     // if database status is not done then print out status
-                    if($row['status'] != 'Pabeigts' )
-                        echo"<td>" . $row['status'] . "</td>" ;  
-                    elseif(isset($_POST['button'.$row['ticket_id']])&& $_POST['button'.$row['ticket_id']] == $row['ticket_id']){
-                       // check if button+ticket id has any value and if it is the same with ticket_id,
-                       // then we set the tickets status verified 
-                        $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
-                        header("Refresh:0");
-                    }
-                    elseif(isset($_POST['dbutton'.$row['ticket_id']])&& $_POST['dbutton'.$row['ticket_id']] == $row['ticket_id']){
-                        header("Refresh:0");
-                    }
-                    else{  // else if  is done but not verified then print out asking to verified the ticket
-                        echo '
-                        <td>
-                        <form method="post">
-                        <button type="submit" class="btn btn-success btn-sm" name="button'.$row['ticket_id'].'"  value="'.$row['ticket_id'].'">Izdarīts</button>
-                        <button class="btn btn-danger btn-sm" id="dbutton'.$row['ticket_id'].'" value="'.$row['ticket_id'].'" >Neizdarīts</button>
-                        </form>
-                        </td>
-                        ';
-                     }      
+                    // if($row['status'] != 'Pabeigts' )
+                    //     echo"<td>" . $row['status'] . "</td>" ;  
+                    // elseif(isset($_POST['button'.$row['ticket_id']])&& $_POST['button'.$row['ticket_id']] == $row['ticket_id']){
+                    //    // check if button+ticket id has any value and if it is the same with ticket_id,
+                    //    // then we set the tickets status verified 
+                    //     $pdo->query("UPDATE `ticket` SET `apstiprinats` = '1', `status` = 'Pabeigts(pārbaudīts)' WHERE `ticket`.`ticket_id` = ".$row['ticket_id']);
+                    //     header("Refresh:0");
+                    // }
+                    // elseif(isset($_POST['dbutton'.$row['ticket_id']])&& $_POST['dbutton'.$row['ticket_id']] == $row['ticket_id']){
+                    //     header("Refresh:0");
+                    // }
+                    // else{  // else if  is done but not verified then print out asking to verified the ticket
+                    //     echo '
+                    //     <td>
+                    //     <form method="post">
+                    //     <button type="submit" class="btn btn-success btn-sm" name="button'.$row['ticket_id'].'"  value="'.$row['ticket_id'].'">Izdarīts</button>
+                    //     <button class="btn btn-danger btn-sm" id="dbutton'.$row['ticket_id'].'" value="'.$row['ticket_id'].'" >Neizdarīts</button>
+                    //     </form>
+                    //     </td>
+                    //     ';
+                    //  }      
                 }
 
               
@@ -150,20 +150,6 @@
             </table>
         </div>
     </div>
-    <?php
-     echo '
-     <td>
-     <form method="post">
-     <button class="btn btn-danger btn-sm" id="reset">AK DIEVS NESPIED SITO</button>
-     </form>
-     </td>
-     '; 
-
-     if(isset($_POST['reset'])){
-
-        header("Refresh:0");          
-     }
-    ?>
     
 </section>
 <footer>
