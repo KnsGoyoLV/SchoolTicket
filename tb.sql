@@ -58,10 +58,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `skolotaji` (
   `lomas_id` INT NOT NULL AUTO_INCREMENT,
-  `it_admins` VARCHAR(45) NULL,
-  `saimniecibas_nod_admins` VARCHAR(45) NULL,
-  `skolotajs` VARCHAR(45) NULL,
-  `kons_sar_admins` VARCHAR(45) NULL,
+  `loma` ENUM("IT Admins", "Saimniecības Nod. Admins","Skolotājs","Kons. Sar. Admins") NOT NULL DEFAULT 'Skolotājs',
   `vards` VARCHAR(45) NULL,
   `uzvards` VARCHAR(45) NULL,
   `epasts` VARCHAR(45) NULL,
