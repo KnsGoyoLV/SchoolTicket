@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2023 at 10:53 AM
+-- Generation Time: Jan 19, 2023 at 01:00 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `schoolwebpage`
 --
-CREATE DATABASE IF NOT EXISTS `schoolwebpage` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `schoolwebpage`;
 
 -- --------------------------------------------------------
 
@@ -87,14 +85,7 @@ CREATE TABLE `pieteikums` (
 INSERT INTO `pieteikums` (`ticket_id`, `laiks`, `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
 (0, '2023-01-18', 'Ventspils iela', 'test', 'Neatrisināts', 'test2', 'test3', 1, 'testemail'),
 (1, '2023-01-18', 'Vānes iela', 'A-203', 'Atrisināts(Parbaudīts)', 'Aizkeros aiz bezvada interneta', NULL, 1, 'daniels.vidopskis@sk.lvt.lv'),
-(2, '2023-01-12', 'Ventspils iela', 'test', 'Neatrisināts', 'test2', 'test3', 1, 'testemail'),
-(4, '2019-01-23', '', 'V-203', 'Neatrisināts', 'Kaut kas notika', 'visslikti.lv', 1, 'daniels.vidopskis@sk.lvt.lv'),
-(5, '2019-01-23', '', 'V-203', 'Neatrisināts', 'Kaut kas notika', 'visslikti.lv', 1, 'daniels.vidopskis@sk.lvt.lv'),
-(6, '2019-01-23', '', 'V-iela', 'Neatrisināts', 'Kaut kas notika', 'visslikti.lv', 1, 'daniels.vidopskis@sk.lvt.lv'),
-(7, '2019-01-23', '', 'V-iela', 'Neatrisināts', 'Kaut kas notika', 'visslikti.lv', 1, 'daniels.vidopskis@sk.lvt.lv'),
-(8, '2019-01-23', '', 'V-iela', 'Neatrisināts', 'Kaut kas notika', 'visslikti.lv', 1, 'daniels.vidopskis@sk.lvt.lv'),
-(9, '2019-01-23', '', 'V-iela', 'Neatrisināts', 'Kaut kas notika', 'visslikti.lv', 1, 'daniels.vidopskis@sk.lvt.lv'),
-(10, '2019-01-23', 'Vānes iela', 'V-42', 'Neatrisināts', 'Kaut kas notika', 'EI TU NOST NAAC PALIDZEET', 1, 'daniels.vidopskis@lvt.lv');
+(2, '2023-01-12', 'Ventspils iela', 'test', 'Neatrisināts', 'test2', 'test3', 1, 'testemail');
 
 -- --------------------------------------------------------
 
