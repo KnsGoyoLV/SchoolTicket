@@ -44,17 +44,15 @@ session_start();
     <form class="add_info" method="post">
      <?php 
         if(isset($_POST['submit1'])){
-         $result = $pdo->query("SELECT * FROM pieteikums");
-         $id = $result->rowCount() + 1;
-         $pdo->query("INSERT INTO `pieteikums` (`ticket_id`, `laiks`, `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
-                                                ('".$id."', '".date('y-m-d')."', '".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '1', '".$_SESSION['email']."')");
+         $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
+                                                ('".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '1', '".$_SESSION['email']."')");
          header('location:index.php');
         }
      ?>
 
 
      <select class="form-select" id="Iela"name="Iela">
-        <option selected>Lūdzu izvēlaties ielu</option>
+        <option selected>Lūdzu izvēlējaties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
