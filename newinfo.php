@@ -58,10 +58,10 @@ session_start();
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
-        <input type="text" placeholder="Telpa" name="Telpa" />
-        <input type="text" placeholder="Problēma" name="Prob" />
-	    <input type="text" placeholder="Piezīme" name="Piez"/>
-	    <input type= "submit" name="submit1" value="Pievienot"/>
+        <input class="telpa" type="text" placeholder="Telpa" name="Telpa" />
+        <input class="parejais" type="text" placeholder="Problēma" name="Prob" />
+	    <input class="parejais" type="text" placeholder="Piezīme" name="Piez"/>
+	    <input class="pievienot" type= "submit" name="submit1" value="Pievienot"/>
 	</form>
 
 

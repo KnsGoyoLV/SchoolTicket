@@ -751,4 +751,24 @@ select {
 .form-select{
     width: 30%;
     appearance: none;
+    line-height: 3rem;
+    font-size: 1.5rem;
+}
+
+.telpa{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.parejais{
+    font-size: 1.5rem;
+}
+
+.pievienot{
+    font-size: 2rem;
+}
+
+.pievienot:hover{
+    font-size: 2rem;
+    background-color: rgb(190, 190, 190) ;
 }
