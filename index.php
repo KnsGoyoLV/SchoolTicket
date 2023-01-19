@@ -9,7 +9,7 @@
     $tenant =$env['tenant'];
     $client_id = $env['client_id'];
     $client_secret = $env['client_secret'];
-    $callback = $env['callback'];
+    $callback = $env['callback']; 
     if (array_key_exists ('access_token', $_POST)){
         //save access_token to SESSION t variable
         $_SESSION['t'] = $_POST['access_token'];
@@ -41,7 +41,7 @@
     $parts = explode('@',  $_SESSION['email']);
     $domain = array_pop($parts);
     $blocked_domains = array('sk');// to block sub domain add sk in here
-    if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $blocked_domains)) {
+    if ( !$_SESSION['username'] == 'Mareks' && in_array(explode('.', $domain)[0], $blocked_domains)) {
         header("Location:blocked.php");
         exit();
     }

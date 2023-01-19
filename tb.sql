@@ -8,7 +8,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 CREATE TABLE IF NOT EXISTS `risinajums` (
   `risinajums_id` INT NOT NULL AUTO_INCREMENT,
   `daritajs` VARCHAR(45) NOT NULL,
-  `status` ENUM("Neatrisināts", "Procesā", "Atrisināts") NOT NULL DEFAULT 'Neatrisināts',
   `apstiprinats` TINYINT NULL DEFAULT 0,
   `piezime` TEXT NULL,
   PRIMARY KEY (`risinajums_id`))
@@ -22,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `pieteikums` (
   `ticket_id` INT NOT NULL,
   `laiks` DATE NOT NULL,
   `iela` ENUM("Vānes iela", "Ventspils iela") NOT NULL DEFAULT 'Ventspils iela',
+  `status` ENUM("Neatrisināts", "Procesā", "Atrisināts") NOT NULL DEFAULT 'Neatrisināts',
   `problema` TEXT NOT NULL,
   `piezimes` TEXT NULL,
   `risinajums_risinajums_id` INT NOT NULL,
@@ -58,10 +58,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `skolotaji` (
   `lomas_id` INT NOT NULL AUTO_INCREMENT,
-  `it_admins` VARCHAR(45) NULL,
-  `saimniecibas_nod_admins` VARCHAR(45) NULL,
-  `skolotajs` VARCHAR(45) NULL,
-  `kons_sar_admins` VARCHAR(45) NULL,
+  `loma` ENUM("IT Admins", "Saimniecības Nod. Admins","Skolotājs","Kons. Sar. Admins") NOT NULL DEFAULT 'Skolotājs',
   `vards` VARCHAR(45) NULL,
   `uzvards` VARCHAR(45) NULL,
   `epasts` VARCHAR(45) NULL,
