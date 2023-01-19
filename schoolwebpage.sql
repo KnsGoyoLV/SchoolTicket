@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2023 at 01:00 PM
+-- Generation Time: Jan 19, 2023 at 02:32 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,11 +20,15 @@ SET time_zone = "+00:00";
 --
 -- Database: `schoolwebpage`
 --
+CREATE DATABASE IF NOT EXISTS `schoolwebpage` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `schoolwebpage`;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `apstiprinajums`
+--
+-- Creation: Jan 19, 2023 at 12:42 PM
 --
 
 CREATE TABLE `apstiprinajums` (
@@ -36,6 +40,8 @@ CREATE TABLE `apstiprinajums` (
 
 --
 -- Table structure for table `konsultacijas`
+--
+-- Creation: Jan 19, 2023 at 12:42 PM
 --
 
 CREATE TABLE `konsultacijas` (
@@ -49,6 +55,8 @@ CREATE TABLE `konsultacijas` (
 
 --
 -- Table structure for table `pieteikties`
+--
+-- Creation: Jan 19, 2023 at 12:42 PM
 --
 
 CREATE TABLE `pieteikties` (
@@ -65,10 +73,13 @@ CREATE TABLE `pieteikties` (
 --
 -- Table structure for table `pieteikums`
 --
+-- Creation: Jan 19, 2023 at 12:52 PM
+-- Last update: Jan 19, 2023 at 12:54 PM
+--
 
 CREATE TABLE `pieteikums` (
   `ticket_id` int(11) NOT NULL,
-  `laiks` date NOT NULL,
+  `laiks` date NOT NULL DEFAULT current_timestamp(),
   `iela` enum('Vānes iela','Ventspils iela') NOT NULL DEFAULT 'Ventspils iela',
   `telpa` varchar(20) NOT NULL,
   `status` enum('Neatrisināts','Procesā','Atrisināts','Atrisināts(Parbaudīts)') NOT NULL DEFAULT 'Neatrisināts',
@@ -85,12 +96,16 @@ CREATE TABLE `pieteikums` (
 INSERT INTO `pieteikums` (`ticket_id`, `laiks`, `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
 (0, '2023-01-18', 'Ventspils iela', 'test', 'Neatrisināts', 'test2', 'test3', 1, 'testemail'),
 (1, '2023-01-18', 'Vānes iela', 'A-203', 'Atrisināts(Parbaudīts)', 'Aizkeros aiz bezvada interneta', NULL, 1, 'daniels.vidopskis@sk.lvt.lv'),
-(2, '2023-01-12', 'Ventspils iela', 'test', 'Neatrisināts', 'test2', 'test3', 1, 'testemail');
+(2, '2023-01-12', 'Ventspils iela', 'test', 'Neatrisināts', 'test2', 'test3', 1, 'testemail'),
+(3, '2023-01-19', 'Vānes iela', 'D-201', 'Neatrisināts', 'Kaut kas notika', '', 1, ''),
+(4, '2023-01-19', 'Vānes iela', 'D-201', 'Neatrisināts', 'Kaut kas notika', '', 1, 'daniels.vidopskis@sk.lvt.lv');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `problema`
+--
+-- Creation: Jan 19, 2023 at 12:42 PM
 --
 
 CREATE TABLE `problema` (
@@ -104,6 +119,8 @@ CREATE TABLE `problema` (
 
 --
 -- Table structure for table `risinajums`
+--
+-- Creation: Jan 19, 2023 at 12:42 PM
 --
 
 CREATE TABLE `risinajums` (
@@ -125,6 +142,8 @@ INSERT INTO `risinajums` (`risinajums_id`, `daritajs`, `apstiprinats`, `piezime`
 --
 -- Table structure for table `skolnieki`
 --
+-- Creation: Jan 19, 2023 at 12:42 PM
+--
 
 CREATE TABLE `skolnieki` (
   `skolnieki_id` int(11) NOT NULL,
@@ -140,6 +159,8 @@ CREATE TABLE `skolnieki` (
 
 --
 -- Table structure for table `skolotaji`
+--
+-- Creation: Jan 19, 2023 at 12:42 PM
 --
 
 CREATE TABLE `skolotaji` (
@@ -233,6 +254,12 @@ ALTER TABLE `pieteikties`
   MODIFY `pieteikties_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `pieteikums`
+--
+ALTER TABLE `pieteikums`
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `problema`
 --
 ALTER TABLE `problema`
@@ -255,10 +282,6 @@ ALTER TABLE `skolnieki`
 --
 ALTER TABLE `skolotaji`
   MODIFY `lomas_id` int(11) NOT NULL AUTO_INCREMENT;
-
-
-  ALTER TABLE `pieteikums`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
