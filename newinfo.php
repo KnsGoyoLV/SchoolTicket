@@ -70,8 +70,6 @@ session_start();
         <div class="informacija">
             <?php
             $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."'" )->fetchColumn(); 
-            
-      
             echo "<span>$result</span>";
             ?>
             <h3>Jūsu kopējais skaits</h3>
@@ -79,17 +77,13 @@ session_start();
         <div class="informacija">
         <?php
             $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Atrisināts' OR status = 'Atrisināts(Parbaudīts)'" )->fetchColumn(); 
-            
-
             echo "<span>$result</span>";
             ?>
             <h3>Pabeigtie</h3>
         </div>
         <div class="informacija">
             <?php
-           $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Neatrisināts'" )->fetchColumn(); 
-            
-      
+            $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Neatrisināts'" )->fetchColumn(); 
             echo "<span>$result</span>";
             ?>
             <h3>Nepabeigtie</h3>
