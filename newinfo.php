@@ -22,8 +22,8 @@ session_start();
     <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
     <nav class="navbar">
         <a href="index.php"><i class="fas fa-home"></i>Sākumlapa</a>
-        <a href="#NewInfo" class="active"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
-        <a href="#info.php"><i class="fas fa-circle-info"></i>Jaunumi</a>
+        <a href="#" class="active"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
+        <a href="info.php"><i class="fas fa-circle-info"></i>Jaunumi</a>
     </nav>
     <nav class="navbar">
     <a hred="login.php"><b><?php 		
