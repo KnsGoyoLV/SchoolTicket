@@ -61,10 +61,40 @@ session_start();
 	    <input class="parejais" type="text" placeholder="Piezīme" name="Piez"/>
 	    <input class="pievienot" type= "submit" name="submit1" value="Pievienot"/>
 	</form>
+        
+    <section id="adminSakums">
+    <div class="row">
+        <div class="info"><h1>Pārskats</h1> </div> </div>
 
+    <div class="kopsavilkums">
+        <div class="informacija">
+            <?php
+            $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."'" )->fetchColumn(); 
+            
+      
+            echo "<span>$result</span>";
+            ?>
+            <h3>Jūsu kopējais skaits</h3>
+        </div>
+        <div class="informacija">
+        <?php
+            $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Atrisināts'" )->fetchColumn(); 
+            
 
-
-
+            echo "<span>$result</span>";
+            ?>
+            <h3>Pabeigtie</h3>
+        </div>
+        <div class="informacija">
+            <?php
+           $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Neatrisināts'" )->fetchColumn(); 
+            
+      
+            echo "<span>$result</span>";
+            ?>
+            <h3>Nepabeigtie</h3>
+        </div>
+    </div>
 
 <footer>
         Liepajas Valsts Tehnikums &copy; 2023

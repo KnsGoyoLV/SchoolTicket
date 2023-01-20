@@ -52,7 +52,7 @@ html::-webkit-scrollbar-thumb{
 }
 
 section{
-    padding:2rem 9%;
+    padding: 0rem 23%;
 }
 
 h1{
@@ -554,7 +554,7 @@ label {
 /* Admin daļa: */
 
 #adminSakums .kopsavilkums{
-    margin-top: 10rem;
+    margin-top: 2rem;
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap:1.5rem;
@@ -594,6 +594,7 @@ label {
 }
 
 #adminSakums .row{
+
     margin-top: 2rem;
     display: flex;
     flex-wrap: wrap;
