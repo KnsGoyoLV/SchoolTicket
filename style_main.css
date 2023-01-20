@@ -603,9 +603,7 @@ label {
 
 #adminSakums .row .info{
     flex:1 1 45rem;
-    border:var(--border);
-    box-shadow: var(--box-shadow);
-    border-radius: .5rem;
+
 }
 
 #adminSakums .row .info2{

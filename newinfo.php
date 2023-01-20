@@ -78,7 +78,7 @@ session_start();
         </div>
         <div class="informacija">
         <?php
-            $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Atrisināts'" )->fetchColumn(); 
+            $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Atrisināts' OR status = 'Atrisināts(Parbaudīts)'" )->fetchColumn(); 
             
 
             echo "<span>$result</span>";
