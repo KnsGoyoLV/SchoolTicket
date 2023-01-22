@@ -24,14 +24,9 @@ session_start();
         <a href="index.php"><i class="fas fa-home"></i>Sākumlapa</a>
         <a href="#" class="active"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
         <a href="info.php"><i class="fas fa-circle-info"></i>Jaunumi</a>
-    </nav>
-    <nav class="navbar">
-    <a hred="login.php"><b><?php 		
-       //  echo " <a href='login.php'><b>" . $_SESSION['username'] . "</b> <i class='fas fa-power-off'></i></a>";
-     ?> </b>
-    
-    </nav>
-    <nav class="navbar">
+
+</nav> 
+<nav class="navbar">
     <a hred="login.php"><?php 		
          echo " <a href='startpage'><b style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
      ?> 
