@@ -19,14 +19,4 @@ $params = array ('client_id' =>$client_id,
         'scope' => "https://graph.microsoft.com/User.Read",
         'state' =>$_SESSION['state']);
 header ('Location: '.$login_url.'?'.http_build_query ($params));
-
-
-
-
-//if (!isset($_SESSION['access_token'])) {
-//    $microsoft = new Auth($tenant, $client_id, $client_secret,$callback, $scopes);
-//    header("location: " . $microsoft->getAuthUrl());
-//    exit;
-//}
-
 ?>

@@ -456,7 +456,7 @@ footer{
     padding: 1.5rem;
     margin-top: 1rem;
     font-size: 1.5rem;
-    position:absolute;
+    position:relative;
     left: 0;
     bottom: 0;
     width: 100%;

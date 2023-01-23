@@ -33,7 +33,7 @@ session_start();
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
-   
+<body>
 
 
     <form class="add_info" method="post">
@@ -84,6 +84,7 @@ session_start();
             <h3>Nepabeigtie</h3>
         </div>
     </div>
+    </section>
 
 <footer>
         Liepajas Valsts Tehnikums &copy; 2023
