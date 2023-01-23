@@ -2,6 +2,10 @@
  require_once("connectDB.php");
  require "vendor/autoload.php";
 session_start();  
+
+if(!isset($_SESSION['t'])){
+    header('location: login.php');
+   }
 ?>
 <!DOCTYPE html>
 <html lang="lv">
