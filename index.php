@@ -89,7 +89,7 @@
         <a href="info.php"><i class="fas fa-circle-info"></i>Informācija</a>
     </nav>
     <nav class="navbar">
-    <a hred="login.php"><?php 		
+    <a hred="logout.php.php"><?php 		
          echo " <a href='logout.php'><b style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
         
     ?> 

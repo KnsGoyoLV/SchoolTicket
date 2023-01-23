@@ -24,11 +24,14 @@
     );
     $context  = stream_context_create($options);
     $result = file_get_contents($url, false, $context);
-    if ($result === FALSE) { /* Handle error */ }
+    if ($result === FALSE) { /* Handle error */ } else {
     unset($_SESSION['t']);
     unset($_SESSION['state']);
     unset($_SESSION['access_token']);
+    session_unset();
+    session_regenerate_id();
     session_destroy();
-    header('Location: '.$env['logout']);
+    header('Location: ' . $env['logout']);
+}
 ?>
 
