@@ -21,7 +21,7 @@ session_start();
     <nav class="navbar">
         <a href="index.php"><i class="fas fa-home"></i> Sākumlapa</a>
         <a href="newinfo.php"> <i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
-        <a href="#"><i class="active"  class="fas fa-circle-info"></i>Jaunumi</a>
+        <a href="info.php"><i class="fas fa-circle-info"></i>Informācija</a>
     </nav>
     <nav class="navbar">
     <a hred="login.php"><b><?php 		
@@ -32,42 +32,51 @@ session_start();
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
 
-<section id="adminSakums">
-
-
-    <div class="row">
-        <div class="info">
-            <div class="head-pan">
-                TEKSTS IET SEIT
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bootstrap snippets bootdey">
+    <div class="col-md-12">
+        <div class="profile-container">
+            <div class="profile-header row">
+                <div class="col-md-4 col-sm-12 text-center">
+                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="header-avatar">
+                </div>
+                <div class="col-md-8 col-sm-12 profile-info">
+                    <div class="header-fullname">Vards uzvards</div>
+                    <div class="header-information">
+                      Role(kip vai skolotajs vai skolotaja)
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 profile-stats">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value pink">1</div>
+                            <div class="stats-title">Cik ielikti ticketi</div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value">e pasts</div>
+                            <div class="stats-title">epasts</div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value pink">kko vel ja vaig</div>
+                            <div class="stats-title">kko vel ja vaig</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            <i class="glyphicon glyphicon-map-marker"></i> Liepajas Valsts Tehnikums
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            nezinu: <strong>hz</strong>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            nezinu: <strong>hz</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>   
         </div>
-        
     </div>
-</section>
-
-<section id="adminSakums">
-    <div class="kopsavilkums">
-        <h1><i class="fas fa-user"></i>Lietotaja Informacija</h1>
-    </div>
-
-    <div class="row">
-        <div class="info">
-        <table>
-                <tr>
-                    <th>Lietotaj Vards</th>
-                    <th>E-pasts</th>
-                    <th>Admin Status</th>
-                    <th>Lietotaj id</th>
-                </tr>
-                <?php
-               
-                  
-                ?>
-               
-            </table>
-        
-    </div>
-
-</section>
+</div>
 
 <footer>
         Liepajas Valsts Tehnikums &copy; 2023

@@ -23,7 +23,7 @@ session_start();
     <nav class="navbar">
         <a href="index.php"><i class="fas fa-home"></i>Sākumlapa</a>
         <a href="#" class="active"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
-        <a href="info.php"><i class="fas fa-circle-info"></i>Jaunumi</a>
+        <a href="info.php"><i class="fas fa-circle-info"></i>Informacija</a>
 
 </nav> 
 <nav class="navbar">
