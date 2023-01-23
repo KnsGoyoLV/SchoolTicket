@@ -1,7 +1,6 @@
 <?php 
     require_once("connectDB.php");
     require "vendor/autoload.php";
-
     $env = parse_ini_file('.env');
     session_start();
 

@@ -25,7 +25,7 @@ if(!isset($_SESSION['t'])){
     <nav class="navbar">
         <a href="index.php"><i class="fas fa-home"></i> Sākumlapa</a>
         <a href="newinfo.php"> <i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
-        <a href="info.php"><i class="fas fa-circle-info"></i>Informacija</a>
+        <a href=""class="active"><i class="fas fa-circle-info"></i>Informacija</a>
     </nav>
     <nav class="navbar">
     <a hred="login.php"><b><?php 		
