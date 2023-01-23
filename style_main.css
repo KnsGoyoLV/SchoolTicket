@@ -650,6 +650,8 @@ th{
 	font-weight: bold;
 	color: var(--black);
 	text-align:center;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 
@@ -701,11 +703,12 @@ input{
     font-size: 12px;
     display: grid;
     margin-left: inherit;
+    overflow-wrap: anywhere;
     }
     th, td{
         height: 0px;
-        word-break: normal;
-
+        word-break: break-all;
+    padding-left: 0rem;
     }
     section {
         padding: 0rem 0%;
