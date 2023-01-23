@@ -21,7 +21,7 @@ session_start();
     <nav class="navbar">
         <a href="index.php"><i class="fas fa-home"></i> Sākumlapa</a>
         <a href="newinfo.php"> <i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
-        <a href="info.php"><i class="active"  class="fas fa-circle-info"></i>Jaunumi</a>
+        <a href="info.php"><i class="fas fa-circle-info"></i>Informacija</a>
     </nav>
     <nav class="navbar">
     <a hred="login.php"><b><?php 		
@@ -43,7 +43,7 @@ session_start();
                 <div class="col-md-8 col-sm-12 profile-info">
                     <div class="header-fullname">Vards uzvards</div>
                     <div class="header-information">
-                      Role(kip vai skolotajs vai skolotaja)
+                      Role(kip vai skolotajs vai admin)
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 profile-stats">
