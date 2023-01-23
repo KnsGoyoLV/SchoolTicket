@@ -1,6 +1,7 @@
 <?php
     require_once("connectDB.php");
     require "vendor/autoload.php";
+    use Microsoft\Graph\Graph;
 
     $env = parse_ini_file('.env');
     session_start();
@@ -27,7 +28,6 @@
             die();
         }
         else{// get users data from json with $rez variable name
-            $_SESSION['msatg'] = 1;  
             $_SESSION['username'] = $rez["givenName"];
             $_SESSION['surname'] = $rez["surname"];
             $_SESSION['email'] = $rez['mail'];
@@ -40,7 +40,7 @@
    if(!isset($_SESSION['t'])){
     header('location: login.php');
    }
-
+   
     //Block subdomain 
     $parts = explode('@',  $_SESSION['email']);
     $domain = array_pop($parts);
@@ -90,8 +90,9 @@
     </nav>
     <nav class="navbar">
     <a hred="login.php"><?php 		
-         echo " <a href='startpage'><b style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
-     ?> 
+         echo " <a href='logout.php'><b style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
+        
+    ?> 
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
