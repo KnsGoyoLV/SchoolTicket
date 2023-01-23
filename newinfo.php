@@ -31,8 +31,8 @@ if(!isset($_SESSION['t'])){
 
 </nav> 
 <nav class="navbar">
-    <a hred="login.php"><?php 		
-         echo " <a href='startpage'><b style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
+    <a hred="logout.php"><?php 		
+         echo " <a href='logout.php'><b style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
      ?> 
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>

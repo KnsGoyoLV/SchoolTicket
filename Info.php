@@ -28,8 +28,8 @@ if(!isset($_SESSION['t'])){
         <a href=""class="active"><i class="fas fa-circle-info"></i>Informacija</a>
     </nav>
     <nav class="navbar">
-    <a hred="login.php"><b><?php 		
-         echo " <a href='login.php'><b>" . $_SESSION['username'] . $_SESSION['surname'] . "</b> <i class='fas fa-power-off'></i></a>";
+    <a hred="logout.php"><b><?php 		
+         echo " <a href='logout.php'><b>" . $_SESSION['username'] . $_SESSION['surname'] . "</b> <i class='fas fa-power-off'></i></a>";
      ?> </b>
     
     </nav>
