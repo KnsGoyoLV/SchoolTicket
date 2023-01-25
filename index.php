@@ -1,5 +1,5 @@
 <?php
-    require_once("connectDB.php");
+    require_once("database/connectDB.php");
     require "vendor/autoload.php";
     use Microsoft\Graph\Graph;
 
@@ -84,9 +84,10 @@
  
 <header>
 
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+<nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
         <a href="#" class="navbar-brand">Liepajas Valsts Tehnikums</a>
+        
 
         <button
           class="navbar-toggler"
@@ -97,16 +98,16 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navmenu">
-          <ul class="navbar-nav ms-auto">
+        <div class="collapse navbar-collapse " id="navmenu">
+          <ul class="navbar-nav ms-auto  ">
             <li class="nav-item">
-              <a href="#learn" class="nav-link">Sākum Lapa</a>
+              <a href="#Mainpage" class="nav-link">Sākum Lapa</a>
             </li>
             <li class="nav-item">
-              <a href="#questions" class="nav-link">Pievienot Problēmas</a>
+              <a href="newinfo.php" class="nav-link">Pievienot Problēmas</a>
             </li>
             <li class="nav-item">
-              <a href="#instructors" class="nav-link">Informācija</a>
+              <a href="info.php" class="nav-link">Informācija</a>
             </li>
             <li class="nav-item">
                 <a hred="logout.php"><?php 		
