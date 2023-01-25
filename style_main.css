@@ -872,6 +872,6 @@ select {
     font-size: 20px;
 }
 .bg-dark {
-    --bs-bg-opacity: 255;
+    --bs-bg-opacity: 1;
     background-color: #2c659f!important;
 }

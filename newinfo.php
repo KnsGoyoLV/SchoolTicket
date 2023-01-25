@@ -1,5 +1,5 @@
 <?php
- require_once("connectDB.php");
+ require_once("database/connectDB.php");
  require "vendor/autoload.php";
 session_start();  
 
