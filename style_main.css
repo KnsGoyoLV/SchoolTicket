@@ -871,3 +871,7 @@ select {
 .stats-title{
     font-size: 20px;
 }
+.bg-dark {
+    --bs-bg-opacity: 255;
+    background-color: #2c659f!important;
+}
