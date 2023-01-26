@@ -101,13 +101,13 @@
         <div class="collapse navbar-collapse " id="navmenu">
           <ul class="navbar-nav ms-auto  ">
             <li class="nav-item">
-              <a href="#Mainpage" class="nav-link">Sākum Lapa</a>
+              <a href="#Mainpage" class="nav-link"><i class="fas fa-home"></i>Sākum Lapa</a>
             </li>
             <li class="nav-item">
-              <a href="newinfo.php" class="nav-link">Pievienot Problēmas</a>
+              <a href="newinfo.php" class="nav-link"><i class="fas fa-plus"></i>Pievienot Problēmas</a>
             </li>
             <li class="nav-item">
-              <a href="info.php" class="nav-link">Informācija</a>
+              <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
             </li>
             <li class="nav-item">
                 <a hred="logout.php"><?php 		
@@ -127,9 +127,7 @@
 
 
 <br /><br />  
-           <div class="container">  
-                <h3 align="center">TEST123</h3>  
-                <br />  
+           <div class="container">    
                 <div class="table-responsive">  
                      <table id="employee_data" class="table table-striped table-bordered">  
                      <tr>
