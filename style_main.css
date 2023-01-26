@@ -12,6 +12,11 @@ body{
     background-color: #293241;
     background-image: url("assets/lvt.png");
     font-family: ui-sans-serif;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 *{
     font-family: 'Nunito', sans-serif;
@@ -633,29 +638,58 @@ label {
     border-bottom: 1px solid #ddd;
     
 }
-table{
-    font-size: 1.5rem;
+.table{
 	width: 100%;
-    background-color: #5cabd4;
+	border-collapse: collapse;
+    background-color: #fff;
 }
 
-th, td{
-    color: #f7f7f7;
-	text-align: center;
-	height: 50px;
-    border-bottom: 1px solid #ddd;
+.table td,.table th{
+  padding:12px 15px;
+  border:1px solid #ddd;
+  text-align: center;
+  font-size:16px;
 }
 
-tr:hover{
-	background-color: #f0563f;
+.table th{
+	background-color: #5cabd4;
+	color:#ffffff;
 }
 
-th{
-	font-weight: bold;
-	color: var(--black);
-	text-align:center;
-    padding-left: 2rem;
-    padding-right: 2rem;
+.table tbody tr:nth-child(even){
+	background-color: #f5f5f5;
+}
+
+/*responsive*/
+
+@media(max-width: 500px){
+	.table thead{
+		display: none;
+	}
+
+	.table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
+	}
+	.table tr{
+		margin-bottom:25px;
+	}
+	.table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+	.table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
 }
 
 
