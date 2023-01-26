@@ -127,7 +127,8 @@
 
 
 <br /><br />  
-           <div class="container">                 
+           <div class="container">    
+                <div class="table-responsive">  
                      <table id="employee_data" class="table">
                       <thead>  
                      <tr>
@@ -183,14 +184,16 @@
 
 </section>
 
+
 <table class="table align-middle mb-0 bg-white">
   <thead class="bg-light">
     <tr>
-      <th>Name</th>
-      <th>Title</th>
+      <th>Datums</th>
+      <th>Iela</th>
+      <th>Klase</th>
+      <th>Problēmas</th>
+      <th>Piezīmes</th>
       <th>Status</th>
-      <th>Position</th>
-      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
