@@ -82,9 +82,9 @@ if(!isset($_SESSION['t'])){
     </div>
 </div>
 
-<footer>
-        Liepajas Valsts Tehnikums &copy; 2023
-</footer>
+<div class="footer">
+  <p> Liepajas Valsts Tehnikums &copy; 2023</p>
+</div>
 
 <script src="files/script.js"></script>
 </body>
