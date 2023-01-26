@@ -464,7 +464,7 @@ footer{
     padding: 1.5rem;
     font-size: 1.5rem;
     position:sticky;
-    bottom: 0;
+    bottom: auto;
     width: 100%;
 
 }
