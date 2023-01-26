@@ -711,18 +711,18 @@ form.add_info {
 }
 
 .form-select {
-    width: 13%;
+    width: 9%;
     appearance: none;
-    line-height: 2.7rem;
+    line-height: 4rem;
     font-size: 1.3rem;
     position: fixed;
-    margin-left: 23rem;
+    margin-left: 40rem;
     margin-top: 0.2rem;
 }
 .telpa {
-    font-size: 1rem;
+    font-size: 2rem;
     line-height: 0rem;
-    margin-left: 40rem;
+    margin-left: 58rem;
     width: 12rem;
 }
 
@@ -740,13 +740,13 @@ form.add_info {
 textarea#floatingTextarea {
     margin-top: 1rem;
     border-radius: 1rem;
-    margin-left: 30%;
+    margin-left: 36%;
     width: 30rem;
     height: 9rem;
     font-size: 1.5rem;
 }
 label {
-    margin-left: 22.5rem;
+    margin-left: 40.5rem;
     margin-top: 0.1rem;
 }
 /* Bootstrap stuff down bellow*/
