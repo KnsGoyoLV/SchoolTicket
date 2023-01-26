@@ -23,21 +23,48 @@ if(!isset($_SESSION['t'])){
 <body >
 
 <header>
-    <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
-    <nav class="navbar">
-        <a href="index.php"><i class="fas fa-home"></i>Sākumlapa</a>
-        <a href="newinfo.php" class="active"><i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
-        <a href="info.php"><i class="fas fa-circle-info"></i>Informacija</a>
+<nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
+      <div class="container">
+        <a href="#" class="navbar-brand">Liepajas Valsts Tehnikums</a>
+        
 
-</nav> 
-<nav class="navbar">
-    <a hred="logout.php"><?php 		
-         echo " <a href='logout.php'><b style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "</b> <i class='fas fa-power-off'></i></a>";
-     ?> 
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navmenu">
+          <ul class="navbar-nav ms-auto  ">
+            <li class="nav-item">
+              <a href="login.php" class="nav-link">Sākum Lapa</a>
+            </li>
+            <li class="nav-item">
+              <a href="newinfo.php" class="nav-link">Pievienot Problēmas</a>
+            </li>
+            <li class="nav-item">
+              <a href="info.php" class="nav-link">Informācija</a>
+            </li>
+            <li class="nav-item">
+                <a hred="logout.php"><?php 		
+                echo " <a href='logout.php' style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "<i class='fas fa-power-off'></i></a>";     
+                ?>
+            </nav>
+            </li>    
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
 <body>
+
 
 
     <form class="add_info" method="post">
@@ -48,52 +75,34 @@ if(!isset($_SESSION['t'])){
          header('location:index.php');
         }
      ?>
-
+     <h3 align="center">Lūdzu ievadiet informāciju</h3>  
 
      <select class="form-select" id="Iela"name="Iela">
         <option selected>Lūdzu izvēlējaties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
+  
         <input class="telpa" type="text" placeholder="Telpa" name="Telpa" />
-        <input class="parejais" type="text" placeholder="Problēma" name="Prob" />
-	    <input class="parejais" type="text" placeholder="Piezīme" name="Piez"/>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"  name="Prob"></textarea>
+            <label for="floatingTextarea">Problēma</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"  name="Piez"></textarea>
+            <label for="floatingTextarea">Piezīme</label>
+        </div>
 	    <input class="pievienot" type= "submit" name="submit1" value="Pievienot"/>
+   
 	</form>
-        
-    <section id="adminSakums">
-    <div class="row">
-        <div class="info"><h1>Pārskats</h1> </div> </div>
-
-    <div class="kopsavilkums">
-        <div class="informacija">
-            <?php
-            $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."'" )->fetchColumn(); 
-            echo "<span>$result</span>";
-            ?>
-            <h3>Jūsu kopējais skaits</h3>
-        </div>
-        <div class="informacija">
-        <?php
-            $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Atrisināts' OR status = 'Atrisināts(Parbaudīts)'" )->fetchColumn(); 
-            echo "<span>$result</span>";
-            ?>
-            <h3>Pabeigtie</h3>
-        </div>
-        <div class="informacija">
-            <?php
-            $result = $pdo->query("SELECT COUNT(*) FROM pieteikums WHERE epasts ='".$_SESSION['email']."' AND status = 'Neatrisināts'" )->fetchColumn(); 
-            echo "<span>$result</span>";
-            ?>
-            <h3>Nepabeigtie</h3>
-        </div>
-    </div>
-    </section>
 
 <footer>
         Liepajas Valsts Tehnikums &copy; 2023
 </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
 
-<script src="files/script.js"></script>
 </body>
 </html>
