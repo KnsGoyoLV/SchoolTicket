@@ -896,6 +896,11 @@ select {
         padding: 0rem 0%;
     }
 
+    .table tbody tr:nth-child(even)
+    {
+        background-color: #bbb9b9;
+    }
+
     form.add_info {
         padding-top: 1rem;
         padding-bottom: 2rem;
