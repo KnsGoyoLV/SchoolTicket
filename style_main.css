@@ -463,7 +463,7 @@ footer{
     text-align: center;
     padding: 1.5rem;
     font-size: 1.5rem;
-    position:sticky;
+    position:absolute;
     bottom: auto;
     width: 100%;
 
