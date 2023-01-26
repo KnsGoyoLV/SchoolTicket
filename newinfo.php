@@ -40,13 +40,13 @@ if(!isset($_SESSION['t'])){
         <div class="collapse navbar-collapse " id="navmenu">
           <ul class="navbar-nav ms-auto  ">
             <li class="nav-item">
-              <a href="login.php" class="nav-link">Sākum Lapa</a>
+              <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākum Lapa</a>
             </li>
             <li class="nav-item">
-              <a href="newinfo.php" class="nav-link">Pievienot Problēmas</a>
+              <a href="#" class="nav-link" ><i class="fas fa-plus"></i>Pievienot Problēmas</a>
             </li>
             <li class="nav-item">
-              <a href="info.php" class="nav-link">Informācija</a>
+              <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
             </li>
             <li class="nav-item">
                 <a hred="logout.php"><?php 		
