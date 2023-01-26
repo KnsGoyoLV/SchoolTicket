@@ -22,16 +22,40 @@ if(!isset($_SESSION['t'])){
 
 <header>
 <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
-    <nav class="navbar">
-        <a href="index.php"><i class="fas fa-home"></i> Sākumlapa</a>
-        <a href="newinfo.php"> <i class="fas fa-plus"></i>Pievienot atbalsta biļeti</a>
-        <a href=""class="active"><i class="fas fa-circle-info"></i>Informacija</a>
-    </nav>
-    <nav class="navbar">
-    <a hred="logout.php"><b><?php 		
-         echo " <a href='logout.php'><b>" . $_SESSION['username'] . $_SESSION['surname'] . "</b> <i class='fas fa-power-off'></i></a>";
-     ?> </b>
-    
+<nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
+      <div class="container">
+        <a href="#" class="navbar-brand">Liepajas Valsts Tehnikums</a>
+        
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse " id="navmenu">
+          <ul class="navbar-nav ms-auto  ">
+            <li class="nav-item">
+              <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākum Lapa</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link" ><i class="fas fa-plus"></i>Pievienot Problēmas</a>
+            </li>
+            <li class="nav-item">
+              <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
+            </li>
+            <li class="nav-item">
+                <a hred="logout.php"><?php 		
+                echo " <a href='logout.php' style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "<i class='fas fa-power-off'></i></a>";     
+                ?>
+            </nav>
+            </li>    
+          </ul>
+        </div>
+      </div>
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
