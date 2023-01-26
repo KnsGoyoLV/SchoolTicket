@@ -129,7 +129,8 @@
 <br /><br />  
            <div class="container">    
                 <div class="table-responsive">  
-                     <table id="employee_data" class="table table-striped table-bordered">  
+                     <table id="employee_data" class="table">
+                      <thead>  
                      <tr>
                     <th>Datums</th>
                     <th>Iela</th>
@@ -138,7 +139,8 @@
                     <th>Piezīmes</th>                  
                     <th>Statuss</th>
                 </tr>
-               
+                </thead> 
+                <tbody>
                 <?php
                
 
@@ -175,6 +177,7 @@
                     echo '</tr>';      
                 }
                 ?>
+                </tbody>
                      </table>  
                 </div>  
            </div>  
