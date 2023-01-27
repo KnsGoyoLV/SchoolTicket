@@ -76,14 +76,16 @@ if(!isset($_SESSION['t'])){
         }
      ?>
      <h3 align="center">Lūdzu ievadiet informāciju</h3>  
-
+     <div class="form-group row ">
      <select class="form-select" id="Iela"name="Iela">
         <option selected>Lūdzu izvēlējaties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
-     <div class="col-sm-4">
+
+     <div class="col">
         <input class="telpa" type="text" placeholder="Telpa" name="Telpa" />
+    </div>
     </div>
             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"  name="Prob"></textarea>
             <label for="floatingTextarea">Problēma</label>

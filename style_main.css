@@ -711,19 +711,21 @@ form.add_info {
 }
 
 .form-select {
-    width: 9%;
-    appearance: none;
-    line-height: 4rem;
-    font-size: 1.3rem;
-  
-    margin-left: 24.5%;
-    margin-top: 0.2rem;
+    width: 12%;
+  appearance: none;
+  line-height: 4rem;
+  font-size: 1.3rem;
+  margin-left: 36%;
+  margin-top: 0.2rem;
+
 }
 .telpa {
     font-size: 2rem;
-    line-height: 0rem;
-    margin-left: 58rem;
-    width: 12rem;
+  line-height: -4rem; 
+   width: 12rem;
+  margin-left: 0;
+  margin-top: 0;
+
 }
 
 .parejais {
