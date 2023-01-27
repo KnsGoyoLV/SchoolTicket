@@ -87,14 +87,11 @@ if(!isset($_SESSION['t'])){
         <input class="telpa" type="text" placeholder="Telpa" name="Telpa" />
     </div>
     </div>
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"  name="Prob"></textarea>
-            <label for="floatingTextarea">Problēma</label>
-       
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"  name="Piez"></textarea>
-            <label for="floatingTextarea">Piezīme</label>
-      
-	    <input class="pievienot" type= "submit" name="submit1" value="Pievienot"/>
-   
+        <textarea class="form-control" placeholder="Problēma" id="floatingTextarea"  name="Prob"></textarea>
+        <textarea class="form-control" placeholder="Piezīme" id="floatingTextarea"  name="Piez"></textarea>
+        <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="submit"name="submit1" value="Pievienot">Pievienot</button>
+        </div>
 	</form>
 
   <div class="footer">
