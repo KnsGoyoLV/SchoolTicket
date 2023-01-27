@@ -67,7 +67,7 @@ if(!isset($_SESSION['t'])){
 
 
 
-    <form class="add_info" method="post">
+    <form class="container-md" method="post">
      <?php 
         if(isset($_POST['submit1'])){
          $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
@@ -82,16 +82,15 @@ if(!isset($_SESSION['t'])){
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
-  
+     <div class="col-sm-4">
         <input class="telpa" type="text" placeholder="Telpa" name="Telpa" />
-        <div class="form-floating">
+    </div>
             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"  name="Prob"></textarea>
             <label for="floatingTextarea">Problēma</label>
-        </div>
-        <div class="form-floating">
+       
             <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"  name="Piez"></textarea>
             <label for="floatingTextarea">Piezīme</label>
-        </div>
+      
 	    <input class="pievienot" type= "submit" name="submit1" value="Pievienot"/>
    
 	</form>

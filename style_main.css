@@ -715,8 +715,8 @@ form.add_info {
     appearance: none;
     line-height: 4rem;
     font-size: 1.3rem;
-    position: fixed;
-    margin-left: 40rem;
+  
+    margin-left: 24.5%;
     margin-top: 0.2rem;
 }
 .telpa {
@@ -885,7 +885,10 @@ select {
     background-color: #2c659f!important;
 }
 
-
+.container-md {
+    background-color: #20a3c1;
+    margin-top: 4rem;
+  }
 
 
 
