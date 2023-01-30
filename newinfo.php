@@ -74,17 +74,17 @@ if(!isset($_SESSION['t'])){
      ?>
      <h3 class="IInfo" align="center">Lūdzu ievadiet informāciju</h3>  
      <div class="form-group row ">
-     <select class="form-select" id="Iela"name="Iela">
+     <select class="form-select" id="Iela"name="Iela"required>
         <option selected>Izvēlēties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
 
      <div class="col">
-        <input class="telpa" type="text" placeholder="Telpa" name="Telpa" />
+        <input class="telpa" type="text" placeholder="Telpa" name="Telpa" required/>
     </div>
     </div>
-        <textarea class="form-control" placeholder="Problēma" id="floatingTextarea"  name="Prob"></textarea>
+        <textarea class="form-control" placeholder="Problēma" id="floatingTextarea"  name="Prob" required></textarea>
         <textarea class="form-control" placeholder="Piezīme" id="floatingTextarea"  name="Piez"></textarea>
         <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary" type="submit"name="submit1" value="Pievienot">Pievienot</button>
