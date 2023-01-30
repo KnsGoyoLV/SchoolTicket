@@ -712,13 +712,21 @@ form.add_info {
 
 .form-select {
     width: 12%;
+    height: 5.2rem;
   appearance: none;
   line-height: 4rem;
   font-size: 1.3rem;
   margin-left: 36%;
-  margin-top: 0.2rem;
-
+  margin-top: 0rem;
+border-radius: 1rem;
 }
+
+
+.IInfo{
+    margin-right: 7rem;
+}
+
+
 .telpa {
     font-size: 2rem;
   line-height: -4rem; 
