@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+require_once("database/connectDB.php");
 if(!isset($_SESSION['t'])){
     header('location: login.php');
    }
@@ -13,6 +13,7 @@ if(!isset($_SESSION['t'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LVT TicketSupport</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="style_main.css">
 
@@ -21,7 +22,6 @@ if(!isset($_SESSION['t'])){
 <body >
 
 <header>
-<a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
         <a href="#" class="navbar-brand">Liepajas Valsts Tehnikums</a>
@@ -59,8 +59,6 @@ if(!isset($_SESSION['t'])){
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
-
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <div class="container bootstrap snippets bootdey">
     <div class="col-md-12">
         <div class="profile-container">
@@ -69,9 +67,9 @@ if(!isset($_SESSION['t'])){
                     <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="header-avatar">
                 </div>
                 <div class="col-md-8 col-sm-12 profile-info">
-                    <div class="header-fullname">Vards uzvards</div>
+                    <div class="header-fullname"><?= $_SESSION['username'];?> <?= $_SESSION['surname'];?></div>
                     <div class="header-information">
-                      Role(kip vai skolotajs vai admin)
+                    Status:<?= $_SESSION['job'];?>
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 profile-stats">
@@ -81,7 +79,7 @@ if(!isset($_SESSION['t'])){
                             <div class="stats-title">Cik ielikti ticketi</div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
-                            <div class="stats-value">e pasts</div>
+                            <div class="stats-value"><?= $_SESSION['email'];?></div>
                             <div class="stats-title">epasts</div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
@@ -94,10 +92,10 @@ if(!isset($_SESSION['t'])){
                             <i class="glyphicon glyphicon-map-marker"></i> Liepajas Valsts Tehnikums
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
-                            nezinu: <strong>hz</strong>
+                            nezinu: <strong>1</strong>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
-                            nezinu: <strong>hz</strong>
+                            nezinu: <strong>2</strong>
                         </div>
                     </div>
                 </div>
@@ -105,6 +103,7 @@ if(!isset($_SESSION['t'])){
         </div>
     </div>
 </div>
+
 
 <div class="footer">
   <p> Liepajas Valsts Tehnikums &copy; 2023</p>

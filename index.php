@@ -32,6 +32,7 @@
             $_SESSION['surname'] = $rez["surname"];
             $_SESSION['email'] = $rez['mail'];
             $_SESSION['id'] = $rez["id"];
+            $_SESSION['job'] = $rez["jobTitle"];
         }
         curl_close ($ch);
         header ('Location: ' . $callback);
