@@ -128,8 +128,8 @@
 
 
 <br /><br />  
-       
-
+<button type="button" class="btn btn-success btn-rounded btn-lg float-right"  style="background-color: #1fd134"><i class="fas fa-plus"></i> Pievienot </button>
+ 
 <table class="table align-middle mb-2 table-responsive">
   
   <thead class="thead-dark">

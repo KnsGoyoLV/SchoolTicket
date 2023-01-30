@@ -9,8 +9,8 @@
    
 }
 body{
-    background-color: #293241;
-    background-image: url("assets/lvt.png");
+    background-color: #a1a1a1;
+  
     font-family: ui-sans-serif;
     background-position: center center;
     background-attachment: fixed;
@@ -718,7 +718,7 @@ border-radius: 1rem;
 }
 
 
-.IInfo{
+.Info{
     margin-right: 7rem;
 }
 
@@ -925,6 +925,10 @@ select {
   .badge-warning:hover {
     background-color: #c67605;
   }
+  .btn-rounded {
+    --mdb-btn-border-radius: 10rem;
+    border-radius: var(--mdb-btn-border-radius);
+}
 @media (min-width: 1000px){
   .h3, h3 {
       font-size: 2.75rem;
