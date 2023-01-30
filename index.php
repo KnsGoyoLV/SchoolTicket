@@ -188,7 +188,7 @@
 <table class="table align-middle mb-0 bg-white">
   <thead class="bg-light">
     <tr>
-      <th>Datums</th>
+      <th>Iela un Klase/Datums</th>
       <th>Iela</th>
       <th>Klase</th>
       <th>Problēmas</th>
@@ -207,8 +207,8 @@
               class="rounded-circle"
               />
           <div class="ms-3">
-            <p class="fw-bold mb-1">John Doe</p>
-            <p class="text-muted mb-0">john.doe@gmail.com</p>
+            <p class="fw-bold mb-1">Iela un klase te</p>
+            <p class="text-muted mb-0">Datums</p>
           </div>
         </div>
       </td>
