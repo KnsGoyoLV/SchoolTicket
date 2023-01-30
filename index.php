@@ -193,7 +193,7 @@
       <th>Piezime</th>
       <th>Statuss</th>
       <th>IT/Remonta darbs</th>
-      <th>Apstipriāt</th>
+      <th>Apstiprināt</th>
     </tr>
   </thead>
   <tbody>
