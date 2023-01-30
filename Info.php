@@ -24,7 +24,7 @@ if(!isset($_SESSION['t'])){
 <header>
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="navbar-brand">Liepajas Valsts Tehnikums</a>
+        <a href="#" class="navbar-brand">Liepajas Valsts tehnikums</a>
         
 
         <button
@@ -76,11 +76,11 @@ if(!isset($_SESSION['t'])){
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
                             <div class="stats-value pink">1</div>
-                            <div class="stats-title">Cik ielikti ticketi</div>
+                            <div class="stats-title">Mani pieteikumi</div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
                             <div class="stats-value"><?= $_SESSION['email'];?></div>
-                            <div class="stats-title">epasts</div>
+                            <div class="stats-title">E-pasts</div>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
                             <div class="stats-value pink">kko vel ja vaig</div>
@@ -89,7 +89,7 @@ if(!isset($_SESSION['t'])){
                     </div>
                     <div class="row">
                         <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
-                            <i class="glyphicon glyphicon-map-marker"></i> Liepajas Valsts Tehnikums
+                            <i class="glyphicon glyphicon-map-marker"></i> Liepajas Valsts tehnikums
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
                             nezinu: <strong>1</strong>

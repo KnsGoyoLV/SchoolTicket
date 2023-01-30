@@ -25,7 +25,7 @@ if(!isset($_SESSION['t'])){
 <header>
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="navbar-brand">Liepajas Valsts Tehnikums</a>
+        <a href="#" class="navbar-brand">Liepajas Valsts ehnikums</a>
         
         <button
           class="navbar-toggler"
