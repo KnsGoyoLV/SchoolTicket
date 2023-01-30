@@ -223,8 +223,6 @@
 
 
     ?>
-
-   <h>TEST</h>
 </table>    
 
 <div class="footer">
