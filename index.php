@@ -102,10 +102,10 @@
         <div class="collapse navbar-collapse " id="navmenu">
           <ul class="navbar-nav ms-auto  ">
             <li class="nav-item">
-              <a href="#Mainpage" class="nav-link"><i class="fas fa-home"></i>Sākum Lapa</a>
+              <a href="#Mainpage" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
             </li>
             <li class="nav-item">
-              <a href="newinfo.php" class="nav-link"><i class="fas fa-plus"></i>Pievienot Problēmas</a>
+              <a href="newinfo.php" class="nav-link"><i class="fas fa-plus"></i>Pievienot pieteikumu</a>
             </li>
             <li class="nav-item">
               <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
@@ -133,11 +133,11 @@
 <table class="table align-middle mb-2 table-responsive">
   <thead class="thead-dark">
     <tr>
-      <th>Iela un Klase/Datums</th>
-      <th>Problema</th>
-      <th>Piezime</th>
+      <th>Iela un telpa/datums</th>
+      <th>Problēma</th>
+      <th>Piezīme</th>
       <th>Statuss</th>
-      <th>IT/Remonta darbs</th>
+      <th>IT/remonta darbs</th>
       <th>Apstiprināt</th>
     </tr>
   </thead>
@@ -205,7 +205,7 @@
 
          
          ?>
-           <p class="fw-normal mb-2">Pagaidām vel nav atrisināts</p>
+           <p class="fw-normal mb-2">Pagaidām vēl nav atrisināts</p>
            <?php
           }
           ?>
@@ -223,6 +223,7 @@
 
 
     ?>
+    
 </table>    
 
 <div class="footer">

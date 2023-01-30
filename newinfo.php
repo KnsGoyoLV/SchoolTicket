@@ -39,10 +39,10 @@ if(!isset($_SESSION['t'])){
         <div class="collapse navbar-collapse " id="navmenu">
           <ul class="navbar-nav ms-auto  ">
             <li class="nav-item">
-              <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākum Lapa</a>
+              <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" ><i class="fas fa-plus"></i>Pievienot Problēmas</a>
+              <a href="#" class="nav-link" ><i class="fas fa-plus"></i>Pievienot Pieteikumu</a>
             </li>
             <li class="nav-item">
               <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
@@ -75,7 +75,7 @@ if(!isset($_SESSION['t'])){
      <h3 align="center">Lūdzu ievadiet informāciju</h3>  
      <div class="form-group row ">
      <select class="form-select" id="Iela"name="Iela">
-        <option selected>Lūdzu izvēlējaties ielu</option>
+        <option selected>Izvēlēties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
@@ -100,3 +100,9 @@ if(!isset($_SESSION['t'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
 </body>
 </html>
+
+
+<?php
+// Problema - Pieteikums
+// Izveleties ielu
+?>
