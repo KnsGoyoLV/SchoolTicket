@@ -631,12 +631,12 @@ label {
     border-bottom: 1px solid #ddd;
     
 }
-.table{
-	width: 100%;
-	border-collapse: collapse;
+.table {
+    width: 98%;
+    border-collapse: collapse;
     background-color: #fff;
-}
-
+    margin-left: 1%;
+}   
 .table td,.table th{
   padding:12px 15px;
   border:1px solid #ddd;
