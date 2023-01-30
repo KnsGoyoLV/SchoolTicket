@@ -128,62 +128,7 @@
 
 
 <br /><br />  
-           <div class="container">    
-                <div class="table-responsive">  
-                     <table id="employee_data" class="table">
-                      <thead>  
-                     <tr>
-                    <th>Datums</th>
-                    <th>Iela</th>
-                    <th>Klase</th>
-                    <th>Problēmas</th>
-                    <th>Piezīmes</th>                  
-                    <th>Statuss</th>
-                </tr>
-                </thead> 
-                <tbody>
-                <?php
-               
-
-                $result = $pdo->query("SELECT * FROM pieteikums WHERE epasts ='".$_SESSION['email']."'");
-                $rows = $result->fetchAll();
-
-                foreach ($rows as $row) {
-                    echo "<tr>";
-                    echo"<td>" . $row['laiks'] . "</td>" ;
-                    echo"<td>" . $row['iela'] . "</td>" ;
-                    echo"<td>" . $row['telpa'] . "</td>" ;
-                    echo"<td>" . $row['problema'] . "</td>" ;
-                    echo"<td>" . $row['piezimes'] . "</td>" ;
-
-              
-                    // if database status is not done then print out status
-                    if($row['status'] != 'Atrisināts' )
-                        echo"<td>" . $row['status'] . "</td>" ;  
-                    elseif(isset($_POST['button'.$row['ticket_id']])&& $_POST['button'.$row['ticket_id']] == $row['ticket_id']){
-                       // check if button+ticket id has any value and if it is the same with ticket_id,
-                       // then we set the tickets status verified 
-                        $pdo->query("UPDATE `pieteikums` SET `status` = 'Atrisināts(Parbaudīts)' WHERE `pieteikums`.`ticket_id` = ".$row['ticket_id']);
-                        header("Refresh:0");
-                    } else { // else if  is done but not verified then print out asking to verified the ticket
-                        echo'
-                        <td>
-                        <form method="post">
-                        <button type="submit" class="btn btn-success btn-sm"  name="button' . $row['ticket_id'] . '"  value="' . $row['ticket_id'] . '">Izdarīts</button>
-                        <button class="btn btn-danger btn-sm"  id="dbutton' . $row['ticket_id'] . '" value="' . $row['ticket_id'] . '" >Neizdarīts</button>
-                        </form>
-                        </td>
-                        ';
-                    }
-                    echo '</tr>';      
-                }
-                ?>
-                </tbody>
-                     </table>  
-                </div>  
-           </div>  
-
-</section>
+       
 
 <table class="table align-middle mb-2 table-responsive">
   <thead class="thead-dark">
@@ -215,9 +160,31 @@
         <p class="fw-normal mb-2"><?= $row['problema'];?></p>
       </td>
       <td>
-        <span class="badge badge-success rounded-pill d-inline" style="color: black"><?= $row['piezimes'];?></span>
+        <span  ><?= $row['piezimes'];?></span>
       </td>
-      <td><?= $row['status'];?></td>
+      <td>
+      <?php
+         if($row['status'] == 'Atrisināts'){
+          ?>
+           <span class="badge badge-warning"> <?= $row['status'];?></span>
+
+          <?php
+         }
+         elseif( $row['status'] == 'Atrisināts(Parbaudīts)'){
+          ?>
+          <span class="badge badge-success"> <?= $row['status'];?></span>
+          <?php
+         }
+         
+         else{
+
+         
+         ?>
+          <span class="badge badge-info"> <?= $row['status'];?></span>
+           <?php
+          }
+          ?>
+      </td>
       <td>TODO:</td>
       <td>
         <form method="post">
@@ -231,8 +198,6 @@
             <button type="button" class="btn btn-link btn-sm btn-rounded">
               Neizdarīts
             </button>
-         
-
 
 
           <?php
@@ -248,6 +213,7 @@
       </td>
 
     </tr>
+
   </tbody>
       
 
@@ -258,7 +224,7 @@
 
     ?>
 
-   
+   <h>TEST</h>
 </table>    
 
 <div class="footer">
