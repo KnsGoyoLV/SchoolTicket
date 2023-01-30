@@ -117,7 +117,7 @@ header .logo{
 header .navbar a{
     
     font-size: 1.7rem;
-    color: #919191;
+    color: whitesmoke;
     margin-left: 1rem;
     text-decoration: none;
     font-family: ui-sans-serif;
@@ -128,10 +128,6 @@ header .navbar a:hover{
     text-decoration: none;
 }
 
-header .navbar .active{
-    color: rgb(255, 255, 255);
-    text-decoration: underline;
-}
 
 #menu-btn{
     cursor: pointer;

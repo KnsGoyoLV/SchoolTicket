@@ -25,7 +25,7 @@ if(!isset($_SESSION['t'])){
 <header>
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="navbar-brand">Liepajas Valsts Tehnikums</a>
+        <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
         
         <button
           class="navbar-toggler"
@@ -42,7 +42,7 @@ if(!isset($_SESSION['t'])){
               <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link" ><i class="fas fa-plus"></i>Pievienot Pieteikumu</a>
+              <a href="#" class="nav-link" style="background-color: #4782b5;" ><i class="fas fa-plus"></i>Pievienot Pieteikumu</a>
             </li>
             <li class="nav-item">
               <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
