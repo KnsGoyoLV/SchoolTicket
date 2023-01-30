@@ -25,7 +25,7 @@ if(!isset($_SESSION['t'])){
 <header>
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="animate-charcter">Liepajas Valsts Tehnikums</a>
+        <a href="#" class="animate-charcter">Liepajas Valsts tehnikums</a>
         
         <button
           class="navbar-toggler"
@@ -72,7 +72,7 @@ if(!isset($_SESSION['t'])){
          header('location:index.php');
         }
      ?>
-     <h3 align="center">Lūdzu ievadiet informāciju</h3>  
+     <h3 class="IInfo" align="center">Lūdzu ievadiet informāciju</h3>  
      <div class="form-group row ">
      <select class="form-select" id="Iela"name="Iela">
         <option selected>Izvēlēties ielu</option>
