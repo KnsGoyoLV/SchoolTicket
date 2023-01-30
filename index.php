@@ -220,13 +220,33 @@
       <td><?= $row['status'];?></td>
       <td>TODO:</td>
       <td>
-        <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Izdarīts
-        </button>
-        <button type="button" class="btn btn-link btn-sm btn-rounded">
-          Neizdarīts
-        </button>
+        <form method="post">
+      <?php
+         if($row['status'] == 'Atrisināts' ){
+          ?>
+            
+            <button type="button" class="btn btn-link btn-sm btn-rounded">
+              Izdarīts
+            </button>
+            <button type="button" class="btn btn-link btn-sm btn-rounded">
+              Neizdarīts
+            </button>
+         
+
+
+
+          <?php
+         }else{
+
+         
+         ?>
+           <p class="fw-normal mb-2">Pagaidām vel nav atrisināts</p>
+           <?php
+          }
+          ?>
+         </form>
       </td>
+
     </tr>
   </tbody>
       
