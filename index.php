@@ -189,11 +189,11 @@
   <thead class="bg-light">
     <tr>
       <th>Iela un Klase/Datums</th>
-      <th>Iela</th>
-      <th>Klase</th>
-      <th>Problēmas</th>
-      <th>Piezīmes</th>
+      <th>Problema</th>
+      <th>Piezime</th>
+      <th>Remonta vai IT darbs</th>
       <th>Status</th>
+      <th>Apstipriāt</th>
     </tr>
   </thead>
   <tbody>
