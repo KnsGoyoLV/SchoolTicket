@@ -117,6 +117,7 @@ header .logo{
 .IInfo{
     text-align: center;
     margin-right: 7.2rem;
+    text-decoration: none;
 }
 
 header .navbar a{
@@ -651,6 +652,7 @@ label {
     text-decoration: none;
     background-color: #fff;
     color: black;
+    text-decoration: none;
 }
 
 .table {
