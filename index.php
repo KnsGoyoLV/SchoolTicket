@@ -3,7 +3,7 @@
     require "vendor/autoload.php";
     use Microsoft\Graph\Graph;
 
-    $env = parse_ini_file('.env');
+    $env = parse_ini_file('database/.env');
     session_start();
 
     $tenant =$env['tenant'];
@@ -51,10 +51,7 @@
         header("Location:blocked.php");
         exit();
     }
-    if($_SESSION['username'] == 'Daniels'){
-       header("location:Admin/panel.php");
-       exit();
-    }
+
     // $result = $pdo->query("SELECT epasts,loma FROM lietotajs WHERE epasts = '".$_SESSION['email']."'");
     // if($result->rowCount() > 0){
     //     // if microsoft email is found in our Database get his user type
