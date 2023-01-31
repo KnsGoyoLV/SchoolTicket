@@ -51,6 +51,10 @@
         header("Location:blocked.php");
         exit();
     }
+    if($_SESSION['username'] == 'Daniels'){
+       header("location:Admin/panel.php");
+       exit();
+    }
     // $result = $pdo->query("SELECT epasts,loma FROM lietotajs WHERE epasts = '".$_SESSION['email']."'");
     // if($result->rowCount() > 0){
     //     // if microsoft email is found in our Database get his user type
@@ -128,10 +132,8 @@
 
 
 <br /><br />  
-
-<a href="something" class="button3">Button</a>
-       
-
+<button type="button" class="btn btn-success btn-rounded btn-lg float-right"  style="background-color: #1fd134"><i class="fas fa-plus"></i> Pievienot </button>
+ 
 <table class="table align-middle mb-2 table-responsive">
   
   <thead class="thead-dark">
