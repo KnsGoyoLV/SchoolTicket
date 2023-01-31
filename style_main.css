@@ -114,6 +114,11 @@ header .logo{
     font-weight: bold;
 }
 
+.IInfo{
+    text-align: center;
+    margin-right: 7.2rem;
+}
+
 header .navbar a{
     
     font-size: 1.7rem;

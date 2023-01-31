@@ -72,7 +72,7 @@ if(!isset($_SESSION['t'])){
          header('location:index.php');
         }
      ?>
-     <h3 class="IInfo" align="center">Lūdzu ievadiet informāciju</h3>  
+     <h3 class="IInfo">Lūdzu ievadiet informāciju</h3>  
      <div class="form-group row ">
      <select class="form-select" id="Iela"name="Iela"required>
         <option selected>Izvēlēties ielu</option>
