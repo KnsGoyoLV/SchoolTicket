@@ -85,13 +85,14 @@ session_start();
       <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums </a>
       </a>
       <!-- Search form -->
-      <form class="d-none d-md-flex input-group w-auto my-auto">
+      <form class="d-none d-md-flex input-group w-auto my-auto" method="get">
         <input
           autocomplete="off"
           type="search"
           class="form-control rounded"
           placeholder='Search (ctrl + "/" to focus)'
           style="min-width: 225px;"
+          name = "searchbar"
         />
         <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
       </form>
@@ -177,24 +178,30 @@ session_start();
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
+<div class="table-responsive-md ">
   <div class="container pt-4">
-
-  <table class="table align-middle mb-2 table-responsive">
+  
+  <table class="table w-auto">
   
   <thead class="thead-dark">
     <tr>
-      <th>Skolotajs</th>
-      <th>Iela un telpa/datums</th>
-      <th>Problēma</th>
-      <th>Piezīme</th>
-      <th>Statuss</th>
-      <th>IT/remonta darbs</th>
-      <th>Rediģēt</th>
+      <th class="th-sm">Skolotajs</th>
+      <th class="th-sm">Iela un telpa/datums</th>
+      <th class="th-sm">Problēma</th>
+      <th class="th-sm">Piezīme</th>
+      <th class="th-sm">Statuss</th>
+      <th class="th-sm">IT/remonta darbs</th>
+      <th class="th-sm">Rediģēt</th>
     </tr>
   </thead>
   <tbody>
     <?php
-      $result = $pdo->query("SELECT * FROM pieteikums");
+     $keyword = $_GET['searchbar'];
+
+        if($keyword){
+        $result = $pdo->query("SELECT * FROM `pieteikums` where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' ORDER BY `pieteikums`.`laiks` DESC");
+        }else
+        $result = $pdo->query("SELECT * FROM pieteikums");
       $rows = $result->fetchAll();
     foreach ($rows as $row) {
       ?>
@@ -273,7 +280,8 @@ session_start();
 
     ?>
     
-</table>    
+</table> 
+  </div>   
   </div>
 </main>
 <!--Main layout-->
