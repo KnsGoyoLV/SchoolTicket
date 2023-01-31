@@ -1,0 +1,162 @@
+body {
+  background-color: #3a3535;
+}
+@media (min-width: 991.98px) {
+  main {
+    padding-left: 240px;
+  }
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0; /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    width: 100%;
+  }
+}
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+.bg-gray{
+  background-color: #191c24!important;;
+
+}
+a.list-group-item.list-group-item-action.py-2.ripple {
+  background-color: #191c24;
+  color: orangered;
+}
+a.list-group-item.list-group-item-action.py-2.ripple.active {
+  background-color: aliceblue;
+  color: black;
+}
+/* icons from black to white */
+i.fas.fa-fill-drip {
+  color: white;
+}
+a#navbarDropdownMenuLink {
+  color: white;
+}
+a.nav-link {
+  color: white;
+}
+button.navbar-toggler {
+  color: white;
+}
+
+.animate-charcter
+{
+  
+  background-image: linear-gradient(
+    -225deg,
+    #ffffff 0%,
+    #c5c5c5 29%,
+    #85c2d6 67%,
+    #445aa1 100%
+  );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* Table stuff here */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #191c24;
+  margin-left: 0%;
+  color: white;
+}  
+.table td,.table th{
+padding:12px 15px;
+border:1px solid #ddd;
+text-align: center;
+font-size:16px;
+}
+
+.table th{
+background-color: #191c24;
+color: rgb(224, 224, 224);
+}
+
+.table tbody tr:nth-child(even){
+background-color: #f5f5f5;
+}
+
+.text-muted {
+  --bs-text-opacity: 1;
+  color: white!important;
+}
+
+/* Bootstrap badge here */
+.badge-info {
+  background-color: #3a87ad;
+}
+
+.badge-info:hover {
+  background-color: #2d6987;
+}
+.badge-outline-info {
+  color: #439cc9;
+  border: 1px solid #439cc9;
+}
+.badge-success {
+  background-color: #468847;
+}
+.badge-outline-success {
+  color: #00d25b;
+  border: 1px solid #00d25b;
+}
+.badge-success:hover {
+  background-color: #356635;
+}
+.badge-warning {
+  background-color: #f89406;
+}
+.badge-outline-warning {
+  color: #f8a306;
+  border: 1px solid #f8a306;
+}
+.badge-warning:hover {
+  background-color: #c67605;
+}
+/* BootStrap btn here */
+.btn{
+  --bs-btn-padding-y: 0rem
+}
