@@ -627,6 +627,27 @@ label {
     border-bottom: 1px solid #ddd;   
 }
 
+.pogaa button{
+    text-align: center;
+    margin-bottom:1rem;
+    margin-right: 1.8rem;
+    background-color: #1fd134;
+    font-size: 2rem;
+    color: #333;
+    text-decoration: none;
+}
+
+.pogaa{
+    text-align: right;
+    text-decoration: none;
+}
+.pogaa button:hover{
+    text-align: right;
+    text-decoration: none;
+    background-color: #fff;
+    color: black;
+}
+
 .table {
     width: 98%;
     border-collapse: collapse;
