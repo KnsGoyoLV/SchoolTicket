@@ -281,8 +281,11 @@ form {
 }
 
 
-.searchb{
- margin-top: auto;
- margin-bottom: auto;
- margin-left: 1rem;
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
 }
