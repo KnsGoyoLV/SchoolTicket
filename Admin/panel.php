@@ -120,7 +120,7 @@ session_start();
             href="#"
             id="navbarDropdownMenuLink"
             role="button"
-            data-mdb-toggle="dropdown"
+            data-bs-toggle="dropdown"
             aria-expanded="false"
           >
             Daniels Vidopskis
@@ -136,7 +136,7 @@ session_start();
               <a class="dropdown-item" href="#">Settings</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="../logout.php">Logout</a>
             </li>
           </ul>
         </li>
