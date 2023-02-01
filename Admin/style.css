@@ -1,5 +1,5 @@
 body {
-  background-color: #3a3535;
+  background-color: #a1a1a1;
 }
 @media (min-width: 991.98px) {
   main {
@@ -14,7 +14,7 @@ body {
   bottom: 0;
   left: 0;
   padding: 58px 0 0; /* Height of navbar */
-  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgba(190, 62, 62, 0.05);
   width: 200px;
   z-index: 600;
   font-size: 0.95;
@@ -40,16 +40,17 @@ body {
 }
 
 .bg-gray{
-  background-color: #191c24!important;;
+  background-color: #2c659f!important;;
 
 }
 a.list-group-item.list-group-item-action.py-2.ripple {
-  background-color: #191c24;
-  color: orangered;
+  background-color: #fff;
+  color: black;
 }
 a.list-group-item.list-group-item-action.py-2.ripple.active {
-  background-color: aliceblue;
-  color: black;
+  background-color: grey;
+  color: #fff;
+  box-shadow: 10px 10px 5px lightblue;
 }
 /* icons from black to white */
 i.fas.fa-fill-drip {
@@ -101,8 +102,9 @@ button.navbar-toggler {
   width: 100%;
   border-collapse: inherit;
   margin-left: 0%;
-  color: white;
+  color: black;
   display: inline-block;
+  box-shadow: 10px 10px 5px lightblue;
 } 
 .table td,.table th{
 padding:12px 15px;
@@ -112,8 +114,8 @@ font-size:16px;
 }
 
 .table th{
-background-color: #191c24;
-color: rgb(224, 224, 224);
+background-color: #5cabd4;
+color: black;
 }
 
 .table tbody tr:nth-child(even){
@@ -121,7 +123,7 @@ background-color: #f5f5f5;
 }
 .table tr{
   margin-bottom:25px;
-  background-color: #191c24;
+  background-color: #fff;
 }
 .text-muted {
   --bs-text-opacity: 1;
@@ -276,4 +278,11 @@ form {
   display: flex;
   justify-content: space-between;
   padding-right: 26%;
+}
+
+
+.searchb{
+ margin-top: auto;
+ margin-bottom: auto;
+ margin-left: 1rem;
 }
