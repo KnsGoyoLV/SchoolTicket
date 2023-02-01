@@ -127,7 +127,7 @@ background-color: #f5f5f5;
 }
 .text-muted {
   --bs-text-opacity: 1;
-  color: white!important;
+  color: black!important;
 }
 .table>thead {
   vertical-align: baseline;
