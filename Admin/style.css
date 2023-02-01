@@ -277,3 +277,13 @@ form {
   justify-content: space-between;
   padding-right: 26%;
 }
+
+
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
