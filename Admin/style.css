@@ -3,7 +3,7 @@ body {
 }
 @media (min-width: 991.98px) {
   main {
-    padding-left: 240px;
+    padding-left: 20px;
   }
 }
 
@@ -15,8 +15,9 @@ body {
   left: 0;
   padding: 58px 0 0; /* Height of navbar */
   box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
-  width: 240px;
+  width: 200px;
   z-index: 600;
+  font-size: 0.95;
 }
 
 @media (max-width: 991.98px) {
@@ -98,10 +99,11 @@ button.navbar-toggler {
 /* Table stuff here */
 .table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: inherit;
   margin-left: 0%;
   color: white;
-}  
+  display: inline-block;
+} 
 .table td,.table th{
 padding:12px 15px;
 border:1px solid #ddd;
@@ -125,7 +127,10 @@ background-color: #f5f5f5;
   --bs-text-opacity: 1;
   color: white!important;
 }
-
+.table>thead {
+  vertical-align: baseline;
+  white-space: nowrap;
+}
 /* Bootstrap badge here */
 .badge-info {
   background-color: #3a87ad;

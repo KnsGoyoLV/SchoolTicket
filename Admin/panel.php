@@ -9,9 +9,12 @@ session_start();
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LVT TicketSupport</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,37 +29,13 @@ session_start();
           class="list-group-item list-group-item-action py-2 ripple active"
           aria-current="true"
         >
-          <i class="fas fa-tachometer-alt fa-fw me-3 a"></i><span>Main dashboard</span>
+          <i class="fas fa-tachometer-alt fa-fw me-3 a"></i><span>Pieteikuma pārskats</span>
         </a>
         <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-          <i class="fas fa-chart-area fa-fw me-3"></i><span>Webiste traffic</span>
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Konsultāciju saraksts</span>
         </a>
         <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-lock fa-fw me-3"></i><span>Password</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-chart-line fa-fw me-3"></i><span>Analytics</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple">
-          <i class="fas fa-chart-pie fa-fw me-3"></i><span>SEO</span>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-chart-bar fa-fw me-3"></i><span>Orders</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-globe fa-fw me-3"></i><span>International</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-building fa-fw me-3"></i><span>Partners</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-calendar fa-fw me-3"></i><span>Calendar</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-users fa-fw me-3"></i><span>Users</span></a
-        >
-        <a href="#" class="list-group-item list-group-item-action py-2 ripple"
-          ><i class="fas fa-money-bill fa-fw me-3"></i><span>Sales</span></a
+          ><i class="fas fa-lock fa-fw me-3"></i><span>Konsultāciju pārskats</span></a
         >
       </div>
     </div>
@@ -85,12 +64,12 @@ session_start();
       <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums </a>
       </a>
       <!-- Search form -->
-      <form class="d-none d-md-flex input-group w-auto my-auto" method="get">
+      <form class="d-none d-md-flex input-group w-auto my-auto" method="post">
         <input
           autocomplete="off"
           type="search"
           class="form-control rounded"
-          placeholder='Search (ctrl + "/" to focus)'
+          placeholder='Meklēt'
           style="min-width: 225px;"
           name = "searchbar"
         />
@@ -134,13 +113,6 @@ session_start();
             <i class="fas fa-fill-drip"></i>
           </a>
         </li>
-        <!-- Icon -->
-        <li class="nav-item me-3 me-lg-0">
-          <a class="nav-link" href="#">
-            <i class="fab fa-github"></i>
-          </a>
-        </li>
-
         <!-- Avatar -->
         <li class="nav-item dropdown">
           <a
@@ -196,9 +168,10 @@ session_start();
   </thead>
   <tbody>
     <?php
-     $keyword = $_GET['searchbar'];
+        if(isset($_POST['searchbar']))
+        $keyword = $_POST['searchbar'];
 
-        if($keyword){
+        if(isset($keyword)){
         $result = $pdo->query("SELECT * FROM `pieteikums` where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' ORDER BY `pieteikums`.`laiks` DESC");
         }else
         $result = $pdo->query("SELECT * FROM pieteikums");
@@ -286,6 +259,11 @@ session_start();
 </main>
 <!--Main layout-->
 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
 
 </body>
 </html>

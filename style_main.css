@@ -30,7 +30,9 @@ body{
  
 }
 
-
+a{
+    text-decoration: none;
+}
 
 *::selection{
     background:var(--main-color);
