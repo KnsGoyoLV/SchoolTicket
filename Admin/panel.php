@@ -168,7 +168,8 @@ session_start();
   </thead>
   <tbody>
     <?php
-     $keyword = $_POST['searchbar'];
+        if(isset($_POST['searchbar']))
+        $keyword = $_POST['searchbar'];
 
         if(isset($keyword)){
         $result = $pdo->query("SELECT * FROM `pieteikums` where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' ORDER BY `pieteikums`.`laiks` DESC");
