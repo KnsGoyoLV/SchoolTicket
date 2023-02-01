@@ -25,13 +25,13 @@ session_start();
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
-          href="#"
-          class="list-group-item list-group-item-action py-2 ripple active"
+          href="panel.php"
+          class="list-group-item list-group-item-action py-2 ripple"
           aria-current="true"
         >
           <i class="fas fa-tachometer-alt fa-fw me-3 a"></i><span>Pieteikuma pārskats</span>
         </a>
-        <a href="kons.php" class="list-group-item list-group-item-action py-2 ripple">
+        <a href="#" class="list-group-item list-group-item-action py-2 ripple active">
           <i class="fas fa-chart-area fa-fw me-3"></i><span>Konsultāciju saraksts</span>
         </a>
         <a href="#" class="list-group-item list-group-item-action py-2 ripple"
@@ -150,112 +150,7 @@ session_start();
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
-<div class="table-responsive-md ">
-  <div class="container pt-4">
-  
-  <table class="table w-auto">
-  
-  <thead class="thead-dark">
-    <tr>
-      <th class="th-sm">Skolotajs</th>
-      <th class="th-sm">Iela un telpa/datums</th>
-      <th class="th-sm">Problēma</th>
-      <th class="th-sm">Piezīme</th>
-      <th class="th-sm">Statuss</th>
-      <th class="th-sm">IT/remonta darbs</th>
-      <th class="th-sm">Rediģēt</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php
-        if(isset($_POST['searchbar']))
-        $keyword = $_POST['searchbar'];
 
-        if(isset($keyword)){
-        $result = $pdo->query("SELECT * FROM `pieteikums` where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' ORDER BY `pieteikums`.`laiks` DESC");
-        }else
-        $result = $pdo->query("SELECT * FROM pieteikums");
-      $rows = $result->fetchAll();
-    foreach ($rows as $row) {
-      ?>
-         <tr>
-        <td>
-        <div class="d-flex align-items-center">
-          <div class="ms-6">
-            <p class="fw-bold mb-1">Skolotāja Krutā</p>
-            <p class="text-muted mb-1">coolteacher@gmail.com</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="d-flex align-items-center">
-          <div class="ms-6">
-          <p class="fw-bold mb-1"><?= $row['laiks'];?></p>
-            <p class="text-muted mb-1"><?= $row['iela'];?>: <?= $row['telpa'];?></p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <p class="fw-normal mb-2"><?= $row['problema'];?></p>
-      </td>
-      <td>
-        <span  ><?= $row['piezimes'];?></span>
-      </td>
-      <td>
-      <?php
-         if($row['status'] == 'Atrisināts'){
-          ?>
-           <span class="badge badge-outline-warning"> <?= $row['status'];?></span>
-
-          <?php
-         }
-         elseif( $row['status'] == 'Atrisināts(Parbaudīts)'){
-          ?>
-          <span class="badge badge-outline-success"> <?= $row['status'];?></span>
-          <?php
-         }
-         
-         else{
-
-         
-         ?>
-          <span class="badge badge-outline-info"> <?= $row['status'];?></span>
-           <?php
-          }
-          ?>
-      </td>
-      <td>TODO:</td>
-      <td>
-        <form method="post">
-      <?php
-        
-          ?>
-            
-            <button type="button" class="btn btn-success btn-rounded">Apstiprināt</button>
-            <button type="button" class="btn btn-danger btn-rounded">Izdzēst</button>
-            <button type="button" class="btn btn-warning btn-rounded">Rediģēt</button>
-
-
-        
-         
-         </form>
-      </td>
-
-    </tr>
-
-  </tbody>
-      
-
-
-    <?php
-    }
-
-
-    ?>
-    
-</table> 
-  </div>   
-  </div>
 </main>
 <!--Main layout-->
 
