@@ -256,7 +256,6 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
 </div>
 <div class="table-responsive-md" >
   <table class="mw-100" alt="Max-width 100%">
-  
   <thead class="thead-dark">
     <tr>
       <th class="th-sm">Skolotajs</th>
@@ -328,9 +327,6 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
             <button type="button" class="btn btn-success btn-rounded">Apstiprināt</button>
             <button type="button" class="btn btn-danger btn-rounded">Izdzēst</button>
             <button type="button" class="btn btn-warning btn-rounded">Rediģēt</button>
-
-
-        
          
          </form>
       </td>
