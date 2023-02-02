@@ -146,7 +146,11 @@ header .navbar a:hover{
     background: var(--bg);
     display: none;
 }
+.dropdown-item {
 
+    color: black!important;
+
+}
 #menu-btn:hover{
     color: #fff;
     background: var(--main-color);

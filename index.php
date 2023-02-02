@@ -111,12 +111,31 @@
             <li class="nav-item">
               <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
             </li>
-            <li class="nav-item">
-                <a hred="logout.php"><?php 		
-                echo " <a href='logout.php' style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "<i class='fas fa-power-off'></i></a>";     
-                ?>
-            </nav>
-            </li>    
+
+            <!-- Username and surname with drop down menu for login and admin panel  !-->
+            <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <?= $_SESSION['username'];?>  <?= $_SESSION['surname'];?>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="Admin/login.php">Admin panel</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="../logout.php">Logout</a>
+            </li>
+          </ul>
+        </li>
           </ul>
         </div>
       </div>

@@ -15,7 +15,7 @@
                 <p class="lead">
                     Lapa, kuru meklējat, neeksistē.
                   </p>
-                <a href="../login.php" class="btn btn-primary">Go Home</a>
+                <a href="../login.php" class="btn btn-primary">Dodieties uz sākumlapu</a>
             </div>
         </div>
     </body>

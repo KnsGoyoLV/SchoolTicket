@@ -31,6 +31,7 @@ if (array_key_exists ('access_token', $_POST)){
         $_SESSION['email'] = $rez['mail'];
         $_SESSION['id'] = $rez["id"];
         $_SESSION['job'] = $rez["jobTitle"];
+        $_SESSION['fullname'] = $rez["displayName"];
     }
     curl_close ($ch);
     header ('Location: ' . $callback);
@@ -171,7 +172,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Daniels Vidopskis
+          <?= $_SESSION['username'];?>  <?= $_SESSION['surname'];?>
           </a>
           <ul
             class="dropdown-menu dropdown-menu-end"
