@@ -70,7 +70,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
     <!--Main Navigation-->
 <header>
   <!-- Sidebar -->
-  <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-gray">
+  <nav id="sidebarMenu" class="collapse d-xl-block sidebar collapse bg-gray">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
         <a
@@ -199,10 +199,63 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
 
 <!--Main layout-->
 <main style="margin-top: 58px;">
-<div class="table-responsive-md ">
-  <div class="container pt-4">
+<?php        
+        if(isset($_POST['searchbar']))
+        $keyword = $_POST['searchbar'];
+
+        if(isset($keyword) && !empty($keyword)){
+        $result = $pdo->query("SELECT * FROM pieteikums where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' ORDER BY `pieteikums`.`laiks` DESC");
+        }else{
+          $result = $pdo->query("SELECT * FROM pieteikums");
+         
+        }
+        $total = $pdo->query("SELECT * FROM pieteikums");
+        $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') ");
+        $not_done =  $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
+        $proces =  $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
+
+        $rows = $result->fetchAll();
+
+
+?>
+
+
+  <div class="container pt-4 ">
   
-  <table class="table w-auto">
+<div class="jumbotron ">
+<div class="row w-100">
+        <div class="col-md-3">
+            <div class="card border-info mx-sm-1 p-3">
+                <div class="card border-info shadow text-info p-3 my-card" ><i class="fa fa-list-alt" aria-hidden="true"></i></div>
+                <div class="text-info text-center mt-3"><h4>Kopā</h4></div>
+                <div class="text-info text-center mt-2"><h1><?= $total->rowCount();?></h1></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-success mx-sm-1 p-3">
+                <div class="card border-success shadow text-success p-3 my-card"><i class="fa fa-check-circle" aria-hidden="true"></i></div>
+                <div class="text-success text-center mt-3"><h4>Pabeigtie</h4></div>
+                <div class="text-success text-center mt-2"><h1><?= $done->rowCount();?></h1></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-danger mx-sm-1 p-3">
+                <div class="card border-danger shadow text-danger p-3 my-card" ><i class="fa fa-times-circle" aria-hidden="true"></i></div>
+                <div class="text-danger text-center mt-3"><h4>Nepabeigtie</h4></div>
+                <div class="text-danger text-center mt-2"><h1><?= $not_done->rowCount();?></h1></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card border-warning mx-sm-1 p-3">
+                <div class="card border-warning shadow text-warning p-3 my-card" ><i class="fa fa-spinner" aria-hidden="true"></i></div>
+                <div class="text-warning text-center mt-3"><h4>Procesā</h4></div>
+                <div class="text-warning text-center mt-2"><h1><?= $proces->rowCount();?></h1></div>
+            </div>
+        </div>
+     </div>
+</div>
+<div class="table-responsive-md" >
+  <table class="mw-100" alt="Max-width 100%">
   
   <thead class="thead-dark">
     <tr>
@@ -217,14 +270,6 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
   </thead>
   <tbody>
     <?php
-        if(isset($_POST['searchbar']))
-        $keyword = $_POST['searchbar'];
-
-        if(isset($keyword)){
-        $result = $pdo->query("SELECT * FROM `pieteikums` where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' ORDER BY `pieteikums`.`laiks` DESC");
-        }else
-        $result = $pdo->query("SELECT * FROM pieteikums");
-      $rows = $result->fetchAll();
     foreach ($rows as $row) {
       ?>
          <tr>
@@ -291,16 +336,16 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       </td>
 
     </tr>
-
-  </tbody>
-      
-
-
     <?php
     }
 
 
     ?>
+  </tbody>
+      
+
+
+    
     
 </table> 
   </div>   

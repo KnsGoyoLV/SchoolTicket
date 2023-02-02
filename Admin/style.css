@@ -120,6 +120,24 @@ color: black;
 .table tbody tr:nth-child(even){
 background-color: #f5f5f5;
 }
+
+tbody {
+  background: lightgray;
+  color: black;
+  font-size: 1.2rem;
+}
+
+thead {
+  background-color: white;
+  font-size: 1.05rem;
+  border-bottom: solid;
+}
+tr {
+  border: groove;
+}
+
+
+
 .table tr{
   margin-bottom:25px;
   background-color: #fff;
@@ -170,7 +188,21 @@ background-color: #f5f5f5;
   margin-top: 0rem;
 }
 
+.my-card{
+    position:absolute;
+    left:40%;
+    top:-20px;
+    border-radius:50%;
+}
+.jumbotron {
+  margin-bottom: 1rem;
+  display: flex;
+}
 
+@media (min-width: 1400px){
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1221px;
+}}
 @media (min-width: 1000px){
   .h3, h3 {
       font-size: 2.75rem;
@@ -179,6 +211,13 @@ background-color: #f5f5f5;
       text-decoration-line: underline;
      
   }
+}
+
+@media(max-width: 1600px) {
+  .jumbotron {
+    margin-bottom: 1rem;
+    display: flex;
+}
 }
 
 @media(max-width: 450px){
