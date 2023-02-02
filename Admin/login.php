@@ -44,8 +44,8 @@ session_start();
               </div>
          
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
-              <hr class="my-3">
-              <form action="../login.php">
+              <hr class="my-2">
+              <form action="admin_callback.php">
               <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
               type="submit"><i class="fa-brands fa-windows"></i> Ienākt ar microsoft</button>
               </form>
