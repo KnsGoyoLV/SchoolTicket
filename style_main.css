@@ -646,7 +646,7 @@ label {
     background-color: #5cabd4;
     font-size: 2rem;
     color: #333;
-    box-shadow: 2px 8px;
+    box-shadow: 0 8px 8px -4px #fff;
 }
 
 .pogaa{
@@ -655,12 +655,15 @@ label {
 .pogaa button:hover{
     text-align: right;
     text-decoration: none;
-    background-color: #fff;
+    background-color: darkblue;
     color: black;
     text-decoration: none;
     transition: .5s;
-
 }
+
+a:visited {
+    color: white;
+  }
 
 .table {
     width: 98%;

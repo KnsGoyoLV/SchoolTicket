@@ -151,7 +151,7 @@
 
 
 <div class="pogaa">
-<button type="button"  class="btn btn-success btn-rounded btn-lg float-right"><i class="fas fa-plus"><a href="newinfo.php"></i> Pievienot </button></a>
+<button type="button"  class="btn btn-success btn-rounded btn-lg float-right"><i class='fa fa-plus' style='color: white'><a href="newinfo.php"></i> Pievienot </button></a>
 </div>
 
 
