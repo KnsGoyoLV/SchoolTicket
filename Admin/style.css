@@ -225,6 +225,10 @@ form {
   .jumbotron {
     margin-bottom: 1rem;
     display: flex;
+    justify-content: center;
+}
+.my-card {
+  left: 44%;
 }
 }
 
@@ -365,5 +369,8 @@ background: #eee;
   }
   .searchb {
     margin-left: 34%;
+}
+.pt-4 {
+  padding-top: 5.5rem!important;
 }
 }
