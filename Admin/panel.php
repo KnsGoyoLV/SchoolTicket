@@ -174,7 +174,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
             <li>
               <a class="dropdown-item" href="#">Settings</a>
             </li>
-            <li>
+            <li>.
               <a class="dropdown-item" href="../logout.php">Logout</a>
             </li>
           </ul>
