@@ -106,7 +106,7 @@
               <a href="#Mainpage" class="nav-link" style="background-color: #4782b5;"><i class="fas fa-home"></i>Sākumlapa</a>
             </li>
             <li class="nav-item">
-              <a href="newinfo.php" class="nav-link"><i class="fas fa-plus"></i>Pievienot pieteikumu</a>
+              <a href="pievienot.php" class="nav-link"><i class="fas fa-plus"></i>Pievienot pieteikumu</a>
             </li>
             <li class="nav-item">
               <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
@@ -122,7 +122,7 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-          <?= $_SESSION['username'];?>  <?= $_SESSION['surname'];?>
+          <?= $_SESSION ['username'];?>  <?= $_SESSION['surname'];?>
           </a>
           <ul
             class="dropdown-menu dropdown-menu-end"

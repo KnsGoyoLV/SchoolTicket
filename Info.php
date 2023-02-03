@@ -42,7 +42,7 @@ if(!isset($_SESSION['t'])){
               <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
             </li>
             <li class="nav-item">
-              <a href="newinfo.php" class="nav-link" ><i class="fas fa-plus"></i>Pievienot Problēmas</a>
+              <a href="pievienot.php" class="nav-link" ><i class="fas fa-plus"></i>Pievienot Problēmas</a>
             </li>
             <li class="nav-item">
               <a href="info.php" class="nav-link"style="background-color: #4782b5;"><i class="fas fa-circle-info"></i>Informācija</a>

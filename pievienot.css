@@ -94,3 +94,7 @@ header .navbar a:hover{
     background-color: black;
     color: #fff;
 }
+
+select#Iela {
+    margin-right: 1rem;
+}

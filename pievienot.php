@@ -81,24 +81,25 @@ if(!isset($_SESSION['t'])){
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
 <select class="form-select" id="Iela"name="Iela"required>
+    <div></div>
         <option selected>Izvēlēties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
-     <span class="input-group-text"><div class="majina"><i class="fa fa-home" aria-hidden="true"></div></i></span>
+     <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
      <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa">
 </div>
 
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
   <span class="input-group-text" id="basic-addon1">Problēma</span>
-  <input type="text" class="form-control" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1">
 </div>
 
 <div class="input-group">
 <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
   <span class="input-group-text">Piezīme</span>
-  <textarea class="form-control" placeholder="Piezīme" aria-label="With textarea"></textarea>
+  <textarea class="form-control"name="Piez" placeholder="Piezīme" aria-label="With textarea"></textarea>
 </div>
 
 <div class="submit">
