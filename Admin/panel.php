@@ -113,55 +113,12 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums </a>
       </a>
       <!-- Search form -->
-      <form class="searchb" method="post">
-        <input
-          autocomplete="off"
-          type="search"
-          class="form-control rounded"
-          placeholder='Meklēt'
-          style="min-width: 225px;"
-          name = "searchbar"
-        />
-        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
-      </form>
+     
 
       <!-- Right links -->
       <ul class="navbar-nav ms-auto d-flex flex-row">
         <!-- Notification dropdown -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow"
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="fas fa-bell"></i>
-            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <a class="dropdown-item" href="#">Some news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Another news</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Icon -->
-        <li class="nav-item">
-          <a class="nav-link me-3 me-lg-0" href="#">
-            <i class="fas fa-fill-drip"></i>
-          </a>
-        </li>
+        
         <!-- Avatar -->
         <li class="nav-item dropdown">
           <a
@@ -184,12 +141,24 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
             <li>
               <a class="dropdown-item" href="#">Settings</a>
             </li>
-            <li>
+            <li>.
               <a class="dropdown-item" href="../logout.php">Logout</a>
             </li>
           </ul>
         </li>
+        
       </ul>
+      <form class="searchb" method="post">
+        <input
+          autocomplete="off"
+          type="search"
+          class="form-control rounded"
+          placeholder='Meklēt'
+          style="min-width: 225px;"
+          name = "searchbar"
+        />
+        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+      </form>
     </div>
     <!-- Container wrapper -->
   </nav>
@@ -276,7 +245,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
         <div class="d-flex align-items-center">
           <div class="ms-6">
             <p class="fw-bold mb-1">Skolotāja Krutā</p>
-            <p class="text-muted mb-1">coolteacher@gmail.com</p>
+            <p class="text-muted mb-1"><?= $row['epasts'];?>  </p>
           </div>
         </div>
       </td>
@@ -320,13 +289,15 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       <td>TODO:</td>
       <td>
         <form method="post">
-      <?php
-        
+          <?php
+            if(isset($_POST['complete'.$row['ticket_id'].''])){
+                 header('location:index.php');
+              } 
           ?>
             
-            <button type="button" class="btn btn-success btn-rounded">Apstiprināt</button>
-            <button type="button" class="btn btn-danger btn-rounded">Izdzēst</button>
-            <button type="button" class="btn btn-warning btn-rounded">Rediģēt</button>
+            <button type="button" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>">Apstiprināt</button>
+            <button type="button" class="btn btn-danger btn-rounded" name="delete<?=$row['ticket_id'];?>">Izdzēst</button>
+            <button type="button" class="btn btn-warning btn-rounded" name="edit<?=$row['ticket_id'];?>">Rediģēt</button>
          
          </form>
       </td>

@@ -48,9 +48,8 @@ a.list-group-item.list-group-item-action.py-2.ripple {
   color: black;
 }
 a.list-group-item.list-group-item-action.py-2.ripple.active {
-  background-color: grey;
+  background-color: rgb(95, 95, 95);
   color: #fff;
-  box-shadow: 10px 10px 5px lightblue;
 }
 /* icons from black to white */
 i.fas.fa-fill-drip {
@@ -147,6 +146,9 @@ tr {
 .text-muted {
   --bs-text-opacity: 1;
   color: black!important;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+
 }
 .table>thead {
   vertical-align: baseline;
@@ -225,6 +227,10 @@ form {
   .jumbotron {
     margin-bottom: 1rem;
     display: flex;
+    justify-content: center;
+}
+.my-card {
+  left: 44%;
 }
 }
 
@@ -363,4 +369,10 @@ background: #eee;
     text-transform: uppercase;
     font-weight: bold;
   }
+  .searchb {
+    margin-left: 34%;
+}
+.pt-4 {
+  padding-top: 5.5rem!important;
+}
 }
