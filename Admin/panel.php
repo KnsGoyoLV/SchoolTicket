@@ -289,13 +289,11 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       <td>TODO:</td>
       <td>
         <form method="post">
-      <?php
-        
-          ?>
+    
             
-            <button type="button" class="btn btn-success btn-rounded" name="comeplete'<?= $row['id'];?>'">Apstiprināt</button>
-            <button type="button" class="btn btn-danger btn-rounded" name="delete'<?= $row['id'];?>'">Izdzēst</button>
-            <button type="button" class="btn btn-warning btn-rounded" name="edit'<?= $row['id'];?>'">Rediģēt</button>
+            <button type="button" class="btn btn-success btn-rounded" name="comeplete"<?=$row['ticket_id'];?>>Apstiprināt</button>
+            <button type="button" class="btn btn-danger btn-rounded" name="delete"<?=$row['ticket_id'];?>>Izdzēst</button>
+            <button type="button" class="btn btn-warning btn-rounded" name="edit"<?=$row['ticket_id'];?>>Rediģēt</button>
          
          </form>
       </td>
