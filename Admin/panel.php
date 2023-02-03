@@ -293,9 +293,9 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
         
           ?>
             
-            <button type="button" class="btn btn-success btn-rounded">Apstiprināt</button>
-            <button type="button" class="btn btn-danger btn-rounded">Izdzēst</button>
-            <button type="button" class="btn btn-warning btn-rounded">Rediģēt</button>
+            <button type="button" class="btn btn-success btn-rounded" name="comeplete'<?= $row['id'];?>'">Apstiprināt</button>
+            <button type="button" class="btn btn-danger btn-rounded" name="delete'<?= $row['id'];?>'">Izdzēst</button>
+            <button type="button" class="btn btn-warning btn-rounded" name="edit'<?= $row['id'];?>'">Rediģēt</button>
          
          </form>
       </td>
