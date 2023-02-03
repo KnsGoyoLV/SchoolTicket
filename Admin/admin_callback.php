@@ -9,7 +9,7 @@ $env = parse_ini_file('../database/.env');
 $login_url ="https://login.microsoftonline.com/".$env['tenant']."/oauth2/v2.0/authorize";
 $client_id = $env['client_id'];
 $client_secret = $env['client_secret'];
-$callback = $env['admin_callback'];
+$admin_callback = $env['admin_callback'];
 $scopes = ["https://graph.microsoft.com/.default","offline_access"];
 
 $params = array ('client_id' =>$client_id,
