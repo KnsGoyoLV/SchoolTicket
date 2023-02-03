@@ -65,6 +65,16 @@ if(!isset($_SESSION['t'])){
 
 <form class="container-md" method="post">
 
+<?php 
+     // if submited then send query to database and add the new row to the table with the new info
+        if(isset($_POST['submit1'])){
+         $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
+                                                ('".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '1', '".$_SESSION['email']."')");
+         header('location:index.php');
+        }
+        ?>
+
+
     <div class="INFO">
 <p class="font-monospace">Ievadiet nepieciešamo Informāciju</p>
 </div>
@@ -92,7 +102,7 @@ if(!isset($_SESSION['t'])){
 </div>
 
 <div class="submit">
-<button type="button" class="btn btn-secondary btn-lg">Pievienot</button>
+<button type="submit"name="submit1" value="Pievienot" class="btn btn-secondary btn-lg">Pievienot</button>
 </div>
 </form>
 
