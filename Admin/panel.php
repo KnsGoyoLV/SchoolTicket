@@ -113,17 +113,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums </a>
       </a>
       <!-- Search form -->
-      <form class="searchb" method="post">
-        <input
-          autocomplete="off"
-          type="search"
-          class="form-control rounded"
-          placeholder='Meklēt'
-          style="min-width: 225px;"
-          name = "searchbar"
-        />
-        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
-      </form>
+     
 
       <!-- Right links -->
       <ul class="navbar-nav ms-auto d-flex flex-row">
@@ -189,7 +179,19 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
             </li>
           </ul>
         </li>
+        
       </ul>
+      <form class="searchb" method="post">
+        <input
+          autocomplete="off"
+          type="search"
+          class="form-control rounded"
+          placeholder='Meklēt'
+          style="min-width: 225px;"
+          name = "searchbar"
+        />
+        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+      </form>
     </div>
     <!-- Container wrapper -->
   </nav>

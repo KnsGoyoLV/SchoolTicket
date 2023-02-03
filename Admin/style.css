@@ -363,4 +363,7 @@ background: #eee;
     text-transform: uppercase;
     font-weight: bold;
   }
+  .searchb {
+    margin-left: 34%;
+}
 }
