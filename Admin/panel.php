@@ -291,7 +291,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       <td>
         <?php
             if(isset($_POST['complete'.$row['ticket_id']]) ){
-             
+              $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='".$row['ticket_id']."'");
 
              }
              if(isset($_POST['delete'.$row['ticket_id']]) ){
