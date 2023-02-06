@@ -187,9 +187,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
 
 
 ?>
-
-
-  <div class="container pt-4 ">
+<div class="container pt-4 ">
   
 <div class="jumbotron ">
 <div class="row w-100">
@@ -290,9 +288,10 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       <td>
         <form method="post">
           <?php
-            if(isset($_POST['complete'.$row['ticket_id'].''])){
-                
-            } 
+            if(isset($_POST['delete'.$row['ticket_id']]) ){
+              $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
+             header('Refresh: 1; url=index.php');
+            }
           ?>
            
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
@@ -303,11 +302,6 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       </td>
 
     </tr>
-    <?php
-    }
-
-
-    ?>
   </tbody>
       
 
