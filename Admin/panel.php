@@ -292,17 +292,13 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
         <?php
             if(isset($_POST['complete'.$row['ticket_id']]) ){
               $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='".$row['ticket_id']."'");
-
              }
              if(isset($_POST['delete'.$row['ticket_id']]) ){
               $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
-           
-         
              }
              if(isset($_POST['edit'.$row['ticket_id']]) ){
                header('location: edit.php');// either go to edit.php or make a modal that will save and get the input
              }
-         
              if(isset($_POST['edit'.$row['ticket_id']]) ||isset( $_POST['delete'.$row['ticket_id']]) || isset($_POST['complete'.$row['ticket_id']])){
               echo("<meta http-equiv='refresh' content='1'>");
              }
@@ -312,7 +308,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
         <form method="post">
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
             <button type="submit" class="btn btn-danger btn-rounded" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
-            <button type="submit" class="btn btn-warning btn-rounded" name="edit<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Rediģēt</button>
+            <button type="button" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#myModal" name="edit<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Rediģēt</button>
          
          </form>
       </td>
@@ -330,6 +326,26 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
     
     
 </table> 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
   </div>   
   </div>
 </main>
