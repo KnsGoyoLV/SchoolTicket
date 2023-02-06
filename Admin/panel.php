@@ -187,7 +187,9 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
 
 
 ?>
-<div class="container pt-4 ">
+
+
+  <div class="container pt-4 ">
   
 <div class="jumbotron ">
 <div class="row w-100">
@@ -302,6 +304,9 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       </td>
 
     </tr>
+    <?php
+    }
+    ?>
   </tbody>
       
 
