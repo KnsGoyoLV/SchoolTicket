@@ -185,6 +185,7 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
 
         $rows = $result->fetchAll();
 
+        
 
 ?>
 
@@ -289,13 +290,6 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
       <td>TODO:</td>
       <td>
         <form method="post">
-          <?php
-            if(isset($_POST['delete'.$row['ticket_id']]) ){
-              $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
-             header('Refresh: 1; url=index.php');
-            }
-          ?>
-           
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
             <button type="submit" class="btn btn-danger btn-rounded" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
             <button type="submit" class="btn btn-warning btn-rounded" name="edit<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Rediģēt</button>
@@ -306,6 +300,21 @@ if ( !$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $
     </tr>
     <?php
     }
+    //test, github down?
+
+    if(isset($_POST['complete'.$row['ticket_id']]) ){
+     $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
+    }
+    if(isset($_POST['delete'.$row['ticket_id']]) ){
+     $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
+  
+
+    }
+    if(isset($_POST['edit'.$row['ticket_id']]) ){
+      header('location: edit.php');// either go to edit.php or make a modal that will save and get the input
+    }
+
+
     ?>
   </tbody>
       
