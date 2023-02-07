@@ -275,7 +275,34 @@ block_domain();
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                ...
+              <div class="input-group mb-3">
+              <div class="input-group mb-3">
+<span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+<select class="form-select" id="Iela"name="Iela"required>
+    <div></div>
+        <option selected>Izvēlēties ielu</option>
+        <option value="Vānes iela">Vānes iela</option>
+        <option value="Ventspils iela">Ventspils iela</option>
+     </select>
+     <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
+     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa">
+</div>
+
+<div class="input-group mb-3">
+<span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+  <span class="input-group-text" id="basic-addon1">Problēma</span>
+  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group">
+<span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
+  <span class="input-group-text">Piezīme</span>
+  <textarea class="form-control"name="Piez" placeholder="Piezīme" aria-label="With textarea"></textarea>
+</div>
+
+<div class="submit">
+<button type="submit"name="submit1" value="Pievienot" class="btn btn-secondary btn-lg">Pievienot</button>
+</div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aizvert</button>
