@@ -301,9 +301,6 @@ block_domain();
   <textarea class="form-control"name="Piez" placeholder="Piezīme" aria-label="With textarea"></textarea>
 </div>
 
-<div class="submit">
-<button type="submit"name="submit1" value="Pievienot" class="btn btn-secondary btn-lg">Pievienot</button>
-</div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aizvert</button>
