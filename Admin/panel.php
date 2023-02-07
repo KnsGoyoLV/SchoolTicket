@@ -1,10 +1,10 @@
 <?php
 include("../functions/function.php");
 require "../vendor/autoload.php";
-session_start();
 MicrosoftInfo();
 Invalid_seasson();
 block_domain();
+
 ?>
 <!DOCTYPE html>
 <html lang="lv">
