@@ -207,7 +207,9 @@ form {
   justify-content: space-evenly;
   padding-right: 0%;
 }
-
+span {
+  font-size: 1rem;
+}
 
 @media (min-width: 1400px){
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
