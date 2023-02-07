@@ -60,6 +60,7 @@ function block_domain(){
 }
 function NameSurname($email) {
     $email = str_replace('@sk', '', $email);
+    $email = str_replace('@lvt', '', $email);
     $parts = explode('.', $email);
     return [
       'name' => ucfirst($parts[0]),
