@@ -58,6 +58,12 @@ function block_domain(){
         exit();
     }
 }
-
-
+function NameSurname($email) {
+    $email = str_replace('@sk', '', $email);
+    $parts = explode('.', $email);
+    return [
+      'name' => ucfirst($parts[0]),
+      'surname' => ucfirst($parts[1])
+    ];
+  }
 ?>

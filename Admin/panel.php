@@ -192,12 +192,13 @@ block_domain();
   <tbody>
     <?php
     foreach ($rows as $row) {
+      $name_surname = NameSurname($row['epasts']);
       ?>
          <tr>
         <td>
         <div class="d-flex align-items-center">
           <div class="ms-6">
-            <p class="fw-bold mb-1">Skolotāja Krutā</p>
+            <p class="fw-bold mb-1"><?= $name_surname['name'];?> <?= $name_surname['surname'];?></p>
             <p class="text-muted mb-1"><?= $row['epasts'];?>  </p>
           </div>
         </div>
