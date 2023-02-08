@@ -1,7 +1,6 @@
 <?php
     require_once("database/connectDB.php");
     require "vendor/autoload.php";
-    use Microsoft\Graph\Graph;
 
     $env = parse_ini_file('database/.env');
     session_start();
@@ -85,13 +84,9 @@
 <body>
  
 <header>
-
-
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
         <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums</a>
-        
-
         <button
           class="navbar-toggler"
           type="button"
@@ -130,10 +125,10 @@
             aria-labelledby="navbarDropdownMenuLink"
           >
             <li>
-              <a class="dropdown-item" href="functions/IsAdmin.php">Admin panel</a>
+              <a class="dropdown-item" href="functions/IsAdmin.php">Admin panelis</a>
             </li>
             <li>
-              <a class="dropdown-item" href="../logout.php">Logout</a>
+              <a class="dropdown-item" href="../logout.php">Izrakstīties</a>
             </li>
           </ul>
         </li>
@@ -169,7 +164,8 @@
   </thead>
   <tbody>
     <?php
-      $result = $pdo->query("SELECT * FROM pieteikums WHERE epasts ='".$_SESSION['email']."'");
+    // get tickets that are made by the user and get all data about it 
+      $result = $pdo->query("SELECT * FROM pieteikums WHERE epasts ='".$_SESSION['email']."' ORDER BY `pieteikums`.`laiks` DESC");
       $rows = $result->fetchAll();
     foreach ($rows as $row) {
       ?>
@@ -190,10 +186,10 @@
       </td>
       <td>
       <?php
+        // Prints out ticket status in table and changes the color of it 
          if($row['status'] == 'Atrisināts'){
           ?>
            <span class="badge badge-warning"> <?= $row['status'];?></span>
-
           <?php
          }
          elseif( $row['status'] == 'Atrisināts(Parbaudīts)'){
@@ -201,10 +197,7 @@
           <span class="badge badge-success"> <?= $row['status'];?></span>
           <?php
          }
-         
          else{
-
-         
          ?>
           <span class="badge badge-info"> <?= $row['status'];?></span>
            <?php
@@ -215,21 +208,26 @@
       <td>
         <form method="post">
       <?php
+            if(isset($_POST['Done'.$row['ticket_id']]) ){
+              $pdo->query("UPDATE `pieteikums` SET `status` = 'Atrisināts(Parbaudīts)' WHERE ticket_id='".$row['ticket_id']."'");
+            }
+            if(isset($_POST['Ndone'.$row['ticket_id']]) ){
+              $pdo->query("UPDATE `pieteikums` SET `status` = 'Neatrisināts' WHERE ticket_id='".$row['ticket_id']."'");
+            }
+
+            if(isset($_POST['Done'.$row['ticket_id']]) ||isset( $_POST['Ndone'.$row['ticket_id']])){
+              echo("<meta http-equiv='refresh' content='1'>");
+            }    
          if($row['status'] == 'Atrisināts' ){
-          ?>
-            
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
+          ?>          
+            <button name="Done<?=$row['ticket_id'];?>" class="btn btn-link btn-sm btn-rounded">
               Izdarīts
             </button>
-            <button type="button" class="btn btn-link btn-sm btn-rounded">
+            <button name="Ndone<?=$row['ticket_id'];?>" class="btn btn-link btn-sm btn-rounded">
               Neizdarīts
             </button>
-
-
           <?php
-         }else{
-
-         
+         }else{ 
          ?>
            <p class="fw-normal mb-2">Pagaidām vēl nav atrisināts</p>
            <?php
@@ -237,17 +235,10 @@
           ?>
          </form>
       </td>
-
     </tr>
-
   </tbody>
-      
-
-
     <?php
     }
-
-
     ?>
     
 </table>    
