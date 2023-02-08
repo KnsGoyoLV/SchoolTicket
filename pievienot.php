@@ -25,7 +25,7 @@ if(!isset($_SESSION['t'])){
 <header>
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="animate-charcter">Liepajas valsts tehnikums</a>
+        <a href="index.php" class="animate-charcter">Liepajas Valsts tehnikums</a>
         
         <button
           class="navbar-toggler"
@@ -76,7 +76,7 @@ if(!isset($_SESSION['t'])){
 
 
     <div class="INFO">
-<p class="font-monospace">Ievadiet nepieciešamo Informāciju</p>
+<p class="font-monospace">Ievadiet nepieciešamo informāciju</p>
 </div>
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
@@ -99,7 +99,7 @@ if(!isset($_SESSION['t'])){
 <div class="input-group">
 <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
   <span class="input-group-text">Piezīme</span>
-  <textarea class="form-control"name="Piez" placeholder="Piezīme" aria-label="With textarea"></textarea>
+  <textarea class="form-control"name="Piez" placeholder="Piezīme"  maxlength="95" aria-label="With textarea"></textarea>
 </div>
 
 <div class="submit">
@@ -108,9 +108,8 @@ if(!isset($_SESSION['t'])){
 </div>
 </form>
 
-
   <div class="footer">
-  <p> Liepajas Valsts Tehnikums &copy; 2023</p>
+  <p> Liepajas Valsts tehnikums &copy; 2023</p>
 </div>
 
 </body>

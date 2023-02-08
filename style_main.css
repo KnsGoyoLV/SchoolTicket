@@ -659,7 +659,7 @@ label {
 .pogaa button:hover{
     text-align: right;
     text-decoration: none;
-    background-color: darkblue;
+    background-color: #2c659f!important;
     color: black;
     text-decoration: none;
     transition: .5s;

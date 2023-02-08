@@ -18,6 +18,7 @@ header{
     padding:2rem 5%;
     font-family: ui-sans-serif;
     margin-bottom: 2rem;
+    
 }
 
 header .logo{
@@ -96,6 +97,18 @@ header .navbar a:hover{
     color: #fff;
 }
 
+.submit button:hover{
+    background-color: #6c757d ;
+    color: #fff;
+
+}
+
 select#Iela {
     margin-right: 1rem;
 }
+
+a{
+    color: #fff;
+}
+
+
