@@ -1,7 +1,6 @@
 <?php
     require_once("database/connectDB.php");
     require "vendor/autoload.php";
-    use Microsoft\Graph\Graph;
 
     $env = parse_ini_file('database/.env');
     session_start();
@@ -89,9 +88,7 @@
 
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="animate-charcter" >Liepajas valsts tehnikums</a>
-        
-
+        <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -130,10 +127,10 @@
             aria-labelledby="navbarDropdownMenuLink"
           >
             <li>
-              <a class="dropdown-item" href="functions/IsAdmin.php">Admin panel</a>
+              <a class="dropdown-item" href="functions/IsAdmin.php">Admin panelis</a>
             </li>
             <li>
-              <a class="dropdown-item" href="../logout.php">Logout</a>
+              <a class="dropdown-item" href="../logout.php">Izrakstīties</a>
             </li>
           </ul>
         </li>
@@ -195,7 +192,6 @@
          if($row['status'] == 'Atrisināts'){
           ?>
            <span class="badge badge-warning"> <?= $row['status'];?></span>
-
           <?php
          }
          elseif( $row['status'] == 'Atrisināts(Parbaudīts)'){
@@ -225,20 +221,15 @@
               echo("<meta http-equiv='refresh' content='1'>");
             }    
          if($row['status'] == 'Atrisināts' ){
-          ?>
-            
+          ?>          
             <button name="Done<?=$row['ticket_id'];?>" class="btn btn-link btn-sm btn-rounded">
               Izdarīts
             </button>
             <button name="Ndone<?=$row['ticket_id'];?>" class="btn btn-link btn-sm btn-rounded">
               Neizdarīts
             </button>
-
-
           <?php
-         }else{
-
-         
+         }else{ 
          ?>
            <p class="fw-normal mb-2">Pagaidām vēl nav atrisināts</p>
            <?php
@@ -246,13 +237,8 @@
           ?>
          </form>
       </td>
-
     </tr>
-
   </tbody>
-      
-
-
     <?php
     }
 
