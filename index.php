@@ -89,7 +89,7 @@
 
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="animate-charcter" >Liepajas valsts tehnikums</a>
+        <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums</a>
         
 
         <button
@@ -253,7 +253,7 @@
 </table>    
 
 <div class="footer">
-  <p> Liepajas Valsts Tehnikums &copy; 2023</p>
+  <p> Liepajas Valsts tehnikums &copy; 2023</p>
 </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

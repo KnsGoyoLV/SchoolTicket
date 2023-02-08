@@ -24,7 +24,7 @@ if(!isset($_SESSION['t'])){
 <header>
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="animate-charcter">Liepajas valsts tehnikums</a>
+        <a href="index.php" class="animate-charcter">Liepajas valsts tehnikums</a>
         
 
         <button
@@ -106,7 +106,7 @@ if(!isset($_SESSION['t'])){
 
 
 <div class="footer">
-  <p> Liepajas Valsts Tehnikums &copy; 2023</p>
+  <p> Liepajas Valsts tehnikums &copy; 2023</p>
 </div>
 
 <script src="files/script.js"></script>
