@@ -13,10 +13,4 @@
 	}catch (PDOException $e) {
 		die("Pieslegties neizdevas: " . $e->getMessage());
 	}
-
-	
-	//$db = new mysqli($env['hostname'],$env['username'],$env['password'],$env['database']);
-	//if(!$db){
-	//	die("Pieslegties neizdevas: ".mysqli_connect_error());
-	//}
 ?>

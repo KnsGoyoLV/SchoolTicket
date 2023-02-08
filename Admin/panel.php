@@ -18,9 +18,9 @@ block_domain();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!--Main Navigation-->
+<!--Main Navigation-->
 <header>
-  <!-- Sidebar -->
+<!-- Sidebar -->
   <nav id="sidebarMenu" class="collapse d-xl-block sidebar collapse " style="background-color: #1c4c7c;">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
@@ -41,7 +41,6 @@ block_domain();
     </div>
   </nav>
   <!-- Sidebar -->
-
   <!-- Navbar -->
   <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-gray fixed-top">
     <!-- Container wrapper -->
@@ -58,18 +57,14 @@ block_domain();
       >
         <i class="fas fa-bars"></i>
       </button>
-
       <!-- Brand -->
       <a class="navbar-brand" href="#">
       <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums </a>
       </a>
       <!-- Search form -->
-     
-
       <!-- Right links -->
       <ul class="navbar-nav ms-auto d-flex flex-row">
         <!-- Notification dropdown -->
-        
         <!-- Avatar -->
         <li class="nav-item dropdown">
           <a
@@ -96,8 +91,7 @@ block_domain();
               <a class="dropdown-item" href="../logout.php">Logout</a>
             </li>
           </ul>
-        </li>
-        
+        </li>    
       </ul>
       <form class="searchb" method="post">
         <input
@@ -116,7 +110,6 @@ block_domain();
   <!-- Navbar -->
 </header>
 <!--Main Navigation-->
-
 <!--Main layout-->
 <main style="margin-top: 58px;">
 <?php        
@@ -139,7 +132,6 @@ block_domain();
 
 
 <div class="container pt-4 ">
-  
 <div class="jumbotron ">
 <div class="row w-100">
         <div class="col-md-3">
@@ -226,10 +218,7 @@ block_domain();
           <span class="badge badge-outline-success"> <?= $row['status'];?></span>
           <?php
          }
-         
          else{
-
-         
          ?>
           <span class="badge badge-outline-info"> <?= $row['status'];?></span>
            <?php
@@ -254,7 +243,6 @@ block_domain();
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
             <button type="submit" class="btn btn-danger btn-rounded" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
             <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Rediģēt</button>
-         
          </form>
       </td>
 
@@ -280,13 +268,11 @@ block_domain();
      <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
      <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa">
 </div>
-
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
   <span class="input-group-text" id="basic-addon1">Problēma</span>
   <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1">
 </div>
-
 <div class="input-group">
 <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
   <span class="input-group-text">Piezīme</span>
@@ -302,16 +288,13 @@ block_domain();
 </div>
     <?php
     }
-
     ?>
   </tbody>
 </table> 
   </div>   
   </div>
 </main>
-
 <!--Main layout-->
-
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
