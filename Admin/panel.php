@@ -249,9 +249,7 @@ block_domain();
              if(isset($_POST['delete'.$row['ticket_id']]) ){
               $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
              }
-             if(isset($_POST['edit'.$row['ticket_id']]) ){
-               header('location: edit.php');// either go to edit.php or make a modal that will save and get the input
-             }
+
              if(isset($_POST['edit'.$row['ticket_id']]) ||isset( $_POST['delete'.$row['ticket_id']]) || isset($_POST['complete'.$row['ticket_id']])){
               echo("<meta http-equiv='refresh' content='1'>");
              }

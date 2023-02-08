@@ -39,7 +39,7 @@
    }
    // if acces token is invalid or not gotten then go back to login.php file
    if(!isset($_SESSION['t'])){
-    header('location: login.php');
+    header('location:login.php');
    }
    
     //Block subdomain 
@@ -141,8 +141,6 @@
         </div>
       </div>
     </nav>
-
-   
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
