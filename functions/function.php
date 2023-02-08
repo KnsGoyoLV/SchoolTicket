@@ -66,5 +66,6 @@ function NameSurname($email) {
       'name' => ucfirst($parts[0]),
       'surname' => ucfirst($parts[1])
     ];
-  }
+}
+
 ?>

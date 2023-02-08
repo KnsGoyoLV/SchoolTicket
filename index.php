@@ -130,7 +130,7 @@
             aria-labelledby="navbarDropdownMenuLink"
           >
             <li>
-              <a class="dropdown-item" href="Admin/login.php">Admin panel</a>
+              <a class="dropdown-item" href="functions/IsAdmin.php">Admin panel</a>
             </li>
             <li>
               <a class="dropdown-item" href="../logout.php">Logout</a>
