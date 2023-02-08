@@ -4,7 +4,6 @@ require "../vendor/autoload.php";
 MicrosoftInfo();
 Invalid_seasson();
 block_domain();
-
 ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -136,9 +135,6 @@ block_domain();
         $proces =  $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
         $rows = $result->fetchAll();
-
-        
-
 ?>
 
 
@@ -252,9 +248,7 @@ block_domain();
 
              if(isset($_POST['edit'.$row['ticket_id']]) ||isset( $_POST['delete'.$row['ticket_id']]) || isset($_POST['complete'.$row['ticket_id']])){
               echo("<meta http-equiv='refresh' content='1'>");
-             }
-
-        
+             }        
         ?>
         <form method="post">
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
@@ -298,35 +292,25 @@ block_domain();
   <span class="input-group-text">Piezīme</span>
   <textarea class="form-control"name="Piez" placeholder="Piezīme" aria-label="With textarea"></textarea>
 </div>
-
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aizvert</button>
-                <button type="button" class="btn btn-primary">Saglabāt</button>
-              </div>
-            </div>
-          </div>
-        </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aizvert</button>
+        <button type="button" class="btn btn-primary">Saglabāt</button>
+      </div>
+    </div>
+  </div>
+</div>
     <?php
     }
 
     ?>
   </tbody>
-      
-
-
-    
-    
 </table> 
-
-
-
-
   </div>   
   </div>
 </main>
-<!--Main layout-->
 
+<!--Main layout-->
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

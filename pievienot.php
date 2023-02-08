@@ -80,14 +80,14 @@ if(!isset($_SESSION['t'])){
 </div>
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-<select class="form-select" id="Iela"name="Iela"required>
+<select class="form-select" id="Iela"name="Iela" required>
     <div></div>
-        <option selected>Izvēlēties ielu</option>
+        <option>Izvēlēties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
      <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa">
+     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa" name="Telpa" required>
 </div>
 
 <div class="input-group mb-3">
@@ -103,7 +103,8 @@ if(!isset($_SESSION['t'])){
 </div>
 
 <div class="submit">
-<button type="submit"name="submit1" value="Pievienot" class="btn btn-secondary btn-lg">Pievienot</button>
+<button onclick="window.location.href='index.php'" href="index.php" class="btn btn-secondary btn-lg" style="background-color: red;">Atcelt</button>
+<button type="submit"name="submit1" value="Pievienot" class="btn btn-secondary btn-lg" style="background-color: limegreen;">Pievienot</button>
 </div>
 </form>
 
