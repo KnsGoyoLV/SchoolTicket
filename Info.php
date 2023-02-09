@@ -69,7 +69,7 @@ if(!isset($_SESSION['t'])){
                 <div class="col-md-8 col-sm-12 profile-info">
                     <div class="header-fullname"><?= $_SESSION['username'];?> <?= $_SESSION['surname'];?></div>
                     <div class="header-information">
-                    Status:<?= $_SESSION['job'];?>
+                    Statuss:<?= $_SESSION['job'];?>
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12 col-xs-12 profile-stats">
