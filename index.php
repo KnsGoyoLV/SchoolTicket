@@ -79,7 +79,6 @@
     <link rel="stylesheet" href="style_main.css">
 
 </head>
-
 <body>
  
 <header>
