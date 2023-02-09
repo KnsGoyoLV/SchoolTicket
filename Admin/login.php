@@ -50,9 +50,6 @@ session_start();
               type="submit"><i class="fa-brands fa-windows"></i> Ienākt ar microsoft</button>
               </form>
             </div>
-
-           
-
           </div>
         </div>
       </div>
