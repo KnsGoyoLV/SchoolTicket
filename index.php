@@ -37,9 +37,9 @@
         header ('Location: ' . $callback);
    }
    // if acces token is invalid or not gotten then go back to login.php file
-   if(!isset($_SESSION['t'])){
+  if(!isset($_SESSION['t'])){
     header('location:login.php');
-   }
+  }
    
     //Block subdomain 
     $parts = explode('@',  $_SESSION['email']);
@@ -64,7 +64,6 @@
     //     header("Location:privlages.php");
     //     exit();
     // }
-
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +79,6 @@
     <link rel="stylesheet" href="style_main.css">
 
 </head>
-
 <body>
  
 <header>

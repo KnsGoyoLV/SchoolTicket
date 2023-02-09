@@ -105,6 +105,13 @@ if(!isset($_SESSION['t'])){
      </select>
      <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
      <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa" name="Telpa" required>
+     <br>
+     <select class="form-select" id="Nodala"name="Nodala" required>
+    <div></div>
+        <option>Izvēlēties nodaļu</option>
+        <option value="Vānes iela">IT nodaļa</option>
+        <option value="Ventspils iela">Saimniecības nodaļa</option>
+     </select>
 </div>
 
 <div class="input-group mb-3">
