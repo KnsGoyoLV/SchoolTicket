@@ -156,7 +156,7 @@
       <th>Problēma</th>
       <th>Piezīme</th>
       <th>Statuss</th>
-      <th>IT/remonta darbs</th>
+      <th>IT/Saimniecības nodaļa</th>
       <th>Apstiprināt</th>
     </tr>
   </thead>
