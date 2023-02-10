@@ -93,7 +93,7 @@ if(!isset($_SESSION['t'])){
 
 
     <div class="INFO">
-<p class="font-monospace">Ievadiet nepieciešamo informāciju</p>
+<p class="font- 'Nunito', sans-serif;">Ievadiet nepieciešamo informāciju</p>
 </div>
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
