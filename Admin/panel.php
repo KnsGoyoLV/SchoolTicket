@@ -4,6 +4,7 @@ require "../vendor/autoload.php";
 MicrosoftInfo();
 Invalid_seasson();
 block_domain();
+include("..\database\connectDB.php");
 ?>
 <!DOCTYPE html>
 <html lang="lv">
@@ -128,6 +129,7 @@ block_domain();
         $proces =  $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
         $rows = $result->fetchAll();
+      
 ?>
 
 
@@ -181,6 +183,8 @@ block_domain();
     <?php
     foreach ($rows as $row) {
       $name_surname = NameSurname($row['epasts']);
+      var_dump($_POST);
+      var_dump($_GET);
       ?>
          <tr>
         <td>
@@ -242,7 +246,7 @@ block_domain();
         <form method="post">
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
             <button type="submit" class="btn btn-danger btn-rounded" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
-            <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Rediģēt</button>
+            <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit"value=<?=$row['ticket_id'];?>>Rediģēt</button>
          </form>
       </td>
 
@@ -260,6 +264,11 @@ block_domain();
               <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
 <select class="form-select" id="Iela"name="Iela"required>
+  <?php
+  $result1 = $pdo->query("SELECT * FROM pieteikums where ticket_id = '".$_POST['edit']."'");
+  $ress = $result1->fetch();
+
+  ?>
     <div></div>
         <option selected>Izvēlēties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
@@ -271,12 +280,14 @@ block_domain();
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
   <span class="input-group-text" id="basic-addon1">Problēma</span>
-  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1" value="<?= $row['problema'];?>">
+  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1" value="<?=$ress['problema'];?>">
 </div>
 <div class="input-group">
 <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
   <span class="input-group-text">Piezīme</span>
   <textarea class="form-control"name="Piez" placeholder="Piezīme" aria-label="With textarea" value="<?= $row['piezimes'];?>"></textarea>
+  <?php
+  ?>
 </div>
     </div>
       <div class="modal-footer">
@@ -293,6 +304,7 @@ block_domain();
 </table> 
   </div>   
   </div>
+  
 </main>
 <!--Main layout-->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
