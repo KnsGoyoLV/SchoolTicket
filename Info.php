@@ -24,9 +24,7 @@ if(!isset($_SESSION['t'])){
 <header>
 <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="index.php" class="animate-charcter">Liepajas valsts tehnikums</a>
-        
-
+        <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -39,23 +37,43 @@ if(!isset($_SESSION['t'])){
         <div class="collapse navbar-collapse " id="navmenu">
           <ul class="navbar-nav ms-auto  ">
             <li class="nav-item">
-              <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
+              <a href="#Mainpage" class="nav-link" style="background-color: #4782b5;"><i class="fas fa-home"></i>Sākumlapa</a>
             </li>
             <li class="nav-item">
-              <a href="pievienot.php" class="nav-link" ><i class="fas fa-plus"></i>Pievienot Problēmas</a>
+              <a href="pievienot.php" class="nav-link"><i class="fas fa-plus"></i>Pievienot pieteikumu</a>
             </li>
             <li class="nav-item">
-              <a href="info.php" class="nav-link"style="background-color: #4782b5;"><i class="fas fa-circle-info"></i>Informācija</a>
+              <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
             </li>
-            <li class="nav-item">
-                <a hred="logout.php"><?php 		
-                echo " <a href='logout.php' style='font-family: ui-sans-serif;'>" .$_SESSION['username']." ".$_SESSION['surname']. "<i class='fas fa-power-off'></i></a>";     
-                ?>
-            </nav>
-            </li>    
+
+            <!-- Username and surname with drop down menu for login and admin panel  !-->
+            <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+          <?= $_SESSION ['username'];?>  <?= $_SESSION['surname'];?>
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <li>
+              <a class="dropdown-item" href="functions/IsAdmin.php">Admin panelis</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="../logout.php">Izrakstīties</a>
+            </li>
+          </ul>
+        </li>
           </ul>
         </div>
       </div>
+    </nav>
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
@@ -108,6 +126,13 @@ if(!isset($_SESSION['t'])){
 <div class="footer">
   <p> Liepajas Valsts tehnikums &copy; 2023</p>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
 
 <script src="files/script.js"></script>
 </body>
