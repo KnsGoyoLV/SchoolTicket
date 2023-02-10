@@ -239,14 +239,16 @@ include("..\database\connectDB.php");
               $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
              }
 
-             if(isset($_POST['edit'.$row['ticket_id']]) ||isset( $_POST['delete'.$row['ticket_id']]) || isset($_POST['complete'.$row['ticket_id']])){
+             if(isset( $_POST['delete'.$row['ticket_id']]) || isset($_POST['complete'.$row['ticket_id']])){
               echo("<meta http-equiv='refresh' content='1'>");
              }        
+
+             $id = $row['ticket_id'];
         ?>
         <form method="post">
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
             <button type="submit" class="btn btn-danger btn-rounded" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
-            <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit"value=<?=$row['ticket_id'];?>>Rediģēt</button>
+            <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit"value=<?=$id;?>>Rediģēt</button>
          </form>
       </td>
 
@@ -267,7 +269,6 @@ include("..\database\connectDB.php");
   <?php
   $result1 = $pdo->query("SELECT * FROM pieteikums where ticket_id = '".$_POST['edit']."'");
   $ress = $result1->fetch();
-
   ?>
     <div></div>
         <option selected>Izvēlēties ielu</option>
