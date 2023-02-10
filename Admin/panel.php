@@ -271,7 +271,7 @@ block_domain();
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
   <span class="input-group-text" id="basic-addon1">Problēma</span>
-  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1" value="<?=$row['problema'];?>">
 </div>
 <div class="input-group">
 <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
