@@ -246,15 +246,15 @@ include("..\database\connectDB.php");
              $id = $row['ticket_id'];
         ?>
         <form method="post">
-            <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
-            <button type="submit" class="btn btn-danger btn-rounded" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
-            <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit"value=<?=$id;?>>Rediģēt</button>
+            <button type="submit" class="btn btn-success btn-rounded" id="complete<?=$row['ticket_id'];?>" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
+            <button type="submit" class="btn btn-danger btn-rounded" id="delete<?=$row['ticket_id'];?>" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
+            <button type="button" class="btn btn-warning btn-rounded" id="edit<?=$row['ticket_id'];?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?=$row['ticket_id'];?>" name="edit"value=<?=$id;?>>Rediģēt</button>
          </form>
       </td>
 
     </tr>
         <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop<?=$row['ticket_id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -266,22 +266,18 @@ include("..\database\connectDB.php");
               <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
 <select class="form-select" id="Iela"name="Iela"required>
-  <?php
-  $result1 = $pdo->query("SELECT * FROM pieteikums where ticket_id = '".$_POST['edit']."'");
-  $ress = $result1->fetch();
-  ?>
     <div></div>
         <option selected>Izvēlēties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
      <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa">
+     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa"value="<?=$row['Telpa'];?> >
 </div>
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
   <span class="input-group-text" id="basic-addon1">Problēma</span>
-  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1" value="<?=$ress['problema'];?>">
+  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1" value="<?=$row['problema'];?>">
 </div>
 <div class="input-group">
 <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
