@@ -93,7 +93,7 @@ if(!isset($_SESSION['t'])){
 
 
     <div class="INFO">
-<p class="font- 'Nunito', sans-serif;">Ievadiet nepieciešamo informāciju</p>
+<p class="font-'Nunito', sans-serif">Ievadiet nepieciešamo informāciju</p>
 </div>
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
@@ -117,8 +117,7 @@ if(!isset($_SESSION['t'])){
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
   <span class="input-group-text" id="basic-addon1">Problēma</span>
-  <!-- After getting the error it dosent let you submit the ticket  !-->
-  <input type="text" class="form-control" name="Prob" placeholder="Problēma" oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')"  maxlength="95" aria-describedby="basic-addon1" required>
+  <input type="text" class="form-control" name="Prob" placeholder="Problēma" oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')" required maxlength="95" aria-describedby="basic-addon1">
 </div>
 
 <div class="input-group">
