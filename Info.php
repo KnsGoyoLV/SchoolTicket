@@ -7,12 +7,7 @@ if(!isset($_SESSION['t'])){
 
 require("header.php");
 ?>
-
-
-
-
-
-
+  
 <div class="container bootstrap snippets bootdey">
     <div class="col-md-12">
         <div class="profile-container">
