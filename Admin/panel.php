@@ -263,7 +263,7 @@ include("..\database\connectDB.php");
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Vai tiešām vēlaties izdzēst ierakstu?
+        Vai tiešām vēlaties dzēst ierakstu?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nē</button>
