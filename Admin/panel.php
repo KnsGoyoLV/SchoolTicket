@@ -286,22 +286,18 @@ include("..\database\connectDB.php");
               <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
 <select class="form-select" id="Iela"name="Iela"required>
-  <?php
-  $result1 = $pdo->query("SELECT * FROM pieteikums where ticket_id = '".$_POST['edit']."'");
-  $ress = $result1->fetch();
-  ?>
     <div></div>
         <option selected>Izvēlēties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
      <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa">
+     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa"value="<?=$row['Telpa'];?> >
 </div>
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
   <span class="input-group-text" id="basic-addon1">Problēma</span>
-  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1" value="<?=$ress['problema'];?>">
+  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required maxlength="95" aria-describedby="basic-addon1" value="<?=$row['problema'];?>">
 </div>
 <div class="input-group">
 <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
