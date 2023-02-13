@@ -827,6 +827,7 @@ button.btn.btn-primary {
 }
 .btn:hover {
     background: rgb(242 86 63);
+    color: white;
 }
 select {
     word-wrap: normal;
