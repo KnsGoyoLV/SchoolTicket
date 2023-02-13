@@ -245,15 +245,15 @@ include("..\database\connectDB.php");
         ?>
         <form method="post">
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
-            <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal" data-bs-target="#exampleModal" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
-            <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop" name="edit<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Rediģēt</button>
+            <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal" data-bs-target="#delete<?=$row['ticket_id'];?>" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
+            <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#edit<?=$row['ticket_id'];?>" name="edit<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Rediģēt</button>
          </form>
       </td>
 
     </tr>
 <!-- Modal -->
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="delete<?=$row['ticket_id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -272,7 +272,7 @@ include("..\database\connectDB.php");
 </div>
 
         <!-- Modal --> 
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal fade" id="edit<?=$row['ticket_id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
