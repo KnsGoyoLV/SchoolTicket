@@ -908,9 +908,7 @@ select {
 		margin-bottom:25px;
 	}
 	.table td{
-		text-align: right;
-		padding-left: 50%;
-		text-align: right;
+		text-align: left;
 		position: relative;
 	}
 	.table td::before{
