@@ -183,8 +183,6 @@ include("..\database\connectDB.php");
     <?php
     foreach ($rows as $row) {
       $name_surname = NameSurname($row['epasts']);
-      var_dump($_POST);
-      var_dump($_GET);
       ?>
          <tr>
         <td>
