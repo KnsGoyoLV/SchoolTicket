@@ -292,7 +292,7 @@ include("..\database\connectDB.php");
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
      <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa"value="<?=$row['Telpa'];?> >
+     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa"value="<?=$row['telpa'];?>">
 </div>
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
