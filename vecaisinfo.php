@@ -44,7 +44,7 @@ if(!isset($_SESSION['t'])){
               <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
             </li>
             <li class="nav-item">
-              <a href="pievienot.php" class="nav-link" style="background-color: #4782b5;" ><i class="fas fa-plus"></i>Pievienot Pieteikumu</a>
+              <a href="#" class="nav-link" style="background-color: #4782b5;" ><i class="fas fa-plus"></i>Pievienot Pieteikumu</a>
             </li>
             <li class="nav-item">
               <a href="info.php" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
@@ -81,49 +81,51 @@ if(!isset($_SESSION['t'])){
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
 <body>
-<section class="vh-100" style="background-color: #eee;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-12 col-xl-4">
 
-        <div class="card" style="border-radius: 15px;">
-          <div class="card-body text-center">
-            <div class="mt-3 mb-4">
-              <img src="https://media.istockphoto.com/id/1273297997/vector/default-avatar-profile-icon-grey-photo-placeholder-hand-drawn-modern-man-avatar-profile-icon.jpg?s=612x612&w=0&k=20&c=n_K0uxMqCdHRxgeHYIQbzKebDeDMpY2TuqKsknTHcts="
-                class="rounded-circle img-fluid" style="width: 100px;" />
-            </div>
-
-            <div class="header-fullname"><?= $_SESSION['username'];?> <?= $_SESSION['surname'];?></div>
-
-            <div class="header-information">
+<div class="container bootstrap snippets bootdey">
+    <div class="col-md-12">
+        <div class="profile-container">
+            <div class="profile-header row">
+                <div class="col-md-4 col-sm-12 text-center">
+                    <img src="https://bootdey.com/img/Content/user_1.jpg" alt="" class="header-avatar">
+                </div>
+                <div class="col-md-8 col-sm-12 profile-info">
+                    <div class="header-fullname"><?= $_SESSION['username'];?> <?= $_SESSION['surname'];?></div>
+                    <div class="header-information">
                     Statuss:<?= $_SESSION['job'];?>
-            </div>
-                        <div class="jap">
-                        <div class="stats-title">E-pasts: </div>
-                            <div class="stats-value"><?= $_SESSION['email'];?></div>
-                        
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 profile-stats">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value pink">1</div>
+                            <div class="stats-title">Mani pieteikumi</div>
                         </div>
-            <div class="d-flex justify-content-between text-center mt-5 mb-2">
-              <div>
-                <p class="mb-2 h5">8471</p>
-                <p class="text-muted mb-0">Mani pieteikumi</p>
-              </div>
-              <div class="px-3">
-                <p class="mb-2 h5">8512</p>
-                <p class="text-muted mb-0">Pabeigtie pieteikumi</p>
-              </div>
-              <div>
-                <p class="mb-2 h5">4751</p>
-                <p class="text-muted mb-0">Nepabeigtie pieteikumi</p>
-              </div>
-            </div>
-          </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value"><?= $_SESSION['email'];?></div>
+                            <div class="stats-title">E-pasts</div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 stats-col">
+                            <div class="stats-value pink">kko vel ja vaig</div>
+                            <div class="stats-title">kko vel ja vaig</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            <i class="glyphicon glyphicon-map-marker"></i> Liepajas Valsts tehnikums
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            nezinu: <strong>1</strong>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4 inlinestats-col">
+                            nezinu: <strong>2</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>   
         </div>
-
-      </div>
     </div>
-  </div>
-</section>
+</div>
 
 <?php
 require "footer.php";
