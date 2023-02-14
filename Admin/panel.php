@@ -60,7 +60,7 @@ include("..\database\connectDB.php");
       </button>
       <!-- Brand -->
       <a class="navbar-brand" href="#">
-      <a href="#" class="animate-charcter" >Liepajas Valsts tehnikums </a>
+      <a href="../index.php" class="animate-charcter" >Liepajas Valsts tehnikums </a>
       </a>
       <!-- Search form -->
       <!-- Right links -->
