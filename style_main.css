@@ -809,12 +809,13 @@ label {
     margin-top: 1rem;
     display: inline-block;
     padding: 0.4rem 4rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     color: #fff;
-    background: var(--main-color);
+    background: #5cabd4;
     border-radius: 0.5rem;
     box-shadow: var(--box-shadow);
+    font-style: none;
 }
 
 button.btn.btn-primary {
@@ -826,7 +827,7 @@ button.btn.btn-primary {
     --bs-btn-hover-color: #ffffff;
 }
 .btn:hover {
-    background: rgb(242 86 63);
+    background: #2c659f!important ;
     color: white;
 }
 select {
