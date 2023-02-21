@@ -85,7 +85,7 @@ CREATE TABLE `pieteikums` (
   `status` enum('Neatrisināts','Procesā','Atrisināts','Atrisināts(Parbaudīts)') NOT NULL DEFAULT 'Neatrisināts',
   `problema` text NOT NULL,
   `piezimes` text DEFAULT NULL,
-  `risinajums_risinajums_id` int(11) NOT NULL,
+  `nodala` enum('IT','Saimniecības') NOT NULL DEFAULT 'IT',
   `epasts` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -114,30 +114,6 @@ CREATE TABLE `problema` (
   `saimniecibas_nodala` varchar(45) DEFAULT NULL,
   `pieteikums_ticket_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `risinajums`
---
--- Creation: Jan 19, 2023 at 12:42 PM
---
-
-CREATE TABLE `risinajums` (
-  `risinajums_id` int(11) NOT NULL,
-  `daritajs` varchar(45) NOT NULL,
-  `apstiprinats` tinyint(4) DEFAULT 0,
-  `piezime` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `risinajums`
---
-
-INSERT INTO `risinajums` (`risinajums_id`, `daritajs`, `apstiprinats`, `piezime`) VALUES
-(1, 'Neviens', 0, NULL);
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `skolnieki`
@@ -201,8 +177,7 @@ ALTER TABLE `pieteikties`
 -- Indexes for table `pieteikums`
 --
 ALTER TABLE `pieteikums`
-  ADD PRIMARY KEY (`ticket_id`,`risinajums_risinajums_id`),
-  ADD KEY `fk_pieteikums_risinajums1_idx` (`risinajums_risinajums_id`);
+  ADD PRIMARY KEY (`ticket_id`);
 
 --
 -- Indexes for table `problema`
@@ -212,10 +187,6 @@ ALTER TABLE `problema`
   ADD KEY `fk_problema_pieteikums1_idx` (`pieteikums_ticket_id`);
 
 --
--- Indexes for table `risinajums`
---
-ALTER TABLE `risinajums`
-  ADD PRIMARY KEY (`risinajums_id`);
 
 --
 -- Indexes for table `skolnieki`

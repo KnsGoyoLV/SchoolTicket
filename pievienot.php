@@ -86,8 +86,8 @@ if(!isset($_SESSION['t'])){
 <?php 
      // if submited then send query to database and add the new row to the table with the new info
         if(isset($_POST['submit1'])){
-         $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
-                                                ('".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '1', '".$_SESSION['email']."')");
+         $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `nodala`, `epasts`) VALUES
+                                                ('".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '".$_POST['nodala']."', '".$_SESSION['email']."')");
          header('location:index.php');
         }
         ?>
