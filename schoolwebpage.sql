@@ -86,19 +86,15 @@ CREATE TABLE `pieteikums` (
   `problema` text NOT NULL,
   `piezimes` text DEFAULT NULL,
   `nodala` enum('IT','Saimniecības') NOT NULL DEFAULT 'IT',
-  `epasts` varchar(50) NOT NULL
+  `epasts` varchar(50) NOT NULL,
+  `vards` varchar(25) NOT NUll,
+  `uzvards` varchar(25) NOT NUll
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pieteikums`
 --
 
-INSERT INTO `pieteikums` (`ticket_id`, `laiks`, `iela`, `telpa`, `status`, `problema`, `piezimes`, `risinajums_risinajums_id`, `epasts`) VALUES
-(0, '2023-01-18', 'Ventspils iela', 'test', 'Neatrisināts', 'test2', 'test3', 1, 'testemail'),
-(1, '2023-01-18', 'Vānes iela', 'A-203', 'Atrisināts(Parbaudīts)', 'Aizkeros aiz bezvada interneta', NULL, 1, 'daniels.vidopskis@sk.lvt.lv'),
-(2, '2023-01-12', 'Ventspils iela', 'test', 'Neatrisināts', 'test2', 'test3', 1, 'testemail'),
-(3, '2023-01-19', 'Vānes iela', 'D-201', 'Neatrisināts', 'Kaut kas notika', '', 1, ''),
-(4, '2023-01-19', 'Vānes iela', 'D-201', 'Neatrisināts', 'Kaut kas notika', '', 1, 'daniels.vidopskis@sk.lvt.lv');
 
 -- --------------------------------------------------------
 
@@ -237,10 +233,7 @@ ALTER TABLE `problema`
   MODIFY `problema_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `risinajums`
 --
-ALTER TABLE `risinajums`
-  MODIFY `risinajums_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `skolnieki`
@@ -274,8 +267,6 @@ ALTER TABLE `pieteikties`
 --
 -- Constraints for table `pieteikums`
 --
-ALTER TABLE `pieteikums`
-  ADD CONSTRAINT `fk_pieteikums_risinajums1` FOREIGN KEY (`risinajums_risinajums_id`) REFERENCES `risinajums` (`risinajums_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `problema`

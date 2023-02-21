@@ -107,11 +107,11 @@ if(!isset($_SESSION['t'])){
      <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
      <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa" oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')" name="Telpa" maxlength="5" required>
      <br>
-     <select class="form-select" id="Nodala"name="Nodala" required>
+     <select class="form-select" id="nodala"name="nodala" required>
     <div></div>
         <option>Izvēlēties nodaļu</option>
-        <option value="Vānes iela">IT nodaļa</option>
-        <option value="Ventspils iela">Saimniecības nodaļa</option>
+        <option value="IT">IT nodaļa</option>
+        <option value="Saimniecības">Saimniecības nodaļa</option>
      </select>
 </div>
 
