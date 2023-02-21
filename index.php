@@ -59,7 +59,7 @@ require "header.php";
           }
           ?>
       </td>
-      <td>TODO:</td>
+      <td><?= $row['nodala'];?> nodaļa</td>
       <td>
         <form method="post">
       <?php
