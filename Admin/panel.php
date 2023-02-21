@@ -182,13 +182,12 @@ include("..\database\connectDB.php");
   <tbody>
     <?php
     foreach ($rows as $row) {
-      $name_surname = NameSurname($row['epasts']);
       ?>
          <tr>
         <td>
         <div class="d-flex align-items-center">
           <div class="ms-6">
-            <p class="fw-bold mb-1"><?= $name_surname['name'];?> <?= $name_surname['surname'];?></p>
+            <p class="fw-bold mb-1"><?= $row['vards'];?> <?= $row['uzvards'];?></p>
             <p class="text-muted mb-1"><?= $row['epasts'];?>  </p>
           </div>
         </div>
@@ -227,17 +226,17 @@ include("..\database\connectDB.php");
           }
           ?>
       </td>
-      <td>TODO:</td>
+      <td><?= $row['nodala'];?></td>
       <td>
         <?php
             if(isset($_POST['complete'.$row['ticket_id']]) ){
               $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='".$row['ticket_id']."'");
              }
-             if(isset($_POST['delete'.$row['ticket_id']]) ){
+             if(isset($_POST['delete1'.$row['ticket_id']]) ){
               $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
              }
 
-             if(isset( $_POST['delete'.$row['ticket_id']]) || isset($_POST['complete'.$row['ticket_id']])){
+             if(isset( $_POST['delete1'.$row['ticket_id']]) || isset($_POST['complete'.$row['ticket_id']])){
               echo("<meta http-equiv='refresh' content='1'>");
              }        
 
@@ -245,31 +244,33 @@ include("..\database\connectDB.php");
         ?>
         <form method="post">
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
-            <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal" data-bs-target="#delete<?=$row['ticket_id'];?>" name="delete<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Izdzēst</button>
+            <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal" data-bs-target="#delete<?=$row['ticket_id'];?>">Izdzēst</button>
             <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal" data-bs-target="#edit<?=$row['ticket_id'];?>" name="edit<?=$row['ticket_id'];?>"value=<?=$row['ticket_id'];?>>Rediģēt</button>
-         </form>
+         
+            <div class="modal fade" id="delete<?=$row['ticket_id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Apstiprinājums</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Vai tiešām vēlaties dzēst ierakstu?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nē</button>
+                  <button type="submit" name="delete1<?=$row['ticket_id'];?>" class="btn btn-primary">Jā</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </form>
       </td>
 
     </tr>
 <!-- Modal -->
 <!-- Modal -->
-<div class="modal fade" id="delete<?=$row['ticket_id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Apstiprinājums</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Vai tiešām vēlaties dzēst ierakstu?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nē</button>
-        <button type="button" class="btn btn-primary">Jā</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
         <!-- Modal --> 
         <div class="modal fade" id="edit<?=$row['ticket_id'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
