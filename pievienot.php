@@ -149,8 +149,3 @@ require "footer.php";
 </body>
 </html>
 
-
-<?php
-// Problema - Pieteikums
-// Izveleties ielu
-?>
