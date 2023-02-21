@@ -5,7 +5,6 @@ require "header.php";
 <div class="pogaa">
 <button type="button"  class="btn btn-success btn-rounded btn-lg float-right"><i class='fa fa-plus' style='color: white'><a href="pievienot.php"></i> Pievienot </button></a>
 </div>
-
 <table class="table align-middle mb-2 table-responsive">
   <thead class="thead-dark">
     <tr>
