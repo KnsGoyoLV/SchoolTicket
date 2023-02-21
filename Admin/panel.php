@@ -83,13 +83,10 @@ include("..\database\connectDB.php");
             aria-labelledby="navbarDropdownMenuLink"
           >
             <li>
-              <a class="dropdown-item" href="#">My profile</a>
+              <a class="dropdown-item" href="../index.php">Skolotāja skats</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Settings</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../logout.php">Logout</a>
+              <a class="dropdown-item" href="../logout.php">Izrakstīties</a>
             </li>
           </ul>
         </li>    
@@ -114,6 +111,7 @@ include("..\database\connectDB.php");
 <!--Main layout-->
 <main style="margin-top: 58px;">
 <?php        
+        // searchbar query stuff that search for stuff
         if(isset($_POST['searchbar']))
         $keyword = $_POST['searchbar'];
 
@@ -121,8 +119,8 @@ include("..\database\connectDB.php");
         $result = $pdo->query("SELECT * FROM pieteikums where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' ORDER BY `pieteikums`.`laiks` DESC");
         }else{
           $result = $pdo->query("SELECT * FROM pieteikums ORDER BY `pieteikums`.`laiks` DESC");
-         
         }
+        // get count of every status tickets 
         $total = $pdo->query("SELECT * FROM pieteikums");
         $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') ");
         $not_done =  $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
@@ -131,8 +129,6 @@ include("..\database\connectDB.php");
         $rows = $result->fetchAll();
       
 ?>
-
-
 <div class="container pt-4 ">
 <div class="jumbotron ">
 <div class="row w-100">
@@ -229,22 +225,23 @@ include("..\database\connectDB.php");
       <td><?= $row['nodala'];?></td>
       <td>
         <?php
+            // change tickets status to complete
             if(isset($_POST['complete'.$row['ticket_id']]) ){
               $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='".$row['ticket_id']."'");
              }
+             //delete ticket from the database
              if(isset($_POST['delete1'.$row['ticket_id']]) ){
               $pdo->query("DELETE FROM pieteikums WHERE ticket_id='".$row['ticket_id']."'");
              }    
+             //update tickets info 
              if(isset($_POST['edit'.$row['ticket_id']]) ){
               $pdo->query("UPDATE `pieteikums` SET `iela` = '".$_POST['Iela']."', `telpa` = '".$_POST['Telpa']."', `problema` = '".$_POST['Prob']."', `piezimes` = '".$_POST['Piez']."', `nodala` = 'IT' WHERE ticket_id = '".$row['ticket_id']."'");
              }
 
-
+             //simple refresh after the button has been pressed and the function above completed
              if(isset( $_POST['delete1'.$row['ticket_id']]) || isset($_POST['complete'.$row['ticket_id']]) || isset($_POST['edit'.$row['ticket_id']])){
               echo("<meta http-equiv='refresh' content='1'>");
              }        
-
-             $id = $row['ticket_id'];
         ?>
         <form method="post">
             <button type="submit" class="btn btn-success btn-rounded" name="complete<?=$row['ticket_id'];?>" value=<?=$row['ticket_id'];?>>Apstiprināt</button>
@@ -298,8 +295,6 @@ include("..\database\connectDB.php");
                   <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
                     <span class="input-group-text">Piezīme</span>
                     <textarea class="form-control"name="Piez" aria-label="With textarea" value="<?= $row['piezimes'];?>"><?= $row['piezimes'];?></textarea>
-                    <?php
-                    ?>
               </div>
               </div>
                <div class="modal-footer">
