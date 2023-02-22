@@ -72,7 +72,7 @@ include("..\database\connectDB.php");
     if (isset($keyword) && !empty($keyword)) {
       $result = $pdo->query("SELECT * FROM pieteikums where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' and nodala = 'Saimniecības' ORDER BY `pieteikums`.`laiks` DESC");
     } else {
-      $result = $pdo->query("SELECT * FROM pieteikums where nodala = 'Saimniecības' ORDER BY `pieteikums`.`laiks` DESC");
+      $result = $pdo->query("SELECT * FROM pieteikums where nodala = 'Saimniecības' and not status = 'Atrisināts(Parbaudīts)' ORDER BY `pieteikums`.`laiks` DESC");
     }
     $rows = $result->fetchAll();
     ?>
@@ -145,6 +145,12 @@ include("..\database\connectDB.php");
                       <?= $row['status']; ?>
                     </span>
                     <?php
+                  }elseif ($row['status'] == 'Neatrisināts' ) {
+                    ?>
+                    <span class="badge badge-outline-red">
+                      <?= $row['status']; ?>
+                    </span>
+                    <?php
                   } else {
                     ?>
                     <span class="badge badge-outline-info">
@@ -161,25 +167,24 @@ include("..\database\connectDB.php");
                     $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='" . $row['ticket_id'] . "'");
                   }
                   //delete ticket from the database
-                  if (isset($_POST['delete1' . $row['ticket_id']])) {
-                    $pdo->query("DELETE FROM pieteikums WHERE ticket_id='" . $row['ticket_id'] . "'");
+                  if (isset($_POST['NDone' . $row['ticket_id']])) {
+                    $pdo->query("UPDATE pieteikums SET status='Neatrisināts' WHERE ticket_id='" . $row['ticket_id'] . "'");
                   }
                   //update tickets info 
                   if (isset($_POST['Proc' . $row['ticket_id']])) {
                     $pdo->query("UPDATE pieteikums SET status='Procesā' WHERE ticket_id='" . $row['ticket_id'] . "'");
                   }
-
                   //simple refresh after the button has been pressed and the function above completed
-                  if (isset($_POST['delete1' . $row['ticket_id']]) || isset($_POST['complete' . $row['ticket_id']]) || isset($_POST['Proc' . $row['ticket_id']])) {
+                  if (isset($_POST['NDone' . $row['ticket_id']]) || isset($_POST['complete' . $row['ticket_id']]) || isset($_POST['Proc' . $row['ticket_id']])) {
                     echo ("<meta http-equiv='refresh' content='1'>");
                   }
                   ?>
                   <form method="post">
                     <button type="submit" class="btn btn-success btn-rounded" name="complete<?= $row['ticket_id']; ?>"
                       value=<?= $row['ticket_id']; ?>>Apstiprināt</button>
-                    <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal"
-                      data-bs-target="#delete<?= $row['ticket_id']; ?>">Izdzēst</button>
+                    <button type="submit" name="NDone<?= $row['ticket_id']; ?>" class="btn btn-danger btn-rounded" >Neizdarīts</button>
                     <button type="submit" name="Proc<?= $row['ticket_id']; ?>" class="btn btn-warning btn-rounded ">Iesāks</button>
+
                     <div class="modal fade" id="delete<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
                       data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                       <div class="modal-dialog">

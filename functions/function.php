@@ -13,7 +13,6 @@ function Invalid_seasson($email)
     if (in_array($_SESSION['email'], $admin)) {
         header("location:../tasker/task.php");
     }
-    
 }
 
 function MicrosoftInfo()

@@ -2,7 +2,7 @@
 include("../functions/function.php");
 require "../vendor/autoload.php";
 MicrosoftInfo();
-Invalid_seasson($_SESSION['$email']);
+Invalid_seasson($_SESSION['email']);
 block_domain();
 include("..\database\connectDB.php");
 ?>

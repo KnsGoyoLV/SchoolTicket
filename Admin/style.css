@@ -180,8 +180,15 @@ tr {
   background-color: #f89406;
 }
 .badge-outline-warning {
-  color: #f8a306;
-  border: 1px solid #f8a306;
+  color: #00d25b;
+  border: 1px solid #00d25b;
+}
+.badge-red {
+  background-color: #f85706;
+}
+.badge-outline-red {
+  color: #f85706;
+  border: 1px solid #f85706;
 }
 .badge-warning:hover {
   background-color: #c67605;
