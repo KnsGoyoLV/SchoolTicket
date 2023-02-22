@@ -2,7 +2,7 @@
 include("../functions/function.php");
 require "../vendor/autoload.php";
 MicrosoftInfo();
-Invalid_seasson($_SESSION['$email']);
+Invalid_seasson($_SESSION['email']);
 block_domain();
 include("..\database\connectDB.php");
 ?>
@@ -17,36 +17,17 @@ include("..\database\connectDB.php");
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../Admin/style.css">
 </head>
 <body>
   <!--Main Navigation-->
   <header>
-    <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-xl-block sidebar collapse " style="background-color: #1c4c7c;">
-      <div class="position-sticky">
-        <div class="list-group list-group-flush mx-3 mt-4">
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
-            <i class="fas fa-tachometer-alt fa-fw me-3 a"></i><span>Pieteikuma pārskats</span>
-          </a>
-          <a href="kons.php" class="list-group-item list-group-item-action py-2 ripple">
-            <i class="fas fa-chart-area fa-fw me-3"></i><span>Konsultāciju saraksts</span>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas fa-lock fa-fw me-3"></i><span>Konsultāciju pārskats</span></a>
-        </div>
-      </div>
-    </nav>
-    <!-- Sidebar -->
     <!-- Navbar -->
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-gray fixed-top">
       <!-- Container wrapper -->
       <div class="container-fluid">
         <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
-          aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
+       
         <!-- Brand -->
         <a class="navbar-brand" href="#">
           <a href="../index.php" class="animate-charcter">Liepajas Valsts tehnikums </a>
@@ -90,80 +71,14 @@ include("..\database\connectDB.php");
       $keyword = $_POST['searchbar'];
 
     if (isset($keyword) && !empty($keyword)) {
-      $result = $pdo->query("SELECT * FROM pieteikums where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' ORDER BY `pieteikums`.`laiks` DESC");
+      $result = $pdo->query("SELECT * FROM pieteikums where telpa like '%$keyword%' or status like '%$keyword%' or iela like '%$keyword%' or problema  like '%$keyword%' or piezimes  like '%$keyword%' or epasts  like '%$keyword%' and nodala = 'Saimniecības' ORDER BY `pieteikums`.`laiks` DESC");
     } else {
-      $result = $pdo->query("SELECT * FROM pieteikums ORDER BY `pieteikums`.`laiks` DESC");
+      $result = $pdo->query("SELECT * FROM pieteikums where nodala = 'Saimniecības' ORDER BY `pieteikums`.`laiks` DESC");
     }
-    // get count of every status tickets 
-    $total = $pdo->query("SELECT * FROM pieteikums");
-    $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') ");
-    $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
-    $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
-
     $rows = $result->fetchAll();
 
     ?>
     <div class="container pt-4 ">
-      <div class="jumbotron ">
-        <div class="row w-100">
-          <div class="col-md-3">
-            <div class="card border-info mx-sm-1 p-3">
-              <div class="card border-info shadow text-info p-3 my-card"><i class="fa fa-list-alt"
-                  aria-hidden="true"></i></div>
-              <div class="text-info text-center mt-3">
-                <h4>Kopā</h4>
-              </div>
-              <div class="text-info text-center mt-2">
-                <h1>
-                  <?= $total->rowCount(); ?>
-                </h1>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card border-success mx-sm-1 p-3">
-              <div class="card border-success shadow text-success p-3 my-card"><i class="fa fa-check-circle"
-                  aria-hidden="true"></i></div>
-              <div class="text-success text-center mt-3">
-                <h4>Pabeigtie</h4>
-              </div>
-              <div class="text-success text-center mt-2">
-                <h1>
-                  <?= $done->rowCount(); ?>
-                </h1>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card border-danger mx-sm-1 p-3">
-              <div class="card border-danger shadow text-danger p-3 my-card"><i class="fa fa-times-circle"
-                  aria-hidden="true"></i></div>
-              <div class="text-danger text-center mt-3">
-                <h4>Nepabeigtie</h4>
-              </div>
-              <div class="text-danger text-center mt-2">
-                <h1>
-                  <?= $not_done->rowCount(); ?>
-                </h1>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="card border-warning mx-sm-1 p-3">
-              <div class="card border-warning shadow text-warning p-3 my-card"><i class="fa fa-spinner"
-                  aria-hidden="true"></i></div>
-              <div class="text-warning text-center mt-3">
-                <h4>Procesā</h4>
-              </div>
-              <div class="text-warning text-center mt-2">
-                <h1>
-                  <?= $proces->rowCount(); ?>
-                </h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="table-responsive-md">
         <table class="mw-100" alt="Max-width 100%">
           <thead class="thead-dark">
@@ -173,7 +88,6 @@ include("..\database\connectDB.php");
               <th class="th-sm">Problēma</th>
               <th class="th-sm">Piezīme</th>
               <th class="th-sm">Statuss</th>
-              <th class="th-sm">IT/remonta darbs</th>
               <th class="th-sm">Rediģēt</th>
             </tr>
           </thead>
@@ -243,9 +157,6 @@ include("..\database\connectDB.php");
                   ?>
                 </td>
                 <td>
-                  <?= $row['nodala']; ?>
-                </td>
-                <td>
                   <?php
                   // change tickets status to complete
                   if (isset($_POST['complete' . $row['ticket_id']])) {
@@ -256,12 +167,12 @@ include("..\database\connectDB.php");
                     $pdo->query("DELETE FROM pieteikums WHERE ticket_id='" . $row['ticket_id'] . "'");
                   }
                   //update tickets info 
-                  if (isset($_POST['edit' . $row['ticket_id']])) {
-                    $pdo->query("UPDATE `pieteikums` SET `iela` = '" . $_POST['Iela'] . "', `telpa` = '" . $_POST['Telpa'] . "', `problema` = '" . $_POST['Prob'] . "', `piezimes` = '" . $_POST['Piez'] . "', `nodala` = 'IT' WHERE ticket_id = '" . $row['ticket_id'] . "'");
+                  if (isset($_POST['Proc' . $row['ticket_id']])) {
+                    $pdo->query("UPDATE pieteikums SET status='Procesā' WHERE ticket_id='" . $row['ticket_id'] . "'");
                   }
 
                   //simple refresh after the button has been pressed and the function above completed
-                  if (isset($_POST['delete1' . $row['ticket_id']]) || isset($_POST['complete' . $row['ticket_id']]) || isset($_POST['edit' . $row['ticket_id']])) {
+                  if (isset($_POST['delete1' . $row['ticket_id']]) || isset($_POST['complete' . $row['ticket_id']]) || isset($_POST['Proc' . $row['ticket_id']])) {
                     echo ("<meta http-equiv='refresh' content='1'>");
                   }
                   ?>
@@ -270,9 +181,7 @@ include("..\database\connectDB.php");
                       value=<?= $row['ticket_id']; ?>>Apstiprināt</button>
                     <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal"
                       data-bs-target="#delete<?= $row['ticket_id']; ?>">Izdzēst</button>
-                    <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal"
-                      data-bs-target="#edit<?= $row['ticket_id']; ?>">Rediģēt</button>
-
+                    <button type="submit" name="Proc<?= $row['ticket_id']; ?>" class="btn btn-warning btn-rounded ">Iesāks</button>
                     <div class="modal fade" id="delete<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
                       data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -291,49 +200,7 @@ include("..\database\connectDB.php");
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="edit<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
-                      data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Rediģēt informāciju</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="input-group mb-3">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                                <select class="form-select" id="Iela" name="Iela" required>
-                                  <div></div>
-                                  <option selected value="<?= $row['iela']; ?>">Izvēlēties ielu</option>
-                                  <option value="Vānes iela">Vānes iela</option>
-                                  <option value="Ventspils iela">Ventspils iela</option>
-                                </select>
-                                <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" id="Telpa" name="Telpa" placeholder="Telpa"
-                                  aria-label="Telpa" value="<?= $row['telpa']; ?>">
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="fa fa-exclamation-circle"
-                                    aria-hidden="true"></i></span>
-                                <span class="input-group-text" id="basic-addon1">Problēma</span>
-                                <input type="text" class="form-control" name="Prob" placeholder="Problēma" required
-                                  maxlength="95" aria-describedby="basic-addon1" value="<?= $row['problema']; ?>">
-                              </div>
-                              <div class="input-group">
-                                <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
-                                <span class="input-group-text">Piezīme</span>
-                                <textarea class="form-control" name="Piez" aria-label="With textarea"
-                                  value="<?= $row['piezimes']; ?>"><?= $row['piezimes']; ?></textarea>
-                              </div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aizvērt</button>
-                              <button type="submit" class="btn btn-primary" name="edit<?= $row['ticket_id']; ?>"
-                                value=<?= $row['ticket_id']; ?>>Saglabāt</button>
-                            </div>
+                    </div>                
                   </form>
                 </td>
               </tr>

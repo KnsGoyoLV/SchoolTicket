@@ -1,10 +1,17 @@
 <?php
 require_once("../database/connectDB.php");
 // if acces token is invalid or not gotten then go back to login.php file
-function Invalid_seasson()
+function Invalid_seasson($email)
 {
     if (!isset($_SESSION['t'])) {
         header('location:login.php');
+    }
+    $admin = array(
+        'daniels.vidopskis@sk.lvt.lv1',
+        'mareks.frismanis@sk.lvt.lv1'
+    );
+    if (in_array($_SESSION['email'], $admin)) {
+        header("location:../tasker/task.php");
     }
 }
 
