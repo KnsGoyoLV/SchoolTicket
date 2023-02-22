@@ -27,7 +27,6 @@ include("..\database\connectDB.php");
       <!-- Container wrapper -->
       <div class="container-fluid">
         <!-- Toggle button -->
-       
         <!-- Brand -->
         <a class="navbar-brand" href="#">
           <a href="../index.php" class="animate-charcter">Liepajas Valsts tehnikums </a>
@@ -76,7 +75,6 @@ include("..\database\connectDB.php");
       $result = $pdo->query("SELECT * FROM pieteikums where nodala = 'Saimniecības' ORDER BY `pieteikums`.`laiks` DESC");
     }
     $rows = $result->fetchAll();
-
     ?>
     <div class="container pt-4 ">
       <div class="table-responsive-md">
