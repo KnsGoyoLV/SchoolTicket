@@ -6,8 +6,6 @@ if (!isset($_SESSION['t'])) {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="lv">
 
@@ -20,11 +18,9 @@ if (!isset($_SESSION['t'])) {
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="pievienot.css">
-
 </head>
 
 <body>
-
     <header style="
     padding-bottom: 6px;">
         <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top" style="bottom: 914px;">
