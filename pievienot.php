@@ -80,9 +80,7 @@ if(!isset($_SESSION['t'])){
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
 <body>
-
 <form class="container-md" method="post">
-
 <?php 
      // if submited then send query to database and add the new row to the table with the new info
         if(isset($_POST['submit1'])){
