@@ -183,7 +183,7 @@ include("..\database\connectDB.php");
                     <button type="submit" class="btn btn-success btn-rounded" name="complete<?= $row['ticket_id']; ?>"
                       value=<?= $row['ticket_id']; ?>>Apstiprināt</button>
                     <button type="submit" name="NDone<?= $row['ticket_id']; ?>" class="btn btn-danger btn-rounded" >Neizdarīts</button>
-                    <button type="submit" name="Proc<?= $row['ticket_id']; ?>" class="btn btn-warning btn-rounded ">Iesāks</button>
+                    <button type="submit" name="Proc<?= $row['ticket_id']; ?>" class="btn btn-warning btn-rounded ">Iesākts</button>
 
                     <div class="modal fade" id="delete<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
                       data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
