@@ -22,9 +22,8 @@ if(!isset($_SESSION['t'])){
 
 <body >
 
-<header style="
-    padding-bottom: 6px;">
-<nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top" style="bottom: 914px;">
+<header style="">
+<nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top" >
       <div class="container">
         <a href="index.php" class="animate-charcter">Liepajas Valsts tehnikums</a>
         
