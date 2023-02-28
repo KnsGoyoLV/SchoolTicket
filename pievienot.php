@@ -81,6 +81,11 @@ if(!isset($_SESSION['t'])){
 <body>
 <form class="container-md" method="post">
 <?php 
+
+
+        if(empty($_POST['Iela'])){
+          // show modal saying it is empty
+        }
      // if submited then send query to database and add the new row to the table with the new info
         if(isset($_POST['submit1'])){
          $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `nodala`, `epasts`,`vards`,`uzvards`) VALUES
