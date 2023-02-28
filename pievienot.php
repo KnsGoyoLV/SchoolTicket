@@ -102,14 +102,11 @@ if(!isset($_SESSION['t'])){
 
       if ($error) {
         echo '<script>
-        
-            var myModal = new bootstrap.Modal(document.getElementById("myModal"));
-            myModal.show();
-            
-  
+          var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+          myModal.show();
       </script>';
 
-      echo '<div class="modal fade" id="myModal" tabindex="-1">
+      echo '<div class="modal fade" id="myModal" name="myModal" tabindex="-1">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
