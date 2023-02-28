@@ -18,6 +18,14 @@ if(!isset($_SESSION['t'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="pievienot.css">
 
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body >
@@ -80,19 +88,53 @@ if(!isset($_SESSION['t'])){
 </header>
 <body>
 <form class="container-md" method="post">
-<?php 
+<?php
+    if (isset($_POST['submit1'])) {
+      $required = array('Iela', 'Telpa', 'Prob', 'Piez', 'nodala');
 
-
-        if(empty($_POST['Iela'])){
-          // show modal saying it is empty
+      // Loop over field names, make sure each one exists and is not empty
+      $error = false;
+      foreach ($required as $field) {
+        if (empty($_POST[$field])) {
+          $error = true;
         }
+      }
+
+      if ($error) {
+        echo '<script>
+        
+            var myModal = new bootstrap.Modal(document.getElementById("myModal"));
+            myModal.show();
+            
+  
+      </script>';
+
+      echo '<div class="modal fade" id="myModal" tabindex="-1">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">TEST123</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <p>EU TU IERAKSTI KAUT KO TAGAD</p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>';
+      } else {
+      $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `nodala`, `epasts`,`vards`,`uzvards`) VALUES
+      ('".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '".$_POST['nodala']."', '".$_SESSION['email']."', '". $_SESSION['username']."', '". $_SESSION['surname']."')");
+      header('location:index.php');
+      }
+       
      // if submited then send query to database and add the new row to the table with the new info
-        if(isset($_POST['submit1'])){
-         $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `nodala`, `epasts`,`vards`,`uzvards`) VALUES
-                                                ('".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '".$_POST['nodala']."', '".$_SESSION['email']."', '". $_SESSION['username']."', '". $_SESSION['surname']."')");
-         header('location:index.php');
-        }
-        ?>
+  
+    }
+?>
 
 
     <div class="INFO">
@@ -100,16 +142,16 @@ if(!isset($_SESSION['t'])){
 </div>
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-<select class="form-select" id="Iela"name="Iela" required>
+<select class="form-select" id="Iela"name="Iela" >
     <div></div>
         <option>Izvēlēties ielu</option>
         <option value="Vānes iela">Vānes iela</option>
         <option value="Ventspils iela">Ventspils iela</option>
      </select>
      <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa" oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')" name="Telpa" maxlength="5" required>
+     <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa" oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')" name="Telpa" maxlength="5" >
      <br>
-     <select class="form-select" id="nodala"name="nodala" required>
+     <select class="form-select" id="nodala"name="nodala" >
     <div></div>
         <option>Izvēlēties nodaļu</option>
         <option value="IT">IT nodaļa</option>
@@ -121,7 +163,7 @@ if(!isset($_SESSION['t'])){
 <span class="input-group-text"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
   <span class="input-group-text" id="basic-addon1">Problēma</span>
   <!-- After getting the error it dosent let you submit the ticket  !-->
-  <input type="text" class="form-control" name="Prob" placeholder="Problēma" oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')"  maxlength="95" aria-describedby="basic-addon1" required>
+  <input type="text" class="form-control" name="Prob" placeholder="Problēma" oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')"  maxlength="95" aria-describedby="basic-addon1" >
 </div>
 
 <div class="input-group">
@@ -143,11 +185,6 @@ require "footer.php";
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
 </body>
 </html>
 
