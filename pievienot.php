@@ -80,7 +80,7 @@ if (!isset($_SESSION['t'])) {
       </div>
       <?php
       if (isset($_POST['submit1'])) {
-        $required = array('Iela', 'Telpa', 'Problēma', 'nodala');
+        $required = array('nodala', 'Problēma', 'Telpa', 'Iela');
 
         // Loop over field names, make sure each one exists and is not empty
         $error = false;
