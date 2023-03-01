@@ -110,7 +110,7 @@ include("..\database\connectDB.php");
             <div class="card border-info mx-sm-1 p-3">
               <div class="card border-info shadow text-info p-3 my-card"><i class="fa fa-list-alt"
                   aria-hidden="true"></i></div>
-              <div class="text-info text-center mt-3">
+              <div onclick="location.href='strada1';" style="cursor: pointer;" class="text-info text-center mt-3">
                 <h4>Kopā</h4>
               </div>
               <div class="text-info text-center mt-2">
@@ -124,7 +124,7 @@ include("..\database\connectDB.php");
             <div class="card border-success mx-sm-1 p-3">
               <div class="card border-success shadow text-success p-3 my-card"><i class="fa fa-check-circle"
                   aria-hidden="true"></i></div>
-              <div class="text-success text-center mt-3">
+              <div onclick="location.href='strada2';" style="cursor: pointer;" class="text-success text-center mt-3">
                 <h4>Pabeigtie</h4>
               </div>
               <div class="text-success text-center mt-2">
@@ -138,7 +138,7 @@ include("..\database\connectDB.php");
             <div class="card border-danger mx-sm-1 p-3">
               <div class="card border-danger shadow text-danger p-3 my-card"><i class="fa fa-times-circle"
                   aria-hidden="true"></i></div>
-              <div class="text-danger text-center mt-3">
+              <div onclick="location.href='strada3';" style="cursor: pointer;" class="text-danger text-center mt-3">
                 <h4>Nepabeigtie</h4>
               </div>
               <div class="text-danger text-center mt-2">
@@ -152,7 +152,7 @@ include("..\database\connectDB.php");
             <div class="card border-warning mx-sm-1 p-3">
               <div class="card border-warning shadow text-warning p-3 my-card"><i class="fa fa-spinner"
                   aria-hidden="true"></i></div>
-              <div class="text-warning text-center mt-3">
+              <div onclick="location.href='strada4';" style="cursor: pointer;" class="text-warning text-center mt-3">
                 <h4>Procesā</h4>
               </div>
               <div class="text-warning text-center mt-2">
