@@ -83,10 +83,14 @@ if(!isset($_SESSION['t'])){
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
 <body>
+  
 <form class="container-md" method="post">
+<div class="INFO">
+<p class="font- 'Nunito', sans-serif;">Ievadiet nepieciešamo informāciju</p>
+</div>
 <?php
     if (isset($_POST['submit1'])) {
-      $required = array('Iela', 'Telpa', 'Prob', 'Piez', 'nodala');
+      $required = array('Iela', 'Telpa', 'Prob', 'nodala');
 
       // Loop over field names, make sure each one exists and is not empty
       $error = false;
@@ -99,25 +103,11 @@ if(!isset($_SESSION['t'])){
       }
 
       if ($error) {
-        echo "<script>$(document).ready(function() { $('#myModal').modal('show'); });</script>";
-      
+        echo "<script>$(document).ready(function() { $('.alert').alert() });</script>";
 
-      echo '<div class="modal fade" id="myModal" name="myModal" tabindex="-1">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title">Kļūda </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  <p>Lūdzu aizpildiet visas vajadzīgās  '.$empt.'</p>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-  </div>';
+    echo '<div class="alert alert-danger" role="alert">
+            Lūdzu aizpildiet: '.$empt.'
+            </div>';
       } else {
       $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `nodala`, `epasts`,`vards`,`uzvards`) VALUES
       ('".$_POST['Iela']."', '".$_POST['Telpa']."', 'Neatrisināts', '".$_POST['Prob']."', '".$_POST['Piez']."', '".$_POST['nodala']."', '".$_SESSION['email']."', '". $_SESSION['username']."', '". $_SESSION['surname']."')");
@@ -128,11 +118,7 @@ if(!isset($_SESSION['t'])){
   
     }
 ?>
-
-
-    <div class="INFO">
-<p class="font- 'Nunito', sans-serif;">Ievadiet nepieciešamo informāciju</p>
-</div>
+  
 <div class="input-group mb-3">
 <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
 <select class="form-select" id="Iela"name="Iela" >
