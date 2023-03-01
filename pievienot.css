@@ -28,6 +28,11 @@ header {
     padding: 1rem 5%;
     font-family: ui-sans-serif;
 }
+
+.fa-solid, .fas{
+  padding: 0.2rem;
+}
+
 form.container-md {
   margin-top: 2rem;
 }
