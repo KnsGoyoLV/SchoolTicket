@@ -20,12 +20,8 @@ if(!isset($_SESSION['t'])){
 
 
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
 </head>
 
 <body >
@@ -94,17 +90,17 @@ if(!isset($_SESSION['t'])){
 
       // Loop over field names, make sure each one exists and is not empty
       $error = false;
+      $empt = "";
       foreach ($required as $field) {
         if (empty($_POST[$field])) {
           $error = true;
+          $empt = $field;
         }
       }
 
       if ($error) {
-        echo '<script>
-          var myModal = new bootstrap.Modal(document.getElementById("myModal"));
-          myModal.show();
-      </script>';
+        echo "<script>$(document).ready(function() { $('#myModal').modal('show'); });</script>";
+      
 
       echo '<div class="modal fade" id="myModal" name="myModal" tabindex="-1">
       <div class="modal-dialog">
@@ -114,7 +110,7 @@ if(!isset($_SESSION['t'])){
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                  <p>EU TU IERAKSTI KAUT KO TAGAD</p>
+                  <p>EU TU IERAKSTI KAUT KO TAGAD '.$empt.'</p>
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
