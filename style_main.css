@@ -818,6 +818,10 @@ label {
     font-style: none;
 }
 
+.fa-solid, .fas{
+    padding: 0.5rem;
+}
+
 button.btn.btn-primary {
     width: 62%;
     margin-left: 15%;
