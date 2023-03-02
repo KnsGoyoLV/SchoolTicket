@@ -79,54 +79,67 @@ if (!isset($_SESSION['t'])) {
         <p class="font- 'Nunito', sans-serif;">Ievadiet nepieciešamo informāciju</p>
       </div>
       <?php
-      if (isset($_POST['submit1'])) {
-        $required = array('nodala', 'Problēma', 'Telpa', 'Iela');
 
-        // Loop over field names, make sure each one exists and is not empty
-        $error = false;
-        $empt = "";
+
+      // Initialize the required fields array
+      $required = array('nodala', 'Problēma', 'Telpa', 'Iela');
+
+      // Initialize an empty error array
+      $errors = array();
+
+      // Check if the form has been submitted
+      if (isset($_POST['submit1'])) {
+        // Loop over the required fields and check for empty values
         foreach ($required as $field) {
           if (empty($_POST[$field])) {
-            $error = true;
-            $empt = $field;
+            $errors[] = $field . ' lauks ir obligāts.';
+          }else {
+            // Store the submitted value in the data array
+            $data[$field] = $_POST[$field];
           }
         }
 
-        if ($error) {
-          echo "<script>$(document).ready(function() { $('.alert').alert() });</script>";
-          echo '<div class="alert alert-danger" role="alert">
-            Lūdzu aizpildiet: ' . $empt . ' lauku.
-            </div>';
-        } else {
+        // If there are no errors, insert the form data into the database
+        if (empty($errors)) {
+          // Insert the form data into the database using an SQL query
           $pdo->query("INSERT INTO `pieteikums`  ( `iela`, `telpa`, `status`, `problema`, `piezimes`, `nodala`, `epasts`,`vards`,`uzvards`) VALUES
-      ('" . $_POST['Iela'] . "', '" . $_POST['Telpa'] . "', 'Neatrisināts', '" . $_POST['Problēma'] . "', '" . $_POST['Piez'] . "', '" . $_POST['nodala'] . "', '" . $_SESSION['email'] . "', '" . $_SESSION['username'] . "', '" . $_SESSION['surname'] . "')");
+                          ('" . $_POST['Iela'] . "', '" . $_POST['Telpa'] . "', 'Neatrisināts', '" . $_POST['Problēma'] . "', '" . $_POST['Piez'] . "', '" . $_POST['nodala'] . "', '" . $_SESSION['email'] . "', '" . $_SESSION['username'] . "', '" . $_SESSION['surname'] . "')");
+          // Redirect the user to a success page or display a success message
           header('location:index.php');
         }
-
-        // if submited then send query to database and add the new row to the table with the new info
-      
       }
+      // Display the error messages (if any)
+      if (!empty($errors)) {
+        echo '<div class="alert alert-danger" role="alert">';
+        echo 'Lūdzu aizpildiet sekojošus laukus: ';
+        echo implode(', ', $errors);
+        echo '</div>';
+      }
+      function is_selected($value, $selected) {
+        return $value === $selected ? 'selected' : '';
+      }
+
       ?>
       <script>
 
       </script>
       <div class="input-group mb-3">
         <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-        <select class="form-select" id="Iela" name="Iela" required>
+        <select class="form-select" id="Iela" name="Iela" required >
           <div></div>
-          <option value="">Izvēlēties ielu</option>
-          <option value="Vānes iela">Vānes iela</option>
-          <option value="Ventspils iela">Ventspils iela</option>
+          <option value=""<?= is_selected('', $_POST['Iela']) ?>>Izvēlēties ielu</option>
+          <option value="Vānes iela" <?= is_selected('Vānes iela', $_POST['Iela']) ?>>Vānes iela</option>
+          <option value="Ventspils iela"<?= is_selected('Ventspils iela', $_POST['Iela']) ?>>Ventspils iela</option>
         </select>
         <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
         <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa"
-          oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')" name="Telpa" maxlength="5">
+          value="<?= isset($data['Telpa']) ? $data['Telpa'] : '' ?>" name="Telpa" maxlength="5" >
         <br>
         <select class="form-select" id="nodala" name="nodala" required>
           <div></div>
-          <option value="">Izvēlēties nodaļu</option>
-          <option value="IT">IT nodaļa</option>
-          <option value="Saimniecības">Saimniecības nodaļa</option>
+          <option value="" <?= is_selected('', $_POST['nodala']) ?>>Izvēlēties nodaļu</option>
+          <option value="IT"<?= is_selected('IT', $_POST['nodala']) ?> >IT nodaļa</option>
+          <option value="Saimniecības"<?= is_selected('Saimniecības', $_POST['nodala']) ?>>Saimniecības nodaļa</option>
         </select>
       </div>
 
@@ -135,14 +148,14 @@ if (!isset($_SESSION['t'])) {
         <span class="input-group-text" id="basic-addon1">Problēma</span>
         <!-- After getting the error it dosent let you submit the ticket  !-->
         <input type="text" class="form-control" name="Problēma" placeholder="Problēma" maxlength="95"
-          aria-describedby="inputGroupPrepend" required>
+          aria-describedby="inputGroupPrepend"value="<?= isset($data['Problēma']) ? $data['Problēma'] : '' ?>" required>
       </div>
 
       <div class="input-group">
         <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
         <span class="input-group-text">Piezīme</span>
         <textarea class="form-control" name="Piez" placeholder="Piezīme" maxlength="95"
-          aria-label="With textarea"></textarea>
+          aria-label="With textarea" ></textarea>
       </div>
 
       <div class="submit">
