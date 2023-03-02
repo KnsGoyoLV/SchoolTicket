@@ -93,7 +93,7 @@ if (!isset($_SESSION['t'])) {
         foreach ($required as $field) {
           if (empty($_POST[$field])) {
             $errors[] = $field . ' lauks ir obligāts.';
-          }else {
+          } else {
             // Store the submitted value in the data array
             $data[$field] = $_POST[$field];
           }
@@ -115,7 +115,8 @@ if (!isset($_SESSION['t'])) {
         echo implode(', ', $errors);
         echo '</div>';
       }
-      function is_selected($value, $selected) {
+      function is_selected($value, $selected)
+      {
         return $value === $selected ? 'selected' : '';
       }
 
@@ -125,21 +126,22 @@ if (!isset($_SESSION['t'])) {
       </script>
       <div class="input-group mb-3">
         <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-        <select class="form-select" id="Iela" name="Iela" required >
+        <select class="form-select" id="Iela" name="Iela" required>
           <div></div>
-          <option value=""<?= is_selected('', $_POST['Iela']) ?>>Izvēlēties ielu</option>
-          <option value="Vānes iela" <?= is_selected('Vānes iela', $_POST['Iela']) ?>>Vānes iela</option>
-          <option value="Ventspils iela"<?= is_selected('Ventspils iela', $_POST['Iela']) ?>>Ventspils iela</option>
+          <option value="" <?= isset($_POST['nodala']) ? is_selected('', $_POST['Iela']) : '' ?>>Izvēlēties ielu</option>
+          <option value="Vānes iela" <?= isset($_POST['nodala']) ? is_selected('Vānes iela', $_POST['Iela']) : '' ?>>Vānes
+            iela</option>
+          <option value="Ventspils iela" <?= isset($_POST['nodala']) ? is_selected('Ventspils iela', $_POST['Iela']) : '' ?>>Ventspils iela</option>
         </select>
         <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-        <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa"
-          value="<?= isset($data['Telpa']) ? $data['Telpa'] : '' ?>" name="Telpa" maxlength="5" >
+        <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa" name="Telpa" maxlength="5">
         <br>
         <select class="form-select" id="nodala" name="nodala" required>
           <div></div>
-          <option value="" <?= is_selected('', $_POST['nodala']) ?>>Izvēlēties nodaļu</option>
-          <option value="IT"<?= is_selected('IT', $_POST['nodala']) ?> >IT nodaļa</option>
-          <option value="Saimniecības"<?= is_selected('Saimniecības', $_POST['nodala']) ?>>Saimniecības nodaļa</option>
+          <option value="" <?= isset($_POST['nodala']) ? is_selected('', $_POST['nodala']) : '' ?>>Izvēlēties nodaļu
+          </option>
+          <option value="IT" <?= isset($_POST['nodala']) ? is_selected('IT', $_POST['nodala']) : '' ?>>IT nodaļa</option>
+          <option value="Saimniecības" <?= isset($_POST['nodala']) ? is_selected('Saimniecības', $_POST['nodala']) : '' ?>>Saimniecības nodaļa</option>
         </select>
       </div>
 
@@ -148,14 +150,15 @@ if (!isset($_SESSION['t'])) {
         <span class="input-group-text" id="basic-addon1">Problēma</span>
         <!-- After getting the error it dosent let you submit the ticket  !-->
         <input type="text" class="form-control" name="Problēma" placeholder="Problēma" maxlength="95"
-          aria-describedby="inputGroupPrepend"value="<?= isset($data['Problēma']) ? $data['Problēma'] : '' ?>" required>
+          aria-describedby="inputGroupPrepend" value="<?= isset($data['Problēma']) ? $data['Problēma'] : '' ?>"
+          required>
       </div>
 
       <div class="input-group">
         <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
         <span class="input-group-text">Piezīme</span>
         <textarea class="form-control" name="Piez" placeholder="Piezīme" maxlength="95"
-          aria-label="With textarea" ></textarea>
+          aria-label="With textarea"></textarea>
       </div>
 
       <div class="submit">
