@@ -114,7 +114,7 @@ if (!isset($_SESSION['t'])) {
         <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
         <select class="form-select" id="Iela" name="Iela" required>
           <div></div>
-          <option>Izvēlēties ielu</option>
+          <option value="">Izvēlēties ielu</option>
           <option value="Vānes iela">Vānes iela</option>
           <option value="Ventspils iela">Ventspils iela</option>
         </select>
@@ -122,9 +122,9 @@ if (!isset($_SESSION['t'])) {
         <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa"
           oninvalid="this.setCustomValidity('Lūdzu aizpildiet šo lauku')" name="Telpa" maxlength="5">
         <br>
-        <select class="form-select" id="nodala" name="nodala">
+        <select class="form-select" id="nodala" name="nodala" required>
           <div></div>
-          <option>Izvēlēties nodaļu</option>
+          <option value="">Izvēlēties nodaļu</option>
           <option value="IT">IT nodaļa</option>
           <option value="Saimniecības">Saimniecības nodaļa</option>
         </select>
