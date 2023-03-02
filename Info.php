@@ -70,7 +70,7 @@ if (!isset($_SESSION['t'])) {
     <body>
         <section class="vh-100" style="background-color: #eee;">
             <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="row d-flex justify-content-center align-items-center ">
                     <div class="col-md-12 col-xl-4">
 
                         <div class="card" style="border-radius: 15px;">
