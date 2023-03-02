@@ -115,8 +115,7 @@ if (!isset($_SESSION['t'])) {
         echo implode(', ', $errors);
         echo '</div>';
       }
-      function is_selected($value, $selected)
-      {
+      function is_selected($value, $selected) {
         return $value === $selected ? 'selected' : '';
       }
 
