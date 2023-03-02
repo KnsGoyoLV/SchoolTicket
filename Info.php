@@ -23,7 +23,7 @@ if (!isset($_SESSION['t'])) {
 <body>
     <header style="
     padding-bottom: 6px;">
-        <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top" style="bottom: 914px;">
+        <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
             <div class="container">
                 <a href="index.php" class="animate-charcter">Liepajas Valsts tehnikums</a>
 
@@ -37,11 +37,11 @@ if (!isset($_SESSION['t'])) {
                             <a href="index.php" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
                         </li>
                         <li class="nav-item">
-                            <a href="pievienot.php" class="nav-link"><i
-                                    class="fas fa-plus"></i>Pievienot Pieteikumu</a>
+                            <a href="pievienot.php" class="nav-link"><i class="fas fa-plus"></i>Pievienot Pieteikumu</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#"style="background-color: #4782b5;" class="nav-link"><i class="fas fa-circle-info"></i>Informācija</a>
+                            <a href="#" style="background-color: #4782b5;" class="nav-link"><i
+                                    class="fas fa-circle-info"></i>Informācija</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"

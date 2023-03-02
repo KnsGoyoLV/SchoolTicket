@@ -40,7 +40,7 @@ if (!isset($_SESSION['t'])) {
         <div class="collapse navbar-collapse " id="navmenu">
           <ul class="navbar-nav ms-auto  ">
             <li class="nav-item">
-              <a href="login.php" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
+              <a href="index.php" class="nav-link"><i class="fas fa-home"></i>Sākumlapa</a>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link" style="background-color: #4782b5;"><i class="fas fa-plus"></i>Pievienot
