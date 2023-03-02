@@ -16,10 +16,13 @@ if (array_key_exists('access_token', $_POST)) {
   $t = $_SESSION['t'];
   $ch = curl_init();
   //get users json data from /me/ endpoint
-  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'Authorization: Bearer ' . $t,
-    'Conent-type: application/json'
-  )
+  curl_setopt(
+    $ch,
+    CURLOPT_HTTPHEADER,
+    array(
+      'Authorization: Bearer ' . $t,
+      'Conent-type: application/json'
+    )
   );
   curl_setopt($ch, CURLOPT_URL, "https://graph.microsoft.com/v1.0/me/");
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

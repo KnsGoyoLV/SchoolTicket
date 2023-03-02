@@ -17,7 +17,7 @@ if (!isset($_SESSION['t'])) {
   <title>LVT TicketSupport</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet" href="pievienot.css">
 
 
@@ -93,7 +93,7 @@ if (!isset($_SESSION['t'])) {
         foreach ($required as $field) {
           if (empty($_POST[$field])) {
             $errors[] = $field . ' lauks ir obligāts.';
-          }else {
+          } else {
             // Store the submitted value in the data array
             $data[$field] = $_POST[$field];
           }
@@ -115,7 +115,8 @@ if (!isset($_SESSION['t'])) {
         echo implode(', ', $errors);
         echo '</div>';
       }
-      function is_selected($value, $selected) {
+      function is_selected($value, $selected)
+      {
         return $value === $selected ? 'selected' : '';
       }
 
@@ -125,21 +126,23 @@ if (!isset($_SESSION['t'])) {
       </script>
       <div class="input-group mb-3">
         <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-        <select class="form-select" id="Iela" name="Iela" required >
+        <select class="form-select" id="Iela" name="Iela" required>
           <div></div>
-          <option value=""<?= isset($_POST['Iela']) ?  is_selected('', $_POST['Iela']): '' ?>>Izvēlēties ielu</option>
-          <option value="Vānes iela" <?= isset($_POST['Iela']) ?  is_selected('Vānes iela', $_POST['Iela']) : ''?>>Vānes iela</option>
-          <option value="Ventspils iela"<?= isset($_POST['Iela']) ?  is_selected('Ventspils iela', $_POST['Iela']): '' ?>>Ventspils iela</option>
+          <option value="" <?= isset($_POST['Iela']) ? is_selected('', $_POST['Iela']) : '' ?>>Izvēlēties ielu</option>
+          <option value="Vānes iela" <?= isset($_POST['Iela']) ? is_selected('Vānes iela', $_POST['Iela']) : '' ?>>Vānes
+            iela</option>
+          <option value="Ventspils iela" <?= isset($_POST['Iela']) ? is_selected('Ventspils iela', $_POST['Iela']) : '' ?>>Ventspils iela</option>
         </select>
         <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-        <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa"
-          name="Telpa" maxlength="5" value="<?= isset($data['Telpa']) ? $data['Telpa'] : '' ?>">
+        <input type="text" class="form-control" placeholder="Telpa" aria-label="Telpa" name="Telpa" maxlength="5"
+          value="<?= isset($data['Telpa']) ? $data['Telpa'] : '' ?>">
         <br>
         <select class="form-select" id="nodala" name="nodala" required>
           <div></div>
-          <option value="" <?= isset($_POST['nodala']) ?  is_selected('', $_POST['nodala']): '' ?>>Izvēlēties nodaļu</option>
-          <option value="IT"<?= isset($_POST['nodala']) ?  is_selected('IT', $_POST['nodala']) : ''?> >IT nodaļa</option>
-          <option value="Saimniecības"<?= isset($_POST['nodala']) ?  is_selected('Saimniecības', $_POST['nodala']) : ''?>>Saimniecības nodaļa</option>
+          <option value="" <?= isset($_POST['nodala']) ? is_selected('', $_POST['nodala']) : '' ?>>Izvēlēties nodaļu
+          </option>
+          <option value="IT" <?= isset($_POST['nodala']) ? is_selected('IT', $_POST['nodala']) : '' ?>>IT nodaļa</option>
+          <option value="Saimniecības" <?= isset($_POST['nodala']) ? is_selected('Saimniecības', $_POST['nodala']) : '' ?>>Saimniecības nodaļa</option>
         </select>
       </div>
 
@@ -148,14 +151,15 @@ if (!isset($_SESSION['t'])) {
         <span class="input-group-text" id="basic-addon1">Problēma</span>
         <!-- After getting the error it dosent let you submit the ticket  !-->
         <input type="text" class="form-control" name="Problēma" placeholder="Problēma" maxlength="95"
-          aria-describedby="inputGroupPrepend"value="<?= isset($data['Problēma']) ? $data['Problēma'] : '' ?>" required>
+          aria-describedby="inputGroupPrepend" value="<?= isset($data['Problēma']) ? $data['Problēma'] : '' ?>"
+          required>
       </div>
 
       <div class="input-group">
         <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
         <span class="input-group-text">Piezīme</span>
         <textarea class="form-control" name="Piez" placeholder="Piezīme" maxlength="95"
-          aria-label="With textarea" ></textarea>
+          aria-label="With textarea"></textarea>
       </div>
 
       <div class="submit">
@@ -176,12 +180,16 @@ if (!isset($_SESSION['t'])) {
 
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
 </html>
