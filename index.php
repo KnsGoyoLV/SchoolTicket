@@ -100,7 +100,7 @@ require "header.php";
                 Neizdarīts
               </button>
               <?php
-            } else {
+            } elseif (!($row['status'] == 'Atrisināts(Parbaudīts)')) {
               ?>
               <button type="button" data-bs-toggle="modal" data-bs-target="#Cancel<?= $row['ticket_id']; ?>" class="btn btn-link btn-sm btn-rounded">
                 Atcelt
