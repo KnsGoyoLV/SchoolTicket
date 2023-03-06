@@ -876,6 +876,13 @@ select {
 .badge-warning:hover {
   background-color: #c67605;
 }
+
+button.btn.btn-primar {
+    /* width: 48%; */
+    margin-left: 0%;
+    margin-bottom: 0rem;
+}
+
 @media (min-width: 1000px) {
   .h3,
   h3 {

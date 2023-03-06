@@ -83,9 +83,12 @@ require "header.php";
             }
             if (isset($_POST['Ndone' . $row['ticket_id']])) {
               $pdo->query("UPDATE `pieteikums` SET `status` = 'Neatrisināts' WHERE ticket_id='" . $row['ticket_id'] . "'");
+            }   
+            if (isset($_POST['Cancel1' . $row['ticket_id']])) {
+              $pdo->query("DELETE FROM pieteikums WHERE ticket_id='" . $row['ticket_id'] . "'");
             }
 
-            if (isset($_POST['Done' . $row['ticket_id']]) || isset($_POST['Ndone' . $row['ticket_id']])) {
+            if (isset($_POST['Done' . $row['ticket_id']]) || isset($_POST['Ndone' . $row['ticket_id']]) || isset($_POST['Cancel1' . $row['ticket_id']])) {
               echo ("<meta http-equiv='refresh' content='1'>");
             }
             if ($row['status'] == 'Atrisināts') {
@@ -99,10 +102,31 @@ require "header.php";
               <?php
             } else {
               ?>
-              <p class="fw-normal mb-2">Pagaidām vēl nav atrisināts</p>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#Cancel<?= $row['ticket_id']; ?>" class="btn btn-link btn-sm btn-rounded">
+                Atcelt
+              </button>
               <?php
             }
             ?>
+            <div class="modal fade" id="Cancel<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
+                      data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Apstiprinājums</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Vai tiešām vēlaties dzēst ierakstu?
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nē</button>
+                            <button type="submit" name="Cancel1<?= $row['ticket_id']; ?>"
+                              class="btn btn-primar">Jā</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
           </form>
         </td>
       </tr>
