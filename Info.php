@@ -68,6 +68,13 @@ if (!isset($_SESSION['t'])) {
     </header>
 
     <body>
+        <?php
+        
+        $total = $pdo->query("SELECT * FROM pieteikums WHERE epasts ='" . $_SESSION['email'] . "'");
+        $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') and epasts ='" . $_SESSION['email'] . "'");
+        $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts') or (status = 'Procesā') and epasts ='" . $_SESSION['email'] . "'");
+     
+        ?>
         <section class="vh-100" style="background-color: #eee;">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center ">
@@ -98,15 +105,15 @@ if (!isset($_SESSION['t'])) {
                                 </div>
                                 <div class="d-flex justify-content-between text-center mt-5 mb-2">
                                     <div>
-                                        <p class="mb-2 h5">8471</p>
+                                        <p class="mb-2 h5"> <?= $total->rowCount(); ?></p>
                                         <p class="text-muted mb-0">Mani pieteikumi</p>
                                     </div>
-                                    <div class="px-3">
-                                        <p class="mb-2 h5">8512</p>
+                                    <div>
+                                        <p class="mb-2 h5"><?= $done->rowCount(); ?></p>
                                         <p class="text-muted mb-0">Pabeigtie pieteikumi</p>
                                     </div>
                                     <div>
-                                        <p class="mb-2 h5">4751</p>
+                                        <p class="mb-2 h5"><?= $not_done->rowCount(); ?></p>
                                         <p class="text-muted mb-0">Nepabeigtie pieteikumi</p>
                                     </div>
                                 </div>
