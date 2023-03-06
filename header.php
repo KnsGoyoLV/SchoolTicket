@@ -92,7 +92,7 @@ if (!$_SESSION['username'] == 'Daniels' && in_array(explode('.', $domain)[0], $b
   <header>
     <nav class="navbar navbar-expand-lg bg-dark  navbar-dark py-3 fixed-top">
       <div class="container">
-        <a href="#" class="animate-charcter">Liepajas Valsts tehnikums</a>
+        <a href="#" class="animate-charcter">Liepājas Valsts tehnikums</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
           <span class="navbar-toggler-icon"></span>
         </button>

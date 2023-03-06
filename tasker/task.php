@@ -31,7 +31,7 @@ include("..\database\connectDB.php");
                 <!-- Toggle button -->
                 <!-- Brand -->
                 <a class="navbar-brand" href="#">
-                    <a href="../index.php" class="animate-charcter">Liepajas Valsts tehnikums </a>
+                    <a href="../index.php" class="animate-charcter">Liepājas Valsts tehnikums </a>
                 </a>
                 <!-- Search form -->
                 <!-- Right links -->
@@ -64,7 +64,7 @@ include("..\database\connectDB.php");
         <!-- Navbar -->
     </header>
     <!--Main Navigation-->
-    
+
     <!--Main layout-->
     <main style="margin-top: 58px;">
         <?php
@@ -84,7 +84,7 @@ include("..\database\connectDB.php");
                 <table class="mw-100" alt="Max-width 100%">
                     <thead class="thead-dark">
                         <tr>
-                            <th class="th-sm">Skolotajs</th>
+                            <th class="th-sm">Skolotājs</th>
                             <th class="th-sm">Iela un telpa/datums</th>
                             <th class="th-sm">Problēma</th>
                             <th class="th-sm">Piezīme</th>

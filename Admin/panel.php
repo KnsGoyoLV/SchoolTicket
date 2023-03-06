@@ -8,17 +8,20 @@ include("..\database\connectDB.php");
 ?>
 <!DOCTYPE html>
 <html lang="lv">
+
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LVT Admin Panel</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!--Main Navigation-->
   <header>
@@ -49,7 +52,7 @@ include("..\database\connectDB.php");
         </button>
         <!-- Brand -->
         <a class="navbar-brand" href="#">
-          <a href="../index.php" class="animate-charcter">Liepajas Valsts tehnikums </a>
+          <a href="../index.php" class="animate-charcter">Liepājas Valsts tehnikums </a>
         </a>
         <!-- Search form -->
         <!-- Right links -->
@@ -100,10 +103,15 @@ include("..\database\connectDB.php");
     $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
     $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
-    $rows = $result->fetchAll();
+  
+
+    if(isset($_GET['pabeigtie']))
+     $rows = $done->fetchAll();
+    else
+      $rows = $result->fetchAll();
+
 
     ?>
-    
     <div class="container pt-4 ">
       <div class="jumbotron ">
         <div class="row w-100">
@@ -111,7 +119,7 @@ include("..\database\connectDB.php");
             <div class="card border-info mx-sm-1 p-3">
               <div class="card border-info shadow text-info p-3 my-card"><i class="fa fa-list-alt"
                   aria-hidden="true"></i></div>
-              <div onclick="" style="cursor: pointer;" class="text-info text-center mt-3">
+              <div onclick="location.href='panel.php/?';" style="cursor: pointer;" class="text-info text-center mt-3">
                 <h4>Kopā</h4>
               </div>
               <div class="text-info text-center mt-2">
