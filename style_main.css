@@ -103,8 +103,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem 5%;
+  padding: 1rem 5%;
   font-family: ui-sans-serif;
+}
+
+.py-3 {
+  padding-top: 0rem!important;
+  padding-bottom: 0rem!important;
 }
 
 header .logo {
