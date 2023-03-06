@@ -111,7 +111,7 @@ include("..\database\connectDB.php");
             <div class="card border-info mx-sm-1 p-3">
               <div class="card border-info shadow text-info p-3 my-card"><i class="fa fa-list-alt"
                   aria-hidden="true"></i></div>
-              <div onclick="location.href='strada1';" style="cursor: pointer;" class="text-info text-center mt-3">
+              <div onclick="" style="cursor: pointer;" class="text-info text-center mt-3">
                 <h4>Kopā</h4>
               </div>
               <div class="text-info text-center mt-2">
