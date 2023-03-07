@@ -8,12 +8,13 @@
 }
 body {
   background-color: #cacaca;
-
-  font-family: ui-sans-serif;
+  background-image: url(logo.jpg);
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: ui-sans-serif;
+
 }
 * {
   font-family: "Nunito", sans-serif;

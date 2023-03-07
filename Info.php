@@ -75,7 +75,7 @@ if (!isset($_SESSION['t'])) {
         $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts') or (status = 'Procesā') and epasts ='" . $_SESSION['email'] . "'");
      
         ?>
-        <section class="vh-100" style="background-color: #eee;">
+        <section class="vh-100">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center ">
                     <div class="col-md-12 col-xl-4">

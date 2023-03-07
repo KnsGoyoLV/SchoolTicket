@@ -4,9 +4,15 @@
 }
 body{
     background-color: #cacaca;
+    background-image: url(logo.jpg);
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 * {
+  
     font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;

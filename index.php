@@ -53,7 +53,7 @@ require "header.php";
           // Prints out ticket status in table and changes the color of it 
           if ($row['status'] == 'Atrisināts') {
             ?>
-            <span class="badge badge-warning">
+            <span class="badge badge-success">
               <?= $row['status']; ?>
             </span>
             <?php
@@ -65,7 +65,7 @@ require "header.php";
             <?php
           } else {
             ?>
-            <span class="badge badge-info">
+            <span class="badge badge-warning">
               <?= $row['status']; ?>
             </span>
             <?php
