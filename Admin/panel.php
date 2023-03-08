@@ -70,6 +70,9 @@ include("..\database\connectDB.php");
                 <a class="dropdown-item" href="../index.php">Skolotāja skats</a>
               </li>
               <li>
+                <a class="dropdown-item" href="../tasker/task.php">Saimniecības nodaļas skats</a>
+              </li>
+              <li>
                 <a class="dropdown-item" href="../logout.php">Izrakstīties</a>
               </li>
             </ul>
@@ -326,9 +329,9 @@ include("..\database\connectDB.php");
                                   aria-label="Telpa" value="<?= $row['telpa']; ?>">
                                 <select class="form-select" id="nodala" name="nodala" required>
                                   <div></div>
-                                  <option  selected value ="<?= $row['nodala']; ?>"> Izvēlēties nodaļu</option>
+                                  <option selected value="<?= $row['nodala']; ?>"> Izvēlēties nodaļu</option>
                                   <option value="IT">IT nodaļa</option>
-                                  <option value="Saimniecības" >Saimniecības nodaļa</option>
+                                  <option value="Saimniecības">Saimniecības nodaļa</option>
                                 </select>
                               </div>
                               <div class="input-group mb-3">
