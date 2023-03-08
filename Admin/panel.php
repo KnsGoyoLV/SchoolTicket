@@ -20,6 +20,7 @@ include("..\database\connectDB.php");
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -69,6 +70,9 @@ include("..\database\connectDB.php");
                 <a class="dropdown-item" href="../index.php">Skolotāja skats</a>
               </li>
               <li>
+                <a class="dropdown-item" href="../tasker/task.php">Saimniecības nodaļas skats</a>
+              </li>
+              <li>
                 <a class="dropdown-item" href="../logout.php">Izrakstīties</a>
               </li>
             </ul>
@@ -87,6 +91,7 @@ include("..\database\connectDB.php");
   <!--Main Navigation-->
   <!--Main layout-->
   <main style="margin-top: 58px;">
+
     <?php
     // searchbar query stuff that search for stuff
     if (isset($_POST['searchbar']))
@@ -103,13 +108,7 @@ include("..\database\connectDB.php");
     $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
     $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
-  
-
-    if(isset($_GET['pabeigtie']))
-     $rows = $done->fetchAll();
-    else
-      $rows = $result->fetchAll();
-
+    $rows = $result->fetchAll();
 
     ?>
     <div class="container pt-4 ">
@@ -119,9 +118,14 @@ include("..\database\connectDB.php");
             <div class="card border-info mx-sm-1 p-3">
               <div class="card border-info shadow text-info p-3 my-card"><i class="fa fa-list-alt"
                   aria-hidden="true"></i></div>
-              <div onclick="location.href='panel.php/?';" style="cursor: pointer;" class="text-info text-center mt-3">
+              <div onclick="updateVariable('done')" style="cursor: pointer;" class="text-info text-center mt-3">
                 <h4>Kopā</h4>
               </div>
+              <script>
+                // Define a JavaScript function to update the PHP variable
+
+              </script>
+
               <div class="text-info text-center mt-2">
                 <h1>
                   <?= $total->rowCount(); ?>
@@ -186,7 +190,7 @@ include("..\database\connectDB.php");
               <th class="th-sm">Rediģēt</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="tableBody">
             <?php
             foreach ($rows as $row) {
               ?>
@@ -266,7 +270,7 @@ include("..\database\connectDB.php");
                   }
                   //update tickets info 
                   if (isset($_POST['edit' . $row['ticket_id']])) {
-                    $pdo->query("UPDATE `pieteikums` SET `iela` = '" . $_POST['Iela'] . "', `telpa` = '" . $_POST['Telpa'] . "', `problema` = '" . $_POST['Prob'] . "', `piezimes` = '" . $_POST['Piez'] . "', `nodala` = 'IT' WHERE ticket_id = '" . $row['ticket_id'] . "'");
+                    $pdo->query("UPDATE `pieteikums` SET `iela` = '" . $_POST['Iela'] . "', `telpa` = '" . $_POST['Telpa'] . "', `problema` = '" . $_POST['Prob'] . "', `piezimes` = '" . $_POST['Piez'] . "', `nodala` = '" . $_POST['nodala'] . "' WHERE ticket_id = '" . $row['ticket_id'] . "'");
                   }
 
                   //simple refresh after the button has been pressed and the function above completed
@@ -323,6 +327,12 @@ include("..\database\connectDB.php");
                                 <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
                                 <input type="text" class="form-control" id="Telpa" name="Telpa" placeholder="Telpa"
                                   aria-label="Telpa" value="<?= $row['telpa']; ?>">
+                                <select class="form-select" id="nodala" name="nodala" required>
+                                  <div></div>
+                                  <option selected value="<?= $row['nodala']; ?>"> Izvēlēties nodaļu</option>
+                                  <option value="IT">IT nodaļa</option>
+                                  <option value="Saimniecības">Saimniecības nodaļa</option>
+                                </select>
                               </div>
                               <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa fa-exclamation-circle"

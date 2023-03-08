@@ -3,21 +3,22 @@
 Github project content:
 - php login with microsoft graph ai
 - gets access token to retrive username,surname,email
+- can make ticket requests
+- can accept or delete requests
+- admin can edit those requests as well mark them as done or delete
+- workers can change status to in process,done,not done
 
 ### How to install:
-Use composer to install required .php files:
-
-`composer install`
-
-Use XAMPP Controll panel to run apache server 
 
 ### TODO:
 - [x] README.md file
 - [x] Login page using microsoft graph api
 - [x] Get access token
-- [ ] Design the website
-- [ ] Add/Remove ticket
-- [ ] Admin privileges  
-- [ ] Complete README.md file
+- [x] Design the website
+- [x] Add/Remove ticket
+- [x] Admin privileges  
+- [x] Complete README.md file
 
 ## Informacija:
+![alt text](https://i.imgur.com/bOqdGS6.png)
+![alt text](https://i.imgur.com/Z2VD6xV.png)
