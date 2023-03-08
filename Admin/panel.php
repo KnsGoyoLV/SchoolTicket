@@ -120,7 +120,7 @@ include("..\database\connectDB.php");
               </div>
               <script>
                 // Define a JavaScript function to update the PHP variable
-              
+
               </script>
 
               <div class="text-info text-center mt-2">
@@ -267,7 +267,7 @@ include("..\database\connectDB.php");
                   }
                   //update tickets info 
                   if (isset($_POST['edit' . $row['ticket_id']])) {
-                    $pdo->query("UPDATE `pieteikums` SET `iela` = '" . $_POST['Iela'] . "', `telpa` = '" . $_POST['Telpa'] . "', `problema` = '" . $_POST['Prob'] . "', `piezimes` = '" . $_POST['Piez'] . "', `nodala` = 'IT' WHERE ticket_id = '" . $row['ticket_id'] . "'");
+                    $pdo->query("UPDATE `pieteikums` SET `iela` = '" . $_POST['Iela'] . "', `telpa` = '" . $_POST['Telpa'] . "', `problema` = '" . $_POST['Prob'] . "', `piezimes` = '" . $_POST['Piez'] . "', `nodala` = '" . $_POST['nodala'] . "' WHERE ticket_id = '" . $row['ticket_id'] . "'");
                   }
 
                   //simple refresh after the button has been pressed and the function above completed
@@ -324,6 +324,12 @@ include("..\database\connectDB.php");
                                 <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
                                 <input type="text" class="form-control" id="Telpa" name="Telpa" placeholder="Telpa"
                                   aria-label="Telpa" value="<?= $row['telpa']; ?>">
+                                <select class="form-select" id="nodala" name="nodala" required>
+                                  <div></div>
+                                  <option  selected value ="<?= $row['nodala']; ?>"> Izvēlēties nodaļu</option>
+                                  <option value="IT">IT nodaļa</option>
+                                  <option value="Saimniecības" >Saimniecības nodaļa</option>
+                                </select>
                               </div>
                               <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa fa-exclamation-circle"
