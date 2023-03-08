@@ -105,9 +105,7 @@ include("..\database\connectDB.php");
     $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
     $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
-      $rows = $result->fetchAll();
-
-
+    $rows = $result->fetchAll();
 
     ?>
     <div class="container pt-4 ">
