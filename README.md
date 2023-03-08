@@ -20,3 +20,5 @@ Github project content:
 - [x] Complete README.md file
 
 ## Informacija:
+![alt text](https://i.imgur.com/bOqdGS6.png)
+![alt text](https://i.imgur.com/Z2VD6xV.png)
