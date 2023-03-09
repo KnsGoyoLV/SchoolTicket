@@ -181,7 +181,7 @@ include("..\database\connectDB.php");
         <table class="mw-100" alt="Max-width 100%">
           <thead class="thead-dark">
             <tr>
-              <th class="th-sm">Skolotajs</th>
+              <th class="th-sm">Skolotājs</th>
               <th class="th-sm">Iela un telpa/datums</th>
               <th class="th-sm">Problēma</th>
               <th class="th-sm">Piezīme</th>
