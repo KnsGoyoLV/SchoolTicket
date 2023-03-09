@@ -189,17 +189,6 @@ header .navbar a:hover {
   padding: 1rem 0;
 }
 
-#sakums .cloud {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  height: 12rem;
-  background-size: 250rem 18rem;
-  background: url(images/cloud.png) repeat-x;
-  animation: cloud 10s linear infinite;
-}
-
 @keyframes cloud {
   0% {
     background-position-x: 0rem;
