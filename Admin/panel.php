@@ -280,7 +280,7 @@ include("..\database\connectDB.php");
                   ?>
                   <form method="post">
                     <button type="submit" class="btn btn-success btn-rounded" name="complete<?= $row['ticket_id']; ?>"
-                      value=<?= $row['ticket_id']; ?>>Apstiprināt</button>
+                      value=<?= $row['ticket_id']; ?>>Atrisināts</button>
                     <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal"
                       data-bs-target="#delete<?= $row['ticket_id']; ?>">Izdzēst</button>
                     <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal"
