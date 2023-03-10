@@ -1,4 +1,6 @@
 <?php
+use Microsoft\Graph\Model\Location;
+
 include("../functions/function.php");
 require "../vendor/autoload.php";
 MicrosoftInfo();
@@ -103,15 +105,19 @@ include("..\database\connectDB.php");
       $result = $pdo->query("SELECT * FROM pieteikums ORDER BY `pieteikums`.`laiks` DESC");
     }
     // get count of every status tickets 
+    $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') ");
+
     if (isset($_GET['total']) && $_GET['total'] === 'true') {
       $rows = $result->fetchAll();
     }
-  
-    $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') ");
+    if (isset($_GET['done']) && $_GET['done'] === 'true') {
+      $rows = $done->fetchAll();
+    }
+
     $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
     $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
-   
+
 
     ?>
     <div class="container pt-4 ">
@@ -124,28 +130,6 @@ include("..\database\connectDB.php");
               <div style="cursor: pointer;" class="text-info text-center mt-3">
                 <a id="total" href="#">Kopā</a>
               </div>
-              <script>
-
-                const myElement = document.getElementById('total');
-                myElement.addEventListener('click', () => {
-                  // Get current URL
-                  let url = window.location.href;
-
-                  // Check if URL already contains a query string
-                  if (url.indexOf('?') === -1) {
-                    // If URL does not have a query string, add one
-                    url += '?total=true';
-                  } else {
-                    // If URL already has a query string, append to it
-                    url += '&total=true';
-                  }
-
-                  // Update current URL with new query string
-                  window.location.href = url;
-                });
-
-              </script>
-
               <div class="text-info text-center mt-2">
                 <h1>
                   <?= $result->rowCount(); ?>
@@ -157,8 +141,8 @@ include("..\database\connectDB.php");
             <div class="card border-success mx-sm-1 p-3">
               <div class="card border-success shadow text-success p-3 my-card"><i class="fa fa-check-circle"
                   aria-hidden="true"></i></div>
-              <div onclick="location.href='strada2';" style="cursor: pointer;" class="text-success text-center mt-3">
-                <h4>Pabeigtie</h4>
+              <div style="cursor: pointer;" class="text-success text-center mt-3">
+                <a id="done" href="#">Pabeigtie</a>
               </div>
               <div class="text-success text-center mt-2">
                 <h1>
@@ -399,7 +383,63 @@ include("..\database\connectDB.php");
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
+  <script>
 
+    const total = document.getElementById('total');
+    total.addEventListener('click', function() {
+      var checkarray = ["done", "not_done", , "process"]
+      // Get current URL
+      let url = window.location.href;
+
+      // Loop through the variables to check
+      for (var i = 0; i < checkarray.length; i++) {
+        var checkarray = checkarray[i];
+
+        // Check if the variable is in the URL
+        var hasVar = url.includes(checkarray + "=");
+
+        // Remove the variable if it exists
+        if (hasVar) {
+          url = url.replace(new RegExp(checkarray + "=[^&]+&?"), "");
+        }
+      }
+
+      // Add done=true to the URL if it doesn't already exist
+      if (!url.includes("total=true")) {
+        url += url.includes("?") ? "total=true" : "?total=true";
+      }
+      // Update current URL with new query string
+      window.location.href = url;
+    });
+    const done = document.getElementById('done');
+    done.addEventListener('click', () => {
+      var checkarray = ["total", "not_done", , "process"]
+      // Get current URL
+      let url = window.location.href;
+
+      // Loop through the variables to check
+      for (var i = 0; i < checkarray.length; i++) {
+        var checkarray = checkarray[i];
+
+        // Check if the variable is in the URL
+        var hasVar = url.includes(checkarray + "=");
+
+        // Remove the variable if it exists
+        if (hasVar) {
+          url = url.replace(new RegExp(checkarray + "=[^&]+&?"), "");
+        }
+      }
+
+      // Add done=true to the URL if it doesn't already exist
+      if (!url.includes("done=true")) {
+        url += url.includes("?") ? "done=true" : "?done=true";
+      }
+
+      // Update current URL with new query string
+      window.location.href = url;
+    });
+
+  </script>
 
 </body>
 
