@@ -103,12 +103,15 @@ include("..\database\connectDB.php");
       $result = $pdo->query("SELECT * FROM pieteikums ORDER BY `pieteikums`.`laiks` DESC");
     }
     // get count of every status tickets 
-    $total = $pdo->query("SELECT * FROM pieteikums");
+    if (isset($_GET['total']) && $_GET['total'] === 'true') {
+      $rows = $result->fetchAll();
+    }
+  
     $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') ");
     $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
     $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
-    $rows = $result->fetchAll();
+   
 
     ?>
     <div class="container pt-4 ">
@@ -118,17 +121,34 @@ include("..\database\connectDB.php");
             <div class="card border-info mx-sm-1 p-3">
               <div class="card border-info shadow text-info p-3 my-card"><i class="fa fa-list-alt"
                   aria-hidden="true"></i></div>
-              <div onclick="updateVariable('done')" style="cursor: pointer;" class="text-info text-center mt-3">
-                <h4>Kopā</h4>
+              <div style="cursor: pointer;" class="text-info text-center mt-3">
+                <a id="total" href="#">Kopā</a>
               </div>
               <script>
-                // Define a JavaScript function to update the PHP variable
+
+                const myElement = document.getElementById('total');
+                myElement.addEventListener('click', () => {
+                  // Get current URL
+                  let url = window.location.href;
+
+                  // Check if URL already contains a query string
+                  if (url.indexOf('?') === -1) {
+                    // If URL does not have a query string, add one
+                    url += '?total=true';
+                  } else {
+                    // If URL already has a query string, append to it
+                    url += '&total=true';
+                  }
+
+                  // Update current URL with new query string
+                  window.location.href = url;
+                });
 
               </script>
 
               <div class="text-info text-center mt-2">
                 <h1>
-                  <?= $total->rowCount(); ?>
+                  <?= $result->rowCount(); ?>
                 </h1>
               </div>
             </div>
