@@ -106,6 +106,8 @@ include("..\database\connectDB.php");
     }
     // get count of every status tickets 
     $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') ");
+    $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
+    $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
     if (isset($_GET['total']) && $_GET['total'] === 'true') {
       $rows = $result->fetchAll();
@@ -113,11 +115,12 @@ include("..\database\connectDB.php");
     if (isset($_GET['done']) && $_GET['done'] === 'true') {
       $rows = $done->fetchAll();
     }
-
-    $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
-    $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
-
-
+    if (isset($_GET['not_done']) && $_GET['not_done'] === 'true') {
+      $rows = $not_done->fetchAll();
+    }
+    if (isset($_GET['process']) && $_GET['process'] === 'true') {
+      $rows = $process->fetchAll();
+    }
 
     ?>
     <div class="container pt-4 ">
@@ -433,6 +436,60 @@ include("..\database\connectDB.php");
       // Add done=true to the URL if it doesn't already exist
       if (!url.includes("done=true")) {
         url += url.includes("?") ? "done=true" : "?done=true";
+      }
+
+      // Update current URL with new query string
+      window.location.href = url;
+    });
+    const not_done = document.getElementById('not_done');
+    done.addEventListener('click', () => {
+      var checkarray = ["total", "done", , "process"]
+      // Get current URL
+      let url = window.location.href;
+
+      // Loop through the variables to check
+      for (var i = 0; i < checkarray.length; i++) {
+        var checkarray = checkarray[i];
+
+        // Check if the variable is in the URL
+        var hasVar = url.includes(checkarray + "=");
+
+        // Remove the variable if it exists
+        if (hasVar) {
+          url = url.replace(new RegExp(checkarray + "=[^&]+&?"), "");
+        }
+      }
+
+      // Add done=true to the URL if it doesn't already exist
+      if (!url.includes("not_done=true")) {
+        url += url.includes("?") ? "not_done=true" : "?not_done=true";
+      }
+
+      // Update current URL with new query string
+      window.location.href = url;
+    });
+    const process = document.getElementById('process');
+    process.addEventListener('click', () => {
+      var checkarray = ["total", "done", , "not_done"]
+      // Get current URL
+      let url = window.location.href;
+
+      // Loop through the variables to check
+      for (var i = 0; i < checkarray.length; i++) {
+        var checkarray = checkarray[i];
+
+        // Check if the variable is in the URL
+        var hasVar = url.includes(checkarray + "=");
+
+        // Remove the variable if it exists
+        if (hasVar) {
+          url = url.replace(new RegExp(checkarray + "=[^&]+&?"), "");
+        }
+      }
+
+      // Add done=true to the URL if it doesn't already exist
+      if (!url.includes("process=true")) {
+        url += url.includes("?") ? "process=true" : "?process=true";
       }
 
       // Update current URL with new query string
