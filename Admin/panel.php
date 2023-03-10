@@ -106,7 +106,7 @@ include("..\database\connectDB.php");
     }
     // get count of every status tickets 
     $done = $pdo->query("SELECT * FROM pieteikums where (status ='Atrisināts') or (status = 'Atrisināts(Parbaudīts)') ");
-    $not_done = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
+    $notdone = $pdo->query("SELECT * FROM pieteikums where (status ='Neatrisināts')");
     $proces = $pdo->query("SELECT * FROM pieteikums where (status ='Procesā')");
 
     if (isset($_GET['total']) && $_GET['total'] === 'true') {
@@ -115,8 +115,8 @@ include("..\database\connectDB.php");
     if (isset($_GET['done']) && $_GET['done'] === 'true') {
       $rows = $done->fetchAll();
     }
-    if (isset($_GET['not_done']) && $_GET['not_done'] === 'true') {
-      $rows = $not_done->fetchAll();
+    if (isset($_GET['notdone']) && $_GET['notdone'] === 'true') {
+      $rows = $notdone->fetchAll();
     }
     if (isset($_GET['process']) && $_GET['process'] === 'true') {
       $rows = $process->fetchAll();
@@ -158,12 +158,12 @@ include("..\database\connectDB.php");
             <div class="card border-danger mx-sm-1 p-3">
               <div class="card border-danger shadow text-danger p-3 my-card"><i class="fa fa-times-circle"
                   aria-hidden="true"></i></div>
-              <div onclick="location.href='strada3';" style="cursor: pointer;" class="text-danger text-center mt-3">
-                <h4>Nepabeigtie</h4>
+              <div style="cursor: pointer;" class="text-danger text-center mt-3">
+                <a id="notdone" href="#">Nepabeigtie</a>
               </div>
               <div class="text-danger text-center mt-2">
                 <h1>
-                  <?= $not_done->rowCount(); ?>
+                  <?= $notdone->rowCount(); ?>
                 </h1>
               </div>
             </div>
@@ -199,6 +199,9 @@ include("..\database\connectDB.php");
           </thead>
           <tbody id="tableBody">
             <?php
+            if(!isset($rows)){
+
+            }else
             foreach ($rows as $row) {
               ?>
               <tr>
@@ -390,7 +393,7 @@ include("..\database\connectDB.php");
 
     const total = document.getElementById('total');
     total.addEventListener('click', function() {
-      var checkarray = ["done", "not_done", , "process"]
+      var checkarray = ["done", "notdone", , "process"]
       // Get current URL
       let url = window.location.href;
 
@@ -416,7 +419,7 @@ include("..\database\connectDB.php");
     });
     const done = document.getElementById('done');
     done.addEventListener('click', () => {
-      var checkarray = ["total", "not_done", , "process"]
+      var checkarray = ["total", "notdone", , "process"]
       // Get current URL
       let url = window.location.href;
 
@@ -441,8 +444,9 @@ include("..\database\connectDB.php");
       // Update current URL with new query string
       window.location.href = url;
     });
-    const not_done = document.getElementById('not_done');
-    done.addEventListener('click', () => {
+
+    const notdone = document.getElementById('notdone');
+    notdone.addEventListener('click', () => {
       var checkarray = ["total", "done", , "process"]
       // Get current URL
       let url = window.location.href;
@@ -461,8 +465,8 @@ include("..\database\connectDB.php");
       }
 
       // Add done=true to the URL if it doesn't already exist
-      if (!url.includes("not_done=true")) {
-        url += url.includes("?") ? "not_done=true" : "?not_done=true";
+      if (!url.includes("notdone=true")) {
+        url += url.includes("?") ? "notdone=true" : "?notdone=true";
       }
 
       // Update current URL with new query string
@@ -470,7 +474,7 @@ include("..\database\connectDB.php");
     });
     const process = document.getElementById('process');
     process.addEventListener('click', () => {
-      var checkarray = ["total", "done", , "not_done"]
+      var checkarray = ["total", "done", , "notdone"]
       // Get current URL
       let url = window.location.href;
 
