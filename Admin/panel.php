@@ -423,6 +423,7 @@ include("..\database\connectDB.php");
       // Get current URL
       let url = window.location.href;
 
+      
       // Loop through the variables to check
       for (var i = 0; i < checkarray.length; i++) {
         var checkarray = checkarray[i];
