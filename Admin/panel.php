@@ -119,7 +119,7 @@ include("..\database\connectDB.php");
       $rows = $notdone->fetchAll();
     }
     if (isset($_GET['process']) && $_GET['process'] === 'true') {
-      $rows = $process->fetchAll();
+      $rows = $proces->fetchAll();
     }
 
     ?>
@@ -172,8 +172,8 @@ include("..\database\connectDB.php");
             <div class="card border-warning mx-sm-1 p-3">
               <div class="card border-warning shadow text-warning p-3 my-card"><i class="fa fa-spinner"
                   aria-hidden="true"></i></div>
-              <div href="#" style="cursor: pointer;" class="text-warning text-center mt-3">
-                <h4 class="process">Procesā</h4>
+              <div style="cursor: pointer;" class="text-warning text-center mt-3">
+                <a id="process" class="process" href="#">Procesā</a>
               </div>
               <div class="text-warning text-center mt-2">
                 <h1>
@@ -199,175 +199,175 @@ include("..\database\connectDB.php");
           </thead>
           <tbody id="tableBody">
             <?php
-            if(!isset($rows)){
+            if (!isset($rows)) {
 
-            }else
-            foreach ($rows as $row) {
-              ?>
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <div class="ms-6">
-                      <p class="fw-bold mb-1">
-                        <?= $row['vards']; ?>
-                        <?= $row['uzvards']; ?>
-                      </p>
-                      <p class="text-muted mb-1">
-                        <?= $row['epasts']; ?>
-                      </p>
+            } else
+              foreach ($rows as $row) {
+                ?>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="ms-6">
+                        <p class="fw-bold mb-1">
+                          <?= $row['vards']; ?>
+                          <?= $row['uzvards']; ?>
+                        </p>
+                        <p class="text-muted mb-1">
+                          <?= $row['epasts']; ?>
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <div class="ms-6">
-                      <p class="fw-bold mb-1">
-                        <?= $row['laiks']; ?>
-                      </p>
-                      <p class="text-muted mb-1">
-                        <?= $row['iela']; ?>:
-                        <?= $row['telpa']; ?>
-                      </p>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="ms-6">
+                        <p class="fw-bold mb-1">
+                          <?= $row['laiks']; ?>
+                        </p>
+                        <p class="text-muted mb-1">
+                          <?= $row['iela']; ?>:
+                          <?= $row['telpa']; ?>
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="fw-normal mb-2">
-                    <?= $row['problema']; ?>
-                  </p>
-                </td>
-                <td>
-                  <span>
-                    <?= $row['piezimes']; ?>
-                  </span>
-                </td>
-                <td>
-                  <?php
-                  if ($row['status'] == 'Atrisināts') {
-                    ?>
-                    <span class="badge badge-outline-warning">
-                      <?= $row['status']; ?>
+                  </td>
+                  <td>
+                    <p class="fw-normal mb-2">
+                      <?= $row['problema']; ?>
+                    </p>
+                  </td>
+                  <td>
+                    <span>
+                      <?= $row['piezimes']; ?>
                     </span>
-
+                  </td>
+                  <td>
                     <?php
-                  } elseif ($row['status'] == 'Atrisināts(Parbaudīts)') {
+                    if ($row['status'] == 'Atrisināts') {
+                      ?>
+                      <span class="badge badge-outline-warning">
+                        <?= $row['status']; ?>
+                      </span>
+
+                      <?php
+                    } elseif ($row['status'] == 'Atrisināts(Parbaudīts)') {
+                      ?>
+                      <span class="badge badge-outline-success">
+                        <?= $row['status']; ?>
+                      </span>
+                      <?php
+                    } else {
+                      ?>
+                      <span class="badge badge-outline-info">
+                        <?= $row['status']; ?>
+                      </span>
+                      <?php
+                    }
                     ?>
-                    <span class="badge badge-outline-success">
-                      <?= $row['status']; ?>
-                    </span>
+                  </td>
+                  <td>
+                    <?= $row['nodala']; ?>
+                  </td>
+                  <td>
                     <?php
-                  } else {
+                    // change tickets status to complete
+                    if (isset($_POST['complete' . $row['ticket_id']])) {
+                      $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='" . $row['ticket_id'] . "'");
+                    }
+                    //delete ticket from the database
+                    if (isset($_POST['delete1' . $row['ticket_id']])) {
+                      $pdo->query("DELETE FROM pieteikums WHERE ticket_id='" . $row['ticket_id'] . "'");
+                    }
+                    //update tickets info 
+                    if (isset($_POST['edit' . $row['ticket_id']])) {
+                      $pdo->query("UPDATE `pieteikums` SET `iela` = '" . $_POST['Iela'] . "', `telpa` = '" . $_POST['Telpa'] . "', `problema` = '" . $_POST['Prob'] . "', `piezimes` = '" . $_POST['Piez'] . "', `nodala` = '" . $_POST['nodala'] . "' WHERE ticket_id = '" . $row['ticket_id'] . "'");
+                    }
+
+                    //simple refresh after the button has been pressed and the function above completed
+                    if (isset($_POST['delete1' . $row['ticket_id']]) || isset($_POST['complete' . $row['ticket_id']]) || isset($_POST['edit' . $row['ticket_id']])) {
+                      echo ("<meta http-equiv='refresh' content='1'>");
+                    }
                     ?>
-                    <span class="badge badge-outline-info">
-                      <?= $row['status']; ?>
-                    </span>
-                    <?php
-                  }
-                  ?>
-                </td>
-                <td>
-                  <?= $row['nodala']; ?>
-                </td>
-                <td>
-                  <?php
-                  // change tickets status to complete
-                  if (isset($_POST['complete' . $row['ticket_id']])) {
-                    $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='" . $row['ticket_id'] . "'");
-                  }
-                  //delete ticket from the database
-                  if (isset($_POST['delete1' . $row['ticket_id']])) {
-                    $pdo->query("DELETE FROM pieteikums WHERE ticket_id='" . $row['ticket_id'] . "'");
-                  }
-                  //update tickets info 
-                  if (isset($_POST['edit' . $row['ticket_id']])) {
-                    $pdo->query("UPDATE `pieteikums` SET `iela` = '" . $_POST['Iela'] . "', `telpa` = '" . $_POST['Telpa'] . "', `problema` = '" . $_POST['Prob'] . "', `piezimes` = '" . $_POST['Piez'] . "', `nodala` = '" . $_POST['nodala'] . "' WHERE ticket_id = '" . $row['ticket_id'] . "'");
-                  }
+                    <form method="post">
+                      <button type="submit" class="btn btn-success btn-rounded" name="complete<?= $row['ticket_id']; ?>"
+                        value=<?= $row['ticket_id']; ?>>Atrisināts</button>
+                      <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal"
+                        data-bs-target="#delete<?= $row['ticket_id']; ?>">Izdzēst</button>
+                      <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal"
+                        data-bs-target="#edit<?= $row['ticket_id']; ?>">Rediģēt</button>
 
-                  //simple refresh after the button has been pressed and the function above completed
-                  if (isset($_POST['delete1' . $row['ticket_id']]) || isset($_POST['complete' . $row['ticket_id']]) || isset($_POST['edit' . $row['ticket_id']])) {
-                    echo ("<meta http-equiv='refresh' content='1'>");
-                  }
-                  ?>
-                  <form method="post">
-                    <button type="submit" class="btn btn-success btn-rounded" name="complete<?= $row['ticket_id']; ?>"
-                      value=<?= $row['ticket_id']; ?>>Atrisināts</button>
-                    <button type="button" class="btn btn-danger btn-rounded" data-bs-toggle="modal"
-                      data-bs-target="#delete<?= $row['ticket_id']; ?>">Izdzēst</button>
-                    <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal"
-                      data-bs-target="#edit<?= $row['ticket_id']; ?>">Rediģēt</button>
-
-                    <div class="modal fade" id="delete<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
-                      data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Apstiprinājums</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            Vai tiešām vēlaties dzēst ierakstu?
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nē</button>
-                            <button type="submit" name="delete1<?= $row['ticket_id']; ?>"
-                              class="btn btn-primary">Jā</button>
+                      <div class="modal fade" id="delete<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">Apstiprinājums</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Vai tiešām vēlaties dzēst ierakstu?
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nē</button>
+                              <button type="submit" name="delete1<?= $row['ticket_id']; ?>"
+                                class="btn btn-primary">Jā</button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal fade" id="edit<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
-                      data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Rediģēt informāciju</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="input-group mb-3">
-                              <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-                                <select class="form-select" id="Iela" name="Iela" required>
-                                  <div></div>
-                                  <option selected value="<?= $row['iela']; ?>">Izvēlēties ielu</option>
-                                  <option value="Vānes iela">Vānes iela</option>
-                                  <option value="Ventspils iela">Ventspils iela</option>
-                                </select>
-                                <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" id="Telpa" name="Telpa" placeholder="Telpa"
-                                  aria-label="Telpa" value="<?= $row['telpa']; ?>">
-                                <select class="form-select" id="nodala" name="nodala" required>
-                                  <div></div>
-                                  <option selected value="<?= $row['nodala']; ?>"> Izvēlēties nodaļu</option>
-                                  <option value="IT">IT nodaļa</option>
-                                  <option value="Saimniecības">Saimniecības nodaļa</option>
-                                </select>
-                              </div>
-                              <div class="input-group mb-3">
-                                <span class="input-group-text"><i class="fa fa-exclamation-circle"
-                                    aria-hidden="true"></i></span>
-                                <span class="input-group-text" id="basic-addon1">Problēma</span>
-                                <input type="text" class="form-control" name="Prob" placeholder="Problēma" required
-                                  maxlength="95" aria-describedby="basic-addon1" value="<?= $row['problema']; ?>">
-                              </div>
-                              <div class="input-group">
-                                <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
-                                <span class="input-group-text">Piezīme</span>
-                                <textarea class="form-control" name="Piez" aria-label="With textarea"
-                                  value="<?= $row['piezimes']; ?>"><?= $row['piezimes']; ?></textarea>
-                              </div>
+                      <!-- Modal -->
+                      <div class="modal fade" id="edit<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">Rediģēt informāciju</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aizvērt</button>
-                              <button type="submit" class="btn btn-primary" name="edit<?= $row['ticket_id']; ?>"
-                                value=<?= $row['ticket_id']; ?>>Saglabāt</button>
-                            </div>
-                  </form>
-                </td>
-              </tr>
-              <?php
-            }
+                            <div class="modal-body">
+                              <div class="input-group mb-3">
+                                <div class="input-group mb-3">
+                                  <span class="input-group-text"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                  <select class="form-select" id="Iela" name="Iela" required>
+                                    <div></div>
+                                    <option selected value="<?= $row['iela']; ?>">Izvēlēties ielu</option>
+                                    <option value="Vānes iela">Vānes iela</option>
+                                    <option value="Ventspils iela">Ventspils iela</option>
+                                  </select>
+                                  <span class="input-group-text"><i class="fa fa-home" aria-hidden="true"></i></span>
+                                  <input type="text" class="form-control" id="Telpa" name="Telpa" placeholder="Telpa"
+                                    aria-label="Telpa" value="<?= $row['telpa']; ?>">
+                                  <select class="form-select" id="nodala" name="nodala" required>
+                                    <div></div>
+                                    <option selected value="<?= $row['nodala']; ?>"> Izvēlēties nodaļu</option>
+                                    <option value="IT">IT nodaļa</option>
+                                    <option value="Saimniecības">Saimniecības nodaļa</option>
+                                  </select>
+                                </div>
+                                <div class="input-group mb-3">
+                                  <span class="input-group-text"><i class="fa fa-exclamation-circle"
+                                      aria-hidden="true"></i></span>
+                                  <span class="input-group-text" id="basic-addon1">Problēma</span>
+                                  <input type="text" class="form-control" name="Prob" placeholder="Problēma" required
+                                    maxlength="95" aria-describedby="basic-addon1" value="<?= $row['problema']; ?>">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-text"><i class="fa fa-comments" aria-hidden="true"></i></span>
+                                  <span class="input-group-text">Piezīme</span>
+                                  <textarea class="form-control" name="Piez" aria-label="With textarea"
+                                    value="<?= $row['piezimes']; ?>"><?= $row['piezimes']; ?></textarea>
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Aizvērt</button>
+                                <button type="submit" class="btn btn-primary" name="edit<?= $row['ticket_id']; ?>"
+                                  value=<?= $row['ticket_id']; ?>>Saglabāt</button>
+                              </div>
+                    </form>
+                  </td>
+                </tr>
+                <?php
+              }
             ?>
           </tbody>
         </table>
@@ -392,113 +392,59 @@ include("..\database\connectDB.php");
   <script>
 
     const total = document.getElementById('total');
-    total.addEventListener('click', function() {
-      var checkarray = ["done", "notdone", , "process"]
+    total.addEventListener('click', function () {
       // Get current URL
       let url = window.location.href;
 
-      // Loop through the variables to check
-      for (var i = 0; i < checkarray.length; i++) {
-        var checkarray = checkarray[i];
-
-        // Check if the variable is in the URL
-        var hasVar = url.includes(checkarray + "=");
-
-        // Remove the variable if it exists
-        if (hasVar) {
-          url = url.replace(new RegExp(checkarray + "=[^&]+&?"), "");
-        }
+      // Check if the URL has a query string
+      if (url.includes("?")) {
+        // Remove the query string
+        url = url.split("?")[0];
       }
 
-      // Add done=true to the URL if it doesn't already exist
-      if (!url.includes("total=true")) {
-        url += url.includes("?") ? "total=true" : "?total=true";
-      }
+      // Add total=true to the URL
+      url += url.includes("?") ? "&total=true" : "?total=true";
+
       // Update current URL with new query string
       window.location.href = url;
     });
     const done = document.getElementById('done');
     done.addEventListener('click', () => {
-      var checkarray = ["total", "notdone", , "process"]
-      // Get current URL
+     
       let url = window.location.href;
-
+     
+      if (url.includes("?")) 
+        url = url.split("?")[0];
       
-      // Loop through the variables to check
-      for (var i = 0; i < checkarray.length; i++) {
-        var checkarray = checkarray[i];
+    
+      url += url.includes("?") ? "&done=true" : "?done=true";
 
-        // Check if the variable is in the URL
-        var hasVar = url.includes(checkarray + "=");
-
-        // Remove the variable if it exists
-        if (hasVar) {
-          url = url.replace(new RegExp(checkarray + "=[^&]+&?"), "");
-        }
-      }
-
-      // Add done=true to the URL if it doesn't already exist
-      if (!url.includes("done=true")) {
-        url += url.includes("?") ? "done=true" : "?done=true";
-      }
-
-      // Update current URL with new query string
       window.location.href = url;
     });
 
     const notdone = document.getElementById('notdone');
     notdone.addEventListener('click', () => {
-      var checkarray = ["total", "done", , "process"]
-      // Get current URL
       let url = window.location.href;
+     
+     if (url.includes("?")) 
+       url = url.split("?")[0];
+     
+   
+     url += url.includes("?") ? "&notdone=true" : "?notdone=true";
 
-      // Loop through the variables to check
-      for (var i = 0; i < checkarray.length; i++) {
-        var checkarray = checkarray[i];
-
-        // Check if the variable is in the URL
-        var hasVar = url.includes(checkarray + "=");
-
-        // Remove the variable if it exists
-        if (hasVar) {
-          url = url.replace(new RegExp(checkarray + "=[^&]+&?"), "");
-        }
-      }
-
-      // Add done=true to the URL if it doesn't already exist
-      if (!url.includes("notdone=true")) {
-        url += url.includes("?") ? "notdone=true" : "?notdone=true";
-      }
-
-      // Update current URL with new query string
-      window.location.href = url;
+     window.location.href = url;
     });
     const process = document.getElementById('process');
     process.addEventListener('click', () => {
-      var checkarray = ["total", "done", , "notdone"]
-      // Get current URL
       let url = window.location.href;
+     
+     if (url.includes("?")) 
+       url = url.split("?")[0];
+     
+   
+     url += url.includes("?") ? "&process=true" : "?process=true";
 
-      // Loop through the variables to check
-      for (var i = 0; i < checkarray.length; i++) {
-        var checkarray = checkarray[i];
-
-        // Check if the variable is in the URL
-        var hasVar = url.includes(checkarray + "=");
-
-        // Remove the variable if it exists
-        if (hasVar) {
-          url = url.replace(new RegExp(checkarray + "=[^&]+&?"), "");
-        }
-      }
-
-      // Add done=true to the URL if it doesn't already exist
-      if (!url.includes("process=true")) {
-        url += url.includes("?") ? "process=true" : "?process=true";
-      }
-
-      // Update current URL with new query string
-      window.location.href = url;
+     window.location.href = url;
     });
 
   </script>
