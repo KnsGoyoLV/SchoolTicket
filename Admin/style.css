@@ -154,6 +154,53 @@ tr {
   vertical-align: baseline;
   white-space: nowrap;
 }
+
+.together{
+  font-size: 1.62rem;
+  text-decoration: none;
+  color: #0dcaf0;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.together:hover{
+  color: #0dcaf0;
+}
+
+.done{
+  font-size: 1.62rem;
+  text-decoration: none;
+  color: #198754;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.done:hover{
+  color: #198754;
+}
+
+.notdone{
+  font-size: 1.62rem;
+  text-decoration: none;
+  color:#dc3545;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.notdone:hover{
+  color: #dc3545;
+}
+
+.process{
+  font-size: 1.6rem;
+  text-align: center;
+  text-decoration: none;
+  color:#ffc107;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.process:hover{
+  color: #ffc107;
+}
+
+
 /* Bootstrap badge here */
 .badge-info {
   background-color: #3a87ad;

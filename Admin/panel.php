@@ -131,7 +131,7 @@ include("..\database\connectDB.php");
               <div class="card border-info shadow text-info p-3 my-card"><i class="fa fa-list-alt"
                   aria-hidden="true"></i></div>
               <div style="cursor: pointer;" class="text-info text-center mt-3">
-                <a id="total" href="#">Kopā</a>
+                <a id="total" class="together" href="#">Kopā</a>
               </div>
               <div class="text-info text-center mt-2">
                 <h1>
@@ -145,7 +145,7 @@ include("..\database\connectDB.php");
               <div class="card border-success shadow text-success p-3 my-card"><i class="fa fa-check-circle"
                   aria-hidden="true"></i></div>
               <div style="cursor: pointer;" class="text-success text-center mt-3">
-                <a id="done" href="#">Pabeigtie</a>
+                <a id="done" class="done" href="#">Pabeigtie</a>
               </div>
               <div class="text-success text-center mt-2">
                 <h1>
@@ -159,7 +159,7 @@ include("..\database\connectDB.php");
               <div class="card border-danger shadow text-danger p-3 my-card"><i class="fa fa-times-circle"
                   aria-hidden="true"></i></div>
               <div style="cursor: pointer;" class="text-danger text-center mt-3">
-                <a id="notdone" href="#">Nepabeigtie</a>
+                <a id="notdone" class="notdone" href="#">Nepabeigtie</a>
               </div>
               <div class="text-danger text-center mt-2">
                 <h1>
@@ -172,8 +172,8 @@ include("..\database\connectDB.php");
             <div class="card border-warning mx-sm-1 p-3">
               <div class="card border-warning shadow text-warning p-3 my-card"><i class="fa fa-spinner"
                   aria-hidden="true"></i></div>
-              <div onclick="location.href='strada4';" style="cursor: pointer;" class="text-warning text-center mt-3">
-                <h4>Procesā</h4>
+              <div href="#" style="cursor: pointer;" class="text-warning text-center mt-3">
+                <h4 class="process">Procesā</h4>
               </div>
               <div class="text-warning text-center mt-2">
                 <h1>
