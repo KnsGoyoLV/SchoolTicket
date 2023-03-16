@@ -272,6 +272,20 @@ include("..\database\connectDB.php");
                     <?php
                     // change tickets status to complete
                     if (isset($_POST['complete' . $row['ticket_id']])) {
+                      $to = "danielsvidopskis@gmail.com";
+                      $subject = "Test Email";
+                      $message = "This is a test email sent using Azure SMTP server.";
+
+                      $headers = "From: sender@example.com\r\n";
+                      $headers .= "Reply-To: sender@example.com\r\n";
+                      $headers .= "MIME-Version: 1.0\r\n";
+                      $headers .= "Content-type: text/html\r\n";
+
+                      if (mail($to, $subject, $message, $headers)) {
+                        echo "Email sent successfully";
+                      } else {
+                        echo "Email sending failed";
+                      }
                       $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='" . $row['ticket_id'] . "'");
                     }
                     //delete ticket from the database
@@ -410,13 +424,13 @@ include("..\database\connectDB.php");
     });
     const done = document.getElementById('done');
     done.addEventListener('click', () => {
-     
+
       let url = window.location.href;
-     
-      if (url.includes("?")) 
+
+      if (url.includes("?"))
         url = url.split("?")[0];
-      
-    
+
+
       url += url.includes("?") ? "&done=true" : "?done=true";
 
       window.location.href = url;
@@ -425,26 +439,26 @@ include("..\database\connectDB.php");
     const notdone = document.getElementById('notdone');
     notdone.addEventListener('click', () => {
       let url = window.location.href;
-     
-     if (url.includes("?")) 
-       url = url.split("?")[0];
-     
-   
-     url += url.includes("?") ? "&notdone=true" : "?notdone=true";
 
-     window.location.href = url;
+      if (url.includes("?"))
+        url = url.split("?")[0];
+
+
+      url += url.includes("?") ? "&notdone=true" : "?notdone=true";
+
+      window.location.href = url;
     });
     const process = document.getElementById('process');
     process.addEventListener('click', () => {
       let url = window.location.href;
-     
-     if (url.includes("?")) 
-       url = url.split("?")[0];
-     
-   
-     url += url.includes("?") ? "&process=true" : "?process=true";
 
-     window.location.href = url;
+      if (url.includes("?"))
+        url = url.split("?")[0];
+
+
+      url += url.includes("?") ? "&process=true" : "?process=true";
+
+      window.location.href = url;
     });
 
   </script>
