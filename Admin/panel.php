@@ -274,11 +274,11 @@ include("..\database\connectDB.php");
                     if (isset($_POST['complete' . $row['ticket_id']])) {
                       $to = "danielsvidopskis@gmail.com";
                       $subject = "Test Email";
-                      $message = "This is a test email sent using Azure SMTP server.";
+                      $message = "This is a test email sent using xampp SMTP server. HELLO FREND";
 
-                      $headers = "From: sender@example.com\r\n";
-                      $headers .= "Reply-To: sender@example.com\r\n";
-                      $headers .= "MIME-Version: 1.0\r\n";
+                      $headers = "From: me@example.com\r\n";
+                      $headers .= "Reply-To: me@example.com\r\n";
+                      $headers .= "MIME-Version: 1.2\r\n";
                       $headers .= "Content-type: text/html\r\n";
 
                       if (mail($to, $subject, $message, $headers)) {
@@ -309,6 +309,29 @@ include("..\database\connectDB.php");
                         data-bs-target="#delete<?= $row['ticket_id']; ?>">Izdzēst</button>
                       <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal"
                         data-bs-target="#edit<?= $row['ticket_id']; ?>">Rediģēt</button>
+
+                      <button type="button" class="btn btn-info btn-rounded" data-bs-toggle="modal"
+                        data-bs-target="#komment<?= $row['ticket_id']; ?>">Pievienot Komentāru</button>
+
+                      <div class="modal fade" id="komment<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">Aizsutīt Komentāru uz ēpastu</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <textarea class="form-control" name="Piez" aria-label="With textarea"
+                                value="comment"<?= $row['ticket_id']; ?>>EU RAKSTI TE></textarea>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nē</button>
+                              <button type="submit" name="" class="btn btn-primary">Jā</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
                       <div class="modal fade" id="delete<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
