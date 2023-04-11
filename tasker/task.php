@@ -1,7 +1,7 @@
 <?php
 include("../functions/function.php");
 MicrosoftInfo();
-Invalid_seasson($_SESSION['email']);
+Invalid_session($_SESSION['email']);
 block_domain();
 include("..\database\connectDB.php");
 ?>

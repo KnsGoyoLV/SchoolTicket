@@ -270,9 +270,9 @@ include("..\database\connectDB.php");
                     <?php
                     // change tickets status to complete
                     if (isset($_POST['complete' . $row['ticket_id']])) {
-                      $to = "arturs.aunins@lvt.lv";
+                      $to = "danielsvidopskis@gmail.com";
                       $subject = "Test Email";
-                      $message = "This is a test email sent using xampp SMTP server using admin panel";
+                      $message = "This is a test email sent using xampp SMTP server. HELLO FREND";
 
                       $headers = "From: me@example.com\r\n";
                       $headers .= "Reply-To: me@example.com\r\n";
