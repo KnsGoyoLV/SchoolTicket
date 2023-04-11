@@ -1,7 +1,7 @@
 <?php
-require_once("../database/connectDB.php");
+
 // if acces token is invalid or not gotten then go back to login.php file
-function Invalid_seasson($email)
+function Invalid_session($email)
 {
     if (!isset($_SESSION['t'])) {
         header('location:login.php');
