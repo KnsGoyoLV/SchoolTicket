@@ -1,6 +1,5 @@
 <?php
 require_once("database/connectDB.php");
-require "vendor/autoload.php";
 session_start();
 
 if (!isset($_SESSION['t'])) {
@@ -92,7 +91,7 @@ if (!isset($_SESSION['t'])) {
         // Loop over the required fields and check for empty values
         foreach ($required as $field) {
           if (empty($_POST[$field])) {
-            $errors[] = $field . ' lauks ir obligāts.';
+            $errors[] = $field . ' lauks ir obligāts';
           } else {
             // Store the submitted value in the data array
             $data[$field] = $_POST[$field];

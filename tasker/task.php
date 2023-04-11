@@ -1,6 +1,5 @@
 <?php
 include("../functions/function.php");
-require "../vendor/autoload.php";
 MicrosoftInfo();
 Invalid_seasson($_SESSION['email']);
 block_domain();
