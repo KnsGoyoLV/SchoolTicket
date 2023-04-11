@@ -1,10 +1,5 @@
 <?php
-$filePath = 'database/connectDB.php';
-if (file_exists($filePath)) {
-    require_once $filePath;
-} else {
-    die('Error: File not found.');
-}
+require_once("connectDB.php");
 require_once("function.php");
 //get microsoft info (username,email,name,surname)
 MicrosoftInfo();
