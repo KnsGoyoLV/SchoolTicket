@@ -1,7 +1,4 @@
 <?php
-use myPHPnotes\Microsoft\Auth;
-require "vendor/autoload.php";
-
 session_start();
 $_SESSION['state']=session_id();
 $env = parse_ini_file('database/.env');

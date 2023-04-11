@@ -1,5 +1,5 @@
 <?php
-require "header.php";
+require "functions/header.php";
 ?>
 <br /><br />
 <div class="pogaa">
