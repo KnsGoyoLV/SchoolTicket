@@ -22,3 +22,7 @@ Github project content:
 ## Informacija:
 ![alt text](https://i.imgur.com/bOqdGS6.png)
 ![alt text](https://i.imgur.com/Z2VD6xV.png)
+
+
+
+https://docs.google.com/document/d/1fiK30OQKXMDy2_wH-1gUlp-wqe3VZwDn/edit?usp=sharing&ouid=100331393952193586162&rtpof=true&sd=true
