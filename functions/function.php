@@ -7,8 +7,7 @@ function Invalid_session($email)
         header('location:login.php');
     }
     $admin = array(
-        'daniels.vidopskis@sk.lvt.lv1',
-        'mareks.frismanis@sk.lvt.lv1'
+        'daniels.vidopskis@sk.lvt.lv1'
     );
     if (in_array($_SESSION['email'], $admin)) {
         header("location:../tasker/task.php");
