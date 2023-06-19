@@ -26,22 +26,6 @@ include("..\database\connectDB.php");
 <body>
   <!--Main Navigation-->
   <header>
-    <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-xl-block sidebar collapse " style="background-color: #1c4c7c;">
-      <div class="position-sticky">
-        <div class="list-group list-group-flush mx-3 mt-4">
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
-            <i class="fas fa-tachometer-alt fa-fw me-3 a"></i><span>Pieteikuma pārskats</span>
-          </a>
-          <a href="kons.php" class="list-group-item list-group-item-action py-2 ripple">
-            <i class="fas fa-chart-area fa-fw me-3"></i><span>Konsultāciju saraksts</span>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i
-              class="fas fa-lock fa-fw me-3"></i><span>Konsultāciju pārskats</span></a>
-        </div>
-      </div>
-    </nav>
-    <!-- Sidebar -->
     <!-- Navbar -->
     <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-gray fixed-top">
       <!-- Container wrapper -->
@@ -270,20 +254,20 @@ include("..\database\connectDB.php");
                     <?php
                     // change tickets status to complete
                     if (isset($_POST['complete' . $row['ticket_id']])) {
-                      $to = "danielsvidopskis@gmail.com";
-                      $subject = "Test Email";
-                      $message = "This is a test email sent using xampp SMTP server. HELLO FREND";
+                      // $to = "danielsvidopskis@gmail.com";
+                      // $subject = "Test Email";
+                      // $message = "This is a test email sent using xampp SMTP server. HELLO FREND";
 
-                      $headers = "From: me@example.com\r\n";
-                      $headers .= "Reply-To: me@example.com\r\n";
-                      $headers .= "MIME-Version: 1.2\r\n";
-                      $headers .= "Content-type: text/html\r\n";
+                      // $headers = "From: me@example.com\r\n";
+                      // $headers .= "Reply-To: me@example.com\r\n";
+                      // $headers .= "MIME-Version: 1.2\r\n";
+                      // $headers .= "Content-type: text/html\r\n";
 
-                      if (mail($to, $subject, $message, $headers)) {
-                        echo "Email sent successfully";
-                      } else {
-                        echo "Email sending failed";
-                      }
+                      // if (mail($to, $subject, $message, $headers)) {
+                      //   echo "Email sent successfully";
+                      // } else {
+                      //   echo "Email sending failed";
+                      // }
                       $pdo->query("UPDATE pieteikums SET status='Atrisināts' WHERE ticket_id='" . $row['ticket_id'] . "'");
                     }
                     //delete ticket from the database
@@ -308,8 +292,8 @@ include("..\database\connectDB.php");
                       <button type="button" class="btn btn-warning btn-rounded" data-bs-toggle="modal"
                         data-bs-target="#edit<?= $row['ticket_id']; ?>">Rediģēt</button>
 
-                      <button type="button" class="btn btn-info btn-rounded" data-bs-toggle="modal"
-                        data-bs-target="#komment<?= $row['ticket_id']; ?>">Pievienot Komentāru</button>
+                      <!-- <button type="button" class="btn btn-info btn-rounded" data-bs-toggle="modal"
+                        data-bs-target="#komment<?= $row['ticket_id']; ?>">Pievienot Komentāru</button> -->
 
                       <div class="modal fade" id="komment<?= $row['ticket_id']; ?>" data-bs-backdrop="static"
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -320,8 +304,8 @@ include("..\database\connectDB.php");
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                              <textarea class="form-control" name="Piez" aria-label="With textarea"
-                                value="comment"<?= $row['ticket_id']; ?>>EU RAKSTI TE></textarea>
+                              <textarea class="form-control" name="Piez" aria-label="With textarea" value="comment"
+                                <?= $row['ticket_id']; ?>>EU RAKSTI TE></textarea>
                             </div>
                             <div class="modal-footer">
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nē</button>

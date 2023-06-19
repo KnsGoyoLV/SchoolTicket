@@ -14,18 +14,14 @@ session_start();
   <title>LVT TicketSupport</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body style="background-image: url('../assets/back.png');background-repeat: no-repeat; background-attachment: fixed;
   background-size: 100% 100%;">
-
-
   <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -35,25 +31,35 @@ session_start();
 
               <div class="mb-md-5 mt-md-4 pb-5">
 
-                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                <p class="text-white-50 mb-5">Please enter your login and password!</p>
-
+                <h2 class="fw-bold mb-2 text-uppercase">Admin Panel</h2>
+                <p class="text-white-50 mb-5">Lūdzu ierakstiet e-pastu un paroli!</p>
+                <?php       
+                  if (isset($_POST['login'])) {
+                    
+                    if(empty($_POST['epasts']) || empty($_POST['parole'])  ){
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo 'Epasts vai parole netika aizpildīta:';
+                    echo '</div>';
+                    }
+                  }
+                ?>
+                <form method="post">
                 <div class="form-outline form-white mb-4">
-                  <input type="email" id="typeEmailX" class="form-control form-control-lg" />
-                  <label class="form-label" for="typeEmailX">Email</label>
+                  <label class="form-label">Epasts</label>
+                  <input type="email" id="epasts" name="epasts" class="form-control form-control-lg" >
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                  <input type="password" id="typePasswordX" class="form-control form-control-lg" />
-                  <label class="form-label" for="typePasswordX">Password</label>
+                  <label class="form-label">Parole</label>
+                  <input type="password" id="parole"name="parole" class="form-control form-control-lg" >
                 </div>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Register</button>
-                <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+                <button class="btn btn-outline-light btn-lg px-5" type="submit" name="login">Login</button>
                 <hr class="my-2">
-                <form action="Admin_login.php">
-                  <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
-                    type="submit"><i class="fa-brands fa-windows"></i> Ienākt ar microsoft</button>
+                
+                  <a class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
+                    href="Admin_login.php" class="button"><i class="fa-brands fa-windows"></i> Ienākt ar microsoft</a>
                 </form>
               </div>
             </div>

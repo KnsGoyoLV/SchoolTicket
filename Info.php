@@ -91,11 +91,6 @@ if (!isset($_SESSION['t'])) {
                                     <?= $_SESSION['username']; ?>
                                     <?= $_SESSION['surname']; ?>
                                 </div>
-
-                                <div class="header-information">
-                                    Statuss:
-                                    <?= $_SESSION['job']; ?>
-                                </div>
                                 <div class="jap">
                                     <div class="stats-title">E-pasts: </div>
                                     <div class="stats-value">
