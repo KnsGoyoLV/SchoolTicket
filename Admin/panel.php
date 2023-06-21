@@ -2,9 +2,22 @@
 
 include("../functions/function.php");
 MicrosoftInfo();
-Invalid_session($_SESSION['email']);
-block_domain();
+
+if (empty($_SESSION['email1']) && empty($_SESSION['username']) && empty($_SESSION['surname'])) {
+  header('location: index.php');
+} elseif (empty($_SESSION['email1'])) {
+  if (!isset($_SESSION['t'])) {
+      header('location: login.php');
+  }
+}
 include("..\database\connectDB.php");
+
+
+if(empty($_SESSION['username']) && empty($_SESSION['surname'])){
+  $_SESSION['username'] = $_SESSION['email1'];
+  $_SESSION['surname'] = "";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="lv">

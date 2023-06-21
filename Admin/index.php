@@ -36,17 +36,47 @@ session_start();
                 <?php       
                   if (isset($_POST['login'])) {
                     
-                    if(empty($_POST['epasts']) || empty($_POST['parole'])  ){
+                    if(empty($_POST['epasts1']) || empty($_POST['parole'])  ){
                     echo '<div class="alert alert-danger" role="alert">';
                     echo 'Epasts vai parole netika aizpildīta:';
                     echo '</div>';
+                    }
+                    else{    
+                      $ipEmail = $_POST['epasts1'];
+                      $ipPassword = $_POST['parole'];
+              
+                      // Retrieve admin login information from the database
+                      $query = $pdo->prepare("SELECT epasts, parole FROM `admin login` WHERE epasts = :email");
+                      $query->bindParam(':email', $ipEmail);
+                      $query->execute();
+                      $row = $query->fetch(PDO::FETCH_ASSOC);
+                      if ($row) {
+                        $storedPassword = $row['parole'];
+            
+                        
+                        if (password_verify($ipPassword, $storedPassword)) {   
+                            $_SESSION['email1'] = $_POST['epasts1'];
+                            header("location:panel.php");
+                            
+                        } else {
+                            // Passwords do not match
+                            echo '<div class="alert alert-danger" role="alert">';
+                            echo 'Nepareiza parole!';
+                            echo '</div>';
+                        }
+                    } else {
+                        // Email does not exist in the database
+                        echo '<div class="alert alert-danger" role="alert">';
+                        echo 'Epasts nav reģistrēts!';
+                        echo '</div>';
+                    }
                     }
                   }
                 ?>
                 <form method="post">
                 <div class="form-outline form-white mb-4">
                   <label class="form-label">Epasts</label>
-                  <input type="email" id="epasts" name="epasts" class="form-control form-control-lg" >
+                  <input type="email" id="epasts1" name="epasts1" class="form-control form-control-lg" >
                 </div>
 
                 <div class="form-outline form-white mb-4">

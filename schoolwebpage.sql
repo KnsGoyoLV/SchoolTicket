@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 19, 2023 at 02:32 PM
+-- Generation Time: Jun 21, 2023 at 02:21 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -26,55 +26,39 @@ USE `schoolwebpage`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `apstiprinajums`
---
--- Creation: Jan 19, 2023 at 12:42 PM
+-- Table structure for table `admin login`
 --
 
-CREATE TABLE `apstiprinajums` (
-  `apstiprinajums_id` int(11) NOT NULL,
-  `apstiprinajums` enum('Apstiprināts','Noliegts') NOT NULL DEFAULT 'Noliegts'
+CREATE TABLE `admin login` (
+  `AdminLogin_ID` int(11) NOT NULL,
+  `epasts` varchar(30) NOT NULL,
+  `parole` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin login`
+--
+
+INSERT INTO `admin login` (`AdminLogin_ID`, `epasts`, `parole`) VALUES
+(4, 'admin@admin.com', '$2y$10$h3BEKd698WLQJBxVA2d7buyDixF0QaK6euT9yYIaTujb3LhxaRLeO');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `konsultacijas`
---
--- Creation: Jan 19, 2023 at 12:42 PM
+-- Table structure for table `microsoft api`
 --
 
-CREATE TABLE `konsultacijas` (
-  `konsultacijas_id` int(11) NOT NULL,
-  `sakums` date NOT NULL,
-  `beigas` date NOT NULL,
-  `id_skolotaji` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pieteikties`
---
--- Creation: Jan 19, 2023 at 12:42 PM
---
-
-CREATE TABLE `pieteikties` (
-  `pieteikties_id` int(11) NOT NULL,
-  `tema` enum('') NOT NULL,
-  `izvele` enum('Mācīties','Labot') NOT NULL,
-  `konsultacijas_konsultacijas_id` int(11) NOT NULL,
-  `konsultacijas_id_skolotaji` int(11) NOT NULL,
-  `apstiprinajums_apstiprinajums_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `microsoft api` (
+  `MicrosoftAPI_KEY` int(11) NOT NULL,
+  `Vards` varchar(50) NOT NULL,
+  `Uzvards` varchar(50) NOT NULL,
+  `epasts` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Microsoft Azure API ';
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `pieteikums`
---
--- Creation: Jan 19, 2023 at 12:52 PM
--- Last update: Jan 19, 2023 at 12:54 PM
 --
 
 CREATE TABLE `pieteikums` (
@@ -87,204 +71,72 @@ CREATE TABLE `pieteikums` (
   `piezimes` text DEFAULT NULL,
   `nodala` enum('IT','Saimniecības') NOT NULL DEFAULT 'IT',
   `epasts` varchar(50) NOT NULL,
-  `vards` varchar(25) NOT NUll,
-  `uzvards` varchar(25) NOT NUll
+  `vards` varchar(25) NOT NULL,
+  `uzvards` varchar(25) NOT NULL,
+  `MicrosoftAPI_KEY` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pieteikums`
 --
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `problema`
---
--- Creation: Jan 19, 2023 at 12:42 PM
---
-
-CREATE TABLE `problema` (
-  `problema_id` int(11) NOT NULL,
-  `it_nodala` varchar(45) DEFAULT NULL,
-  `saimniecibas_nodala` varchar(45) DEFAULT NULL,
-  `pieteikums_ticket_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Table structure for table `skolnieki`
---
--- Creation: Jan 19, 2023 at 12:42 PM
---
-
-CREATE TABLE `skolnieki` (
-  `skolnieki_id` int(11) NOT NULL,
-  `audzeknis` varchar(45) DEFAULT NULL,
-  `vards` varchar(45) DEFAULT NULL,
-  `uzvards` varchar(45) DEFAULT NULL,
-  `epasts` varchar(45) DEFAULT NULL,
-  `kurss` varchar(45) DEFAULT NULL,
-  `pieteikties_pieteikties_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `skolotaji`
---
--- Creation: Jan 19, 2023 at 12:42 PM
---
-
-CREATE TABLE `skolotaji` (
-  `lomas_id` int(11) NOT NULL,
-  `loma` enum('IT Admins','Saimniecības Nod. Admins','Skolotājs','Kons. Sar. Admins') NOT NULL DEFAULT 'Skolotājs',
-  `vards` varchar(45) DEFAULT NULL,
-  `uzvards` varchar(45) DEFAULT NULL,
-  `epasts` varchar(45) DEFAULT NULL,
-  `problema_problema_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `pieteikums` (`ticket_id`, `laiks`, `iela`, `telpa`, `status`, `problema`, `piezimes`, `nodala`, `epasts`, `vards`, `uzvards`, `MicrosoftAPI_KEY`) VALUES
+(90, '2023-06-20', 'Ventspils iela', 'A203', 'Neatrisināts', 'Kvalifikācijas eksamenis', 'Ceru ka nolikšu', 'IT', 'admin@admin.com', 'Daniels', 'Vidopskis', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `apstiprinajums`
+-- Indexes for table `admin login`
 --
-ALTER TABLE `apstiprinajums`
-  ADD PRIMARY KEY (`apstiprinajums_id`);
+ALTER TABLE `admin login`
+  ADD PRIMARY KEY (`AdminLogin_ID`);
 
 --
--- Indexes for table `konsultacijas`
+-- Indexes for table `microsoft api`
 --
-ALTER TABLE `konsultacijas`
-  ADD PRIMARY KEY (`konsultacijas_id`,`id_skolotaji`),
-  ADD KEY `fk_konsultacijas_skolotaji_idx` (`id_skolotaji`);
-
---
--- Indexes for table `pieteikties`
---
-ALTER TABLE `pieteikties`
-  ADD PRIMARY KEY (`pieteikties_id`,`konsultacijas_konsultacijas_id`,`konsultacijas_id_skolotaji`,`apstiprinajums_apstiprinajums_id`),
-  ADD KEY `fk_pieteikties_konsultacijas1_idx` (`konsultacijas_konsultacijas_id`,`konsultacijas_id_skolotaji`),
-  ADD KEY `fk_pieteikties_apstiprinajums1_idx` (`apstiprinajums_apstiprinajums_id`);
+ALTER TABLE `microsoft api`
+  ADD PRIMARY KEY (`MicrosoftAPI_KEY`);
 
 --
 -- Indexes for table `pieteikums`
 --
 ALTER TABLE `pieteikums`
-  ADD PRIMARY KEY (`ticket_id`);
-
---
--- Indexes for table `problema`
---
-ALTER TABLE `problema`
-  ADD PRIMARY KEY (`problema_id`,`pieteikums_ticket_id`),
-  ADD KEY `fk_problema_pieteikums1_idx` (`pieteikums_ticket_id`);
-
---
-
---
--- Indexes for table `skolnieki`
---
-ALTER TABLE `skolnieki`
-  ADD PRIMARY KEY (`skolnieki_id`,`pieteikties_pieteikties_id`),
-  ADD KEY `fk_skolnieki_pieteikties1_idx` (`pieteikties_pieteikties_id`);
-
---
--- Indexes for table `skolotaji`
---
-ALTER TABLE `skolotaji`
-  ADD PRIMARY KEY (`lomas_id`,`problema_problema_id`),
-  ADD KEY `fk_skolotaji_problema1_idx` (`problema_problema_id`);
+  ADD PRIMARY KEY (`ticket_id`),
+  ADD UNIQUE KEY `MicrosoftAPI_KEY` (`MicrosoftAPI_KEY`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `apstiprinajums`
+-- AUTO_INCREMENT for table `admin login`
 --
-ALTER TABLE `apstiprinajums`
-  MODIFY `apstiprinajums_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `admin login`
+  MODIFY `AdminLogin_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `konsultacijas`
+-- AUTO_INCREMENT for table `microsoft api`
 --
-ALTER TABLE `konsultacijas`
-  MODIFY `konsultacijas_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pieteikties`
---
-ALTER TABLE `pieteikties`
-  MODIFY `pieteikties_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `microsoft api`
+  MODIFY `MicrosoftAPI_KEY` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pieteikums`
 --
 ALTER TABLE `pieteikums`
-  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `problema`
---
-ALTER TABLE `problema`
-  MODIFY `problema_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
---
-
---
--- AUTO_INCREMENT for table `skolnieki`
---
-ALTER TABLE `skolnieki`
-  MODIFY `skolnieki_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `skolotaji`
---
-ALTER TABLE `skolotaji`
-  MODIFY `lomas_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ticket_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `konsultacijas`
---
-ALTER TABLE `konsultacijas`
-  ADD CONSTRAINT `fk_konsultacijas_skolotaji` FOREIGN KEY (`id_skolotaji`) REFERENCES `skolotaji` (`lomas_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `pieteikties`
---
-ALTER TABLE `pieteikties`
-  ADD CONSTRAINT `fk_pieteikties_apstiprinajums1` FOREIGN KEY (`apstiprinajums_apstiprinajums_id`) REFERENCES `apstiprinajums` (`apstiprinajums_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_pieteikties_konsultacijas1` FOREIGN KEY (`konsultacijas_konsultacijas_id`,`konsultacijas_id_skolotaji`) REFERENCES `konsultacijas` (`konsultacijas_id`, `id_skolotaji`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Constraints for table `pieteikums`
 --
-
---
--- Constraints for table `problema`
---
-ALTER TABLE `problema`
-  ADD CONSTRAINT `fk_problema_pieteikums1` FOREIGN KEY (`pieteikums_ticket_id`) REFERENCES `pieteikums` (`ticket_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `skolnieki`
---
-ALTER TABLE `skolnieki`
-  ADD CONSTRAINT `fk_skolnieki_pieteikties1` FOREIGN KEY (`pieteikties_pieteikties_id`) REFERENCES `pieteikties` (`pieteikties_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `skolotaji`
---
-ALTER TABLE `skolotaji`
-  ADD CONSTRAINT `fk_skolotaji_problema1` FOREIGN KEY (`problema_problema_id`) REFERENCES `problema` (`problema_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `pieteikums`
+  ADD CONSTRAINT `MicrosoftAPI_FK` FOREIGN KEY (`MicrosoftAPI_KEY`) REFERENCES `microsoft api` (`MicrosoftAPI_KEY`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
