@@ -55,17 +55,15 @@ session_start();
             
                         
                         if (password_verify($ipPassword, $storedPassword)) {   
-                            $_SESSION['email1'] = $_POST['epasts1'];
-                            header("location:panel.php");
+                          $_SESSION['email1'] = $_POST['epasts1'];
+                          header("location:panel.php");
                             
                         } else {
-                            // Passwords do not match
                             echo '<div class="alert alert-danger" role="alert">';
                             echo 'Nepareizs Epasts vai parole!';
                             echo '</div>';
                         }
                     } else {
-                        // Email does not exist in the database
                         echo '<div class="alert alert-danger" role="alert">';
                         echo 'Nepareizs Epasts vai parole!';
                         echo '</div>';
