@@ -61,13 +61,13 @@ session_start();
                         } else {
                             // Passwords do not match
                             echo '<div class="alert alert-danger" role="alert">';
-                            echo 'Nepareiza parole!';
+                            echo 'Nepareizs Epasts vai parole!';
                             echo '</div>';
                         }
                     } else {
                         // Email does not exist in the database
                         echo '<div class="alert alert-danger" role="alert">';
-                        echo 'Epasts nav reģistrēts!';
+                        echo 'Nepareizs Epasts vai parole!';
                         echo '</div>';
                     }
                     }
