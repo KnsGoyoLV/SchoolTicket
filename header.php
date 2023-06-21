@@ -45,6 +45,7 @@ if (!isset($_SESSION['t'])) {
   header('location:login.php');
 }
 
+
 //Block subdomain 
 $parts = explode('@', $_SESSION['email']);
 $domain = array_pop($parts);
